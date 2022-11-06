@@ -1,11 +1,11 @@
-import Layout from '@/components/layout/Layout'
+import Home from '@/components/screens/Home'
 
 import styles from '../styles/Home.module.scss'
 
 export default function HomePage() {
 	return (
 		<>
-			<Layout></Layout>
+			<Home />
 		</>
 	)
 }
