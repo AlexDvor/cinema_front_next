@@ -1,15 +1,10 @@
-import Image, { StaticImageData } from 'next/image'
+import Image from 'next/legacy/image'
 import { useRouter } from 'next/router'
 import { FC } from 'react'
 
-import styles from './Slider.module.scss'
+import { IGalleryItem } from '@/interfaces/Gallery.types'
 
-type IGalleryItem = {
-	id: number
-	name: string
-	url: StaticImageData | string
-	link: string
-}
+import styles from './Slider.module.scss'
 
 interface ISlideItem {
 	slide: IGalleryItem
@@ -31,8 +26,7 @@ const SlideItem: FC<ISlideItem> = ({
 					src={slide.url}
 					alt={slide.name}
 					draggable={false}
-					unoptimized
-					priority
+					priority={true}
 				/>
 			)}
 			<div className={styles.content}>

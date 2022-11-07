@@ -3,8 +3,9 @@ import Image from 'next/legacy/image'
 import Link from 'next/link'
 import { FC } from 'react'
 
+import { IGalleryItemProps } from '@/interfaces/Gallery.types'
+
 import styles from './Gallery.module.scss'
-import { IGalleryItemProps } from './Gallery.types'
 
 const GalleryItem: FC<IGalleryItemProps> = ({ item, variant }) => {
 	return (

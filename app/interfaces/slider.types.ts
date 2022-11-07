@@ -1,5 +1,5 @@
 export interface ISlide {
-	_id: string
+	id: string
 	bigPoster: string
 	title: string
 	subTitle: string

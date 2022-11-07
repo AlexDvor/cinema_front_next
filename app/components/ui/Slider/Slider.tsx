@@ -3,14 +3,15 @@ import { CSSTransition } from 'react-transition-group'
 
 import { useSlider } from '@/hooks/useSlider'
 
+import { IGalleryItem } from '@/interfaces/Gallery.types'
+
 import SlideArrow from './SlideArrow/SlideArrow'
 import SlideItem from './SlideItem'
 import styles from './Slider.module.scss'
-import { ISlide } from './Slider.types'
 
 interface ISlider {
 	buttonTitle?: string
-	slides: ISlide[]
+	slides: IGalleryItem[]
 }
 
 const Slider: FC<ISlider> = ({ buttonTitle, slides }) => {
