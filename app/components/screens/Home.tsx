@@ -1,7 +1,8 @@
 import { FC } from 'react'
 
-import { DataActors, DataMovies } from '../../../data.tempory'
+import { DataActors, DataMovies, DataSlider } from '../../../data.tempory'
 import Gallery from '../ui/Gallery/Gallery'
+import Slider from '../ui/Slider/Slider'
 import SubHeading from '../ui/SubHeading/SubHeading'
 
 import styles from './Home.module.scss'
@@ -9,6 +10,8 @@ import styles from './Home.module.scss'
 const Home: FC = () => {
 	return (
 		<>
+			{DataSlider.length && <Slider slides={DataSlider} />}
+
 			<div className="my-10">
 				<SubHeading title={'Trending now'} />
 				{DataMovies.length && <Gallery items={DataMovies} />}

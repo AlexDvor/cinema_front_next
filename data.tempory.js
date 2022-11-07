@@ -16,6 +16,11 @@ import aloneImg from './public/templates/alone.jpg'
 import christmas from './public/templates/christmas.jpg'
 import grinchImg from './public/templates/grinch.jpg'
 import mouseImg from './public/templates/mouse.jpg'
+import cSide from './public/templates/slide/823908.1200xp.jpg'
+import aSide from './public/templates/slide/16309460.jpg'
+import bSide from './public/templates/slide/1631038952_52106584.jpg'
+import sSide from './public/templates/slide/cfd9be01b08f2b81199ed90b702b71.jpg'
+import gSide from './public/templates/slide/images.jpg'
 
 export const DataMovies = [
 	{
@@ -59,4 +64,37 @@ export const DataActors = [
 	{ id: 9, name: 'Jon', url: pImg, link: '/' },
 	{ id: 10, name: 'Jon', url: mImg, link: '/' },
 	{ id: 11, name: 'Jon', url: qImg, link: '/' },
+]
+
+export const DataSlider = [
+	{
+		id: 1,
+		name: 'Test1',
+		url: aSide,
+		link: '/',
+	},
+	{
+		id: 2,
+		name: 'Test2',
+		url: bSide,
+		link: '/',
+	},
+	{
+		id: 3,
+		name: 'Test3',
+		url: cSide,
+		link: '/',
+	},
+	{
+		id: 4,
+		name: 'Test4',
+		url: sSide,
+		link: '/',
+	},
+	{
+		id: 4,
+		name: 'Test5',
+		url: gSide,
+		link: '/',
+	},
 ]
