@@ -10,7 +10,7 @@
     "^@/components/(.*)$",
     "^@/ui/(.*)$",
     "^@/hooks/(.*)$",
-    "^@/shared/(.*)$",
+    "^@/interfaces/(.*)$",
     "^@/services/(.*)$",
     "^@/assets/(.*)$",
     "^@/utils/(.*)$",

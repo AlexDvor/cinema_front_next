@@ -19,8 +19,7 @@
 			"@/components/*": ["components/*"],
 			"@/ui/*": ["components/ui/*"],
 			"@/screens/*": ["components/screens/*"],
-
-			"@/shared/*": ["shared/*"],
+			"@/interfaces/*": ["interfaces/*"],
 			"@/hooks/*": ["hooks/*"],
 			"@/services/*": ["services/*"],
 			"@/utils/*": ["utils/*"],
