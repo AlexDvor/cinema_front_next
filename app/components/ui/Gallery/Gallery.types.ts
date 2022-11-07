@@ -1,7 +1,9 @@
+import { StaticImageData } from 'next/image'
+
 export interface IGalleryItem {
 	id: number
 	name: string
-	url: string
+	url: StaticImageData | string
 	link: string
 }
 
