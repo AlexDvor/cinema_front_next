@@ -18,15 +18,23 @@ $bar-width: 20%;
 	}
 
 	> div:first-child {
-		@apply left-0 border-r border-r-gray-800;
+	
+		@apply 
+		mobile:hidden
+		laptop:block left-0 border-r border-r-gray-800;
 	}
 
 	> .center {
-		@apply min-h-screen p-layout;
-		margin: 0 $bar-width;
+		@apply 
+		mobile:mx-0 
+		laptop:mx-20 w-auto min-h-screen p-layout
+		/* margin: 0 $bar-width; */
+
 	}
 
 	> div:last-child {
-		@apply right-0 border-l border-l-gray-800;
+		@apply 
+		mobile:hidden
+		laptop:block right-0 border-l border-l-gray-800;
 	}
 }

@@ -5,10 +5,16 @@ const nextConfig = {
 	swcMinify: true,
 	poweredByHeader: false,
 	env: {
-		APP_URL: process.env.NEXT_APP_URL,
-		APP_ENV: process.env.NEXT_APP_ENV,
-		APP_SERVER_URL: process.env.NEXT_APP_SERVER_URL,
+		API_MOVIE_KEY: process.env.NEXT_API_MOVIE_KEY,
 	},
+	remotePatterns: [
+		{
+			protocol: 'https',
+			hostname: 'image.tmdb.org',
+			port: '',
+			pathname: '/t/**',
+		},
+	],
 }
 
 module.exports = nextConfig

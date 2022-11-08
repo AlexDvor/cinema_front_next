@@ -8,7 +8,7 @@ const Sidebar: FC = () => {
 	return (
 		<div className={styles.sidebar}>
 			<Search />
-			{/* <MoviesContainer /> */}
+			<MoviesContainer />
 		</div>
 	)
 }

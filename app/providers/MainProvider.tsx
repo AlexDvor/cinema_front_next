@@ -1,5 +1,6 @@
 import { FC } from 'react'
 import { QueryClient, QueryClientProvider } from 'react-query'
+import { ReactQueryDevtools } from 'react-query/devtools'
 
 import Layout from '@/components/layout/Layout'
 
@@ -18,6 +19,7 @@ const MainProvider: FC<TChildren> = ({ children }) => {
 		<>
 			<QueryClientProvider client={queryClient}>
 				<Layout>{children}</Layout>
+				<ReactQueryDevtools />
 			</QueryClientProvider>
 		</>
 	)
