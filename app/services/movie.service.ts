@@ -13,4 +13,10 @@ export const MovieService = {
 			.then((res) => res.data)
 			.catch((error) => error.massage)
 	},
+
+	async getTrendingMovies(lang = 'en', page = 1) {
+		return axios.get<IMovieData>(
+			`https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}&language=${lang}&page=${page}`
+		)
+	},
 }

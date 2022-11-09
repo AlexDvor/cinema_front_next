@@ -1,9 +1,9 @@
 import { FC } from 'react'
 
-import { DataActors, DataMovies, DataSlider } from '../../../data.tempory'
-import Gallery from '../ui/Gallery/Gallery'
-import Slider from '../ui/Slider/Slider'
-import SubHeading from '../ui/SubHeading/SubHeading'
+import { DataActors, DataMovies, DataSlider } from '../../../../data.tempory'
+import Gallery from '../../ui/Gallery/Gallery'
+import Slider from '../../ui/Slider/Slider'
+import SubHeading from '../../ui/SubHeading/SubHeading'
 
 import styles from './Home.module.scss'
 

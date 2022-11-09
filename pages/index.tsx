@@ -1,11 +1,15 @@
-import Home from '@/components/screens/Home'
+import { NextPage } from 'next'
+
+import Home from '@/components/screens/Home/Home'
 
 import styles from '../styles/Home.module.scss'
 
-export default function HomePage() {
+const HomePage: NextPage = () => {
 	return (
 		<>
 			<Home />
 		</>
 	)
 }
+
+export default HomePage
