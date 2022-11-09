@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import Image, { ImageLoaderProps } from 'next/image'
 import Link from 'next/link'
 import { FC } from 'react'
 
@@ -11,11 +11,9 @@ import { getGenreUrl, getMovieUrl } from '@/configs/url.config'
 
 import styles from './MovieList.module.scss'
 
-const myLoader = ({ src }: any) => {
+const myLoader = ({ src }: ImageLoaderProps) => {
 	return `https://image.tmdb.org/t/p/w500${src}`
 }
-
-const URL = 'https://image.tmdb.org/t/p/w500'
 
 const MovieItem: FC<{ movie: IMovie }> = ({ movie }) => {
 	return (

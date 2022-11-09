@@ -14,3 +14,10 @@ export interface IMovie {
 	video: boolean
 	vote_average: number
 }
+
+export interface IMovieData {
+	page: number
+	results: IMovie[]
+	total_pages: number
+	total_results: number
+}
