@@ -1,7 +1,8 @@
 import { FC } from 'react'
 
+import { IGalleryItem } from '@/interfaces/Gallery.types'
+
 import styles from './Gallery.module.scss'
-import { IGalleryItem } from './Gallery.types'
 import GalleryItem from './GalleryItem'
 
 const Gallery: FC<{ items: IGalleryItem[] }> = ({ items }) => {
