@@ -7,7 +7,7 @@ export interface IGalleryItem {
 	link: string
 }
 
-export interface IGalleryItemProps {
-	item: IGalleryItem
-	variant: 'horizontal' | 'vertical'
-}
+// export interface IGalleryItemProps {
+// 	item: IGalleryItem
+// 	variant: 'horizontal' | 'vertical'
+// }

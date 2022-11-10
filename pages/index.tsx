@@ -2,15 +2,10 @@ import { GetStaticProps, NextPage } from 'next'
 
 import Home from '@/components/screens/Home/Home'
 
-import { IActor, IActorData } from '@/interfaces/actor.types'
-import { IMovieData } from '@/interfaces/movie.types'
+import { IHome } from '@/interfaces/page.types'
 
 import { ActorServices } from '@/services/actor.service'
-
-export interface IHome {
-	actors: IActor[]
-	movies: IMovieData
-}
+import { MovieService } from '@/services/movie.service'
 
 const HomePage: NextPage<IHome> = (props) => {
 	return (
@@ -23,12 +18,16 @@ const HomePage: NextPage<IHome> = (props) => {
 export const getStaticProps = async () => {
 	try {
 		const { results: actors } = await ActorServices.getPopularActors()
+		const { results: movies } = await MovieService.getTrendingMovies()
 
 		return {
-			props: { actors },
+			props: { actors, movies },
 		}
 	} catch (error) {
 		console.log(error)
+		return {
+			props: { actors: [], movies: [] },
+		}
 	}
 }
 

@@ -1,20 +1,20 @@
 import { FC } from 'react'
 
+import { IHome } from '@/interfaces/page.types'
+
 import { DataActors, DataMovies, DataSlider } from '../../../../data.tempory'
 import Gallery from '../../ui/Gallery/Gallery'
 import Slider from '../../ui/Slider/Slider'
 import SubHeading from '../../ui/SubHeading/SubHeading'
 
-import styles from './Home.module.scss'
-
-const Home: FC = () => {
+const Home: FC<IHome> = ({ actors, movies }) => {
 	return (
 		<>
 			{DataSlider.length && <Slider slides={DataSlider} />}
 
 			<div className="my-10">
 				<SubHeading title={'Trending now'} />
-				{DataMovies.length && <Gallery items={DataMovies} />}
+				{movies.length && <Gallery items={movies} />}
 			</div>
 
 			<div>

@@ -1,3 +1,5 @@
+import { IActor } from './actor.types'
+
 export interface IMovie {
 	poster_path: string
 	adult: boolean
@@ -20,4 +22,9 @@ export interface IMovieData {
 	results: IMovie[]
 	total_pages: number
 	total_results: number
+}
+
+export interface IGalleryItemProps {
+	item: IMovie & IActor
+	variant: 'horizontal' | 'vertical'
 }

@@ -1,11 +1,11 @@
 import { FC } from 'react'
 
-import { IGalleryItem } from '@/interfaces/Gallery.types'
+import { IMovie } from '@/interfaces/movie.types'
 
 import styles from './Gallery.module.scss'
 import GalleryItem from './GalleryItem'
 
-const Gallery: FC<{ items: IGalleryItem[] }> = ({ items }) => {
+const Gallery: FC<{ items: IMovie[] }> = ({ items }) => {
 	return (
 		<>
 			<div className={styles.gallery}>
