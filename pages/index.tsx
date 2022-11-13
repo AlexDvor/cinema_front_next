@@ -19,6 +19,7 @@ export const getStaticProps = async () => {
 	try {
 		const { results: actors } = await ActorServices.getPopularActors()
 		const { results: movies } = await MovieService.getTrendingMovies()
+		// const slides = movies.slice(0, 4)
 
 		return {
 			props: { actors, movies },

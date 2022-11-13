@@ -15,6 +15,9 @@ export interface IMovie {
 	vote_count: number
 	video: boolean
 	vote_average: number
+	media_type: string
+	name?: string
+	profile_path?: string
 }
 
 export interface IMovieData {
@@ -24,7 +27,15 @@ export interface IMovieData {
 	total_results: number
 }
 
+export interface IGallery {
+	id: string
+	name: string
+	title: string
+	poster_path: string
+	profile_path: string
+}
+
 export interface IGalleryItemProps {
-	item: IMovie & IActor
+	item: IMovie
 	variant: 'horizontal' | 'vertical'
 }

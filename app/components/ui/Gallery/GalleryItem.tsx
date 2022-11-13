@@ -20,7 +20,7 @@ const GalleryItem: FC<IGalleryItemProps> = ({ item, variant }) => {
 			})}
 		>
 			<Image
-				alt={item.title}
+				alt={item.title || item.name}
 				src={`https://image.tmdb.org/t/p/w500${
 					item.poster_path || item.profile_path
 				}`}
@@ -30,11 +30,9 @@ const GalleryItem: FC<IGalleryItemProps> = ({ item, variant }) => {
 				priority
 			/>
 
-			{item.title && (
-				<div className={styles.content}>
-					<div className={styles.title}>{item.title}</div>
-				</div>
-			)}
+			<div className={styles.content}>
+				<div className={styles.title}>{item.title || item.name}</div>
+			</div>
 		</Link>
 	)
 }

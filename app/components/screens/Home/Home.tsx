@@ -2,7 +2,7 @@ import { FC } from 'react'
 
 import { IHome } from '@/interfaces/page.types'
 
-import { DataActors, DataMovies, DataSlider } from '../../../../data.tempory'
+import { DataSlider } from '../../../../data.tempory'
 import Gallery from '../../ui/Gallery/Gallery'
 import Slider from '../../ui/Slider/Slider'
 import SubHeading from '../../ui/SubHeading/SubHeading'
@@ -19,7 +19,7 @@ const Home: FC<IHome> = ({ actors, movies }) => {
 
 			<div>
 				<SubHeading title="Best actors" />
-				{DataActors.length && <Gallery items={DataActors} />}
+				{actors.length && <Gallery items={actors} />}
 			</div>
 		</>
 	)
