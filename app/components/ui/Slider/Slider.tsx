@@ -3,7 +3,7 @@ import { CSSTransition } from 'react-transition-group'
 
 import { useSlider } from '@/hooks/useSlider'
 
-import { IGalleryItem } from '@/interfaces/Gallery.types'
+import { SliderProps } from '@/interfaces/slider.types'
 
 import SlideArrow from './SlideArrow/SlideArrow'
 import SlideItem from './SlideItem'
@@ -11,12 +11,12 @@ import styles from './Slider.module.scss'
 
 interface ISlider {
 	buttonTitle?: string
-	slides: IGalleryItem[]
+	sliderData: SliderProps[]
 }
 
-const Slider: FC<ISlider> = ({ buttonTitle, slides }) => {
+const Slider: FC<ISlider> = ({ buttonTitle, sliderData }) => {
 	const { handleClick, index, isNext, isPrev, slideIn } = useSlider(
-		slides.length
+		sliderData.length
 	)
 
 	return (
@@ -31,7 +31,7 @@ const Slider: FC<ISlider> = ({ buttonTitle, slides }) => {
 				classNames="slide-animation"
 				unmountOnExit
 			>
-				<SlideItem slide={slides[index]} buttonTitle={buttonTitle} />
+				<SlideItem slide={sliderData[index]} buttonTitle={buttonTitle} />
 			</CSSTransition>
 
 			{isNext && (

@@ -1,7 +1,4 @@
-export interface ISlide {
-	id: string
-	bigPoster: string
-	title: string
-	subTitle: string
-	link: string
-}
+import { IGalleryItem } from './Gallery.types'
+
+export interface SliderProps
+	extends Pick<IGalleryItem, 'id' | 'posterPath' | 'title'> {}

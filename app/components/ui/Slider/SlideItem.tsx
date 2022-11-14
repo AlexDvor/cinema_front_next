@@ -2,12 +2,14 @@ import Image from 'next/legacy/image'
 import { useRouter } from 'next/router'
 import { FC } from 'react'
 
-import { IGalleryItem } from '@/interfaces/Gallery.types'
+import { SliderProps } from '@/interfaces/slider.types'
+
+import { myLoader } from '@/utils/image/imageLoader'
 
 import styles from './Slider.module.scss'
 
 interface ISlideItem {
-	slide: IGalleryItem
+	slide: SliderProps
 	buttonTitle?: string
 }
 
@@ -19,20 +21,20 @@ const SlideItem: FC<ISlideItem> = ({
 
 	return (
 		<div className={styles.slide}>
-			{slide.url && (
+			{slide.id && (
 				<Image
 					layout="fill"
 					className={styles.image}
-					src={slide.url}
-					alt={slide.name}
+					src={`https://image.tmdb.org/t/p/w500${slide.posterPath}`}
+					alt={slide.title}
 					draggable={false}
 					priority={true}
+					loader={myLoader}
 				/>
 			)}
 			<div className={styles.content}>
-				<div className={styles.heading}>{slide.name}</div>
-				<div className={styles.subHeading}>{slide.name}</div>
-				<button className={styles.button} onClick={() => push(slide.link)}>
+				<div className={styles.subHeading}>{slide.title}</div>
+				<button className={styles.button} onClick={() => push('/')}>
 					{buttonTitle}
 				</button>
 			</div>
