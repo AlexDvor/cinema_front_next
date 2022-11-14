@@ -2,8 +2,8 @@ import { GetStaticProps, NextPage } from 'next'
 
 import Home from '@/components/screens/Home/Home'
 
-import { IGalleryItem } from '@/interfaces/Gallery.types'
 import { IActor } from '@/interfaces/actor.types'
+import { IGalleryItem } from '@/interfaces/gallery.types'
 import { IMovie } from '@/interfaces/movie.types'
 import { IHome } from '@/interfaces/pages.types'
 
