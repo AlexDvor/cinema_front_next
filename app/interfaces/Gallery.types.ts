@@ -1,13 +1,10 @@
-import { StaticImageData } from 'next/image'
+import { IActor } from './actor.types'
+import { IMovie } from './movie.types'
 
-export interface IGalleryItem {
-	id: number
-	name: string
-	url: StaticImageData | string
-	link: string
+export interface IGallery {
+	items: IMovie[] | IActor[]
 }
-
-// export interface IGalleryItemProps {
-// 	item: IGalleryItem
-// 	variant: 'horizontal' | 'vertical'
-// }
+export interface IGalleryItemProps {
+	item: IGallery
+	variant: 'horizontal' | 'vertical'
+}

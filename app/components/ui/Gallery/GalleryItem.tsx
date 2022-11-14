@@ -3,7 +3,7 @@ import Image from 'next/legacy/image'
 import Link from 'next/link'
 import { FC } from 'react'
 
-import { IGalleryItemProps } from '@/interfaces/movie.types'
+import { IGalleryItemProps } from '@/interfaces/Gallery.types'
 
 import { myLoader } from '@/utils/image/imageLoader'
 
@@ -20,10 +20,8 @@ const GalleryItem: FC<IGalleryItemProps> = ({ item, variant }) => {
 			})}
 		>
 			<Image
-				alt={item.title || item.name}
-				src={`https://image.tmdb.org/t/p/w500${
-					item.poster_path || item.profile_path
-				}`}
+				alt={item.title}
+				src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
 				loader={myLoader}
 				layout="fill"
 				draggable={false}
@@ -31,7 +29,7 @@ const GalleryItem: FC<IGalleryItemProps> = ({ item, variant }) => {
 			/>
 
 			<div className={styles.content}>
-				<div className={styles.title}>{item.title || item.name}</div>
+				<div className={styles.title}>{item.title}</div>
 			</div>
 		</Link>
 	)

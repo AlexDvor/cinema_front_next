@@ -1,5 +1,3 @@
-import { IActor } from './actor.types'
-
 export interface IMovie {
 	poster_path: string
 	adult: boolean
@@ -15,7 +13,7 @@ export interface IMovie {
 	vote_count: number
 	video: boolean
 	vote_average: number
-	media_type: string
+	media_type?: string
 	name?: string
 	profile_path?: string
 }
@@ -25,17 +23,4 @@ export interface IMovieData {
 	results: IMovie[]
 	total_pages: number
 	total_results: number
-}
-
-export interface IGallery {
-	id: string
-	name: string
-	title: string
-	poster_path: string
-	profile_path: string
-}
-
-export interface IGalleryItemProps {
-	item: IMovie
-	variant: 'horizontal' | 'vertical'
 }
