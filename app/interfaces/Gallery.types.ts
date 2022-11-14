@@ -1,10 +1,20 @@
 import { IActor } from './actor.types'
 import { IMovie } from './movie.types'
 
+export interface IGalleryItem {
+	id: number
+	posterPath: string
+	title: string
+	content?: {
+		title: string
+		subTitle?: string
+	}
+}
+
 export interface IGallery {
-	items: IMovie[] | IActor[]
+	items: IGalleryItem[]
 }
 export interface IGalleryItemProps {
-	item: IGallery
+	item: IGalleryItem
 	variant: 'horizontal' | 'vertical'
 }

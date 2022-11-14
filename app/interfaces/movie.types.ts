@@ -14,8 +14,6 @@ export interface IMovie {
 	video: boolean
 	vote_average: number
 	media_type?: string
-	name?: string
-	profile_path?: string
 }
 
 export interface IMovieData {

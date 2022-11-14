@@ -21,7 +21,7 @@ const GalleryItem: FC<IGalleryItemProps> = ({ item, variant }) => {
 		>
 			<Image
 				alt={item.title}
-				src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
+				src={`https://image.tmdb.org/t/p/w500${item.posterPath}`}
 				loader={myLoader}
 				layout="fill"
 				draggable={false}

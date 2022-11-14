@@ -1,7 +1,9 @@
 import { IActor } from '@/interfaces/actor.types'
 import { IMovie } from '@/interfaces/movie.types'
 
+import { IGalleryItem } from './Gallery.types'
+
 export interface IHome {
-	actors: IActor[]
-	movies: IMovie[]
+	actors: IGalleryItem[]
+	movies: IGalleryItem[]
 }

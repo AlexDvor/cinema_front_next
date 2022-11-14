@@ -8,6 +8,9 @@ import Slider from '../../ui/Slider/Slider'
 import SubHeading from '../../ui/SubHeading/SubHeading'
 
 const Home: FC<IHome> = ({ actors, movies }) => {
+	console.log('🚀 - movies', movies)
+	console.log('🚀 - actors', actors)
+
 	return (
 		<>
 			{DataSlider.length && <Slider slides={DataSlider} />}
