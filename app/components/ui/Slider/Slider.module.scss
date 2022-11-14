@@ -1,8 +1,7 @@
 @import '../../../assets/styles/variables';
 
 .slider {
-	@apply relative mx-auto;
-	max-width: 1200px;
+	@apply relative mx-auto w-full;
 
 	.slide {
 		@apply relative h-80 rounded-3xl overflow-hidden shadow-xl flex items-end;

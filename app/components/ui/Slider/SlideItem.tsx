@@ -4,7 +4,7 @@ import { FC } from 'react'
 
 import { SliderProps } from '@/interfaces/slider.types'
 
-import { myLoader } from '@/utils/image/imageLoader'
+import { getOriginalBackdrop } from '@/configs/url.config'
 
 import styles from './Slider.module.scss'
 
@@ -25,11 +25,10 @@ const SlideItem: FC<ISlideItem> = ({
 				<Image
 					layout="fill"
 					className={styles.image}
-					src={`https://image.tmdb.org/t/p/w500${slide.posterPath}`}
+					src={getOriginalBackdrop(slide.posterPath)}
 					alt={slide.title}
 					draggable={false}
 					priority={true}
-					loader={myLoader}
 				/>
 			)}
 			<div className={styles.content}>

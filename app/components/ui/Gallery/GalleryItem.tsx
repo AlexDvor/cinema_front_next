@@ -5,7 +5,7 @@ import { FC } from 'react'
 
 import { IGalleryItemProps } from '@/interfaces/Gallery.types'
 
-import { myLoader } from '@/utils/image/imageLoader'
+import { getPosterImage } from '@/configs/url.config'
 
 import styles from './Gallery.module.scss'
 
@@ -21,8 +21,7 @@ const GalleryItem: FC<IGalleryItemProps> = ({ item, variant }) => {
 		>
 			<Image
 				alt={item.title}
-				src={`https://image.tmdb.org/t/p/w500${item.posterPath}`}
-				loader={myLoader}
+				src={getPosterImage(item.posterPath)}
 				layout="fill"
 				draggable={false}
 				priority
