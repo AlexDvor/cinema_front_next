@@ -13,7 +13,6 @@ const GenresPage: NextPage<{ genreCategory: IGenreItem[] }> = ({}) => {
 	return (
 		<>
 			<Collections collections={data?.genreCategory || []} />
-			<div className="text-yellow-700 text-center">TEST</div>
 		</>
 	)
 }
