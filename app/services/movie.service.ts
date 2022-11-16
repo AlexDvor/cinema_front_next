@@ -32,14 +32,6 @@ export const MovieService = {
 			.catch((error) => error.massage)
 	},
 
-	async getGenresMovies(lang = 'en-US') {
-		return await axios(
-			`https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=${lang}`
-		)
-			.then((res) => res.data)
-			.catch((error) => error.massage)
-	},
-
 	async fetchTrailer(movieId: number, lang: string = 'en-US') {
 		return await axios(
 			`https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${API_KEY}&language=${lang}`

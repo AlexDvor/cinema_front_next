@@ -1,4 +1,4 @@
-type TGenres =
+export type TGenres =
 	| 'Action'
 	| 'Adventure'
 	| 'Animation'
@@ -19,7 +19,18 @@ type TGenres =
 	| 'War'
 	| 'Western'
 
-interface IGenresData {
+export type IGenresItem = {
 	id: number
 	name: TGenres
+}
+
+export interface IGenresData {
+	genres: IGenresItem[]
+}
+
+export interface IGenreItem {
+	genreId: number
+	genreName: string
+	posterPath: string
+	backdropPath: string
 }
