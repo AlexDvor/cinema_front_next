@@ -17,7 +17,7 @@ export const GenreServices = {
 			.catch((error) => error.massage)
 	},
 
-	async getMovieByGenres(genreId: number, lang = 'en-US', page = 1) {
+	async getMoviesByGenre(genreId: number, lang = 'en-US', page = 1) {
 		return axios
 			.get<IMovieData>(
 				`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=${genreId}&language=${lang}&page=${page}`

@@ -11,7 +11,7 @@ export const getGenresData = async () => {
 		const genreCategory = await Promise.all(
 			typesGenres.map(async (item: IGenresItem) => {
 				const typeItem = item
-				return await GenreServices.getMovieByGenres(item.id).then((item) => {
+				return await GenreServices.getMoviesByGenre(item.id).then((item) => {
 					const genreItem = item[getRandomInt(0, 15)]
 					return {
 						genreId: typeItem.id,
