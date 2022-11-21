@@ -1,5 +1,5 @@
 import { GetStaticProps, NextPage } from 'next'
-import { QueryClient, dehydrate, useQuery } from 'react-query'
+import { useQuery } from 'react-query'
 
 import Collections from '@/components/screens/Collections/Collections'
 
@@ -26,14 +26,9 @@ const GenresPage: NextPage<{ genreCategory: IGenreItem[] }> = ({
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-	const queryClient = new QueryClient()
 	try {
-		await queryClient.prefetchQuery('Genre List', () => getGenresData())
-
 		return {
-			props: {
-				dehydratedState: dehydrate(queryClient),
-			},
+			props: {},
 		}
 	} catch (e) {
 		// console.log(errorCatch(e))

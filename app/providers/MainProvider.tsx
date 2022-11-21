@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Hydrate, QueryClient, QueryClientProvider } from 'react-query'
+import { QueryClient, QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
 
 import Layout from '@/components/layout/Layout'
@@ -14,13 +14,11 @@ const queryClient = new QueryClient({
 	},
 })
 
-const MainProvider: FC<TChildren> = ({ children, pageProps }) => {
+const MainProvider: FC<TChildren> = ({ children }) => {
 	return (
 		<>
 			<QueryClientProvider client={queryClient}>
-				<Hydrate state={pageProps.dehydratedState}>
-					<Layout>{children}</Layout>
-				</Hydrate>
+				<Layout>{children}</Layout>
 				<ReactQueryDevtools />
 			</QueryClientProvider>
 		</>
