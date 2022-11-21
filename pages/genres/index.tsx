@@ -7,9 +7,7 @@ import { IGenreItem } from '@/interfaces/genres.types'
 
 import { getGenresData } from '@/utils/movie/getGenresData'
 
-const GenresPage: NextPage<{ genreCategory: IGenreItem[] }> = ({
-	genreCategory,
-}) => {
+const GenresPage: NextPage<{ genreCategory: IGenreItem[] }> = () => {
 	const { data, isLoading } = useQuery('Genre List', () => getGenresData(), {
 		staleTime: 120 * 1000,
 	})

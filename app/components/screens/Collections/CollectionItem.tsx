@@ -1,8 +1,7 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import { FC } from 'react'
 
-import { IGenreItem, IGenresItem } from '@/interfaces/genres.types'
+import { IGenreItem } from '@/interfaces/genres.types'
 
 import { getGenreUrl } from '@/configs/url.config'
 
@@ -11,7 +10,10 @@ import styles from './Collections.module.scss'
 
 const CollectionItem: FC<{ collection: IGenreItem }> = ({ collection }) => {
 	return (
-		<Link href={getGenreUrl('')} className={styles.collection}>
+		<Link
+			href={getGenreUrl(`${collection.genreId}`)}
+			className={styles.collection}
+		>
 			<CollectionImage collection={collection} />
 
 			<div className={styles.content}>

@@ -25,7 +25,7 @@ const TrendingPage: NextPage = () => {
 	)
 }
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps = async () => {
 	const queryClient = new QueryClient()
 
 	await queryClient.prefetchQuery('Popular movies', () =>

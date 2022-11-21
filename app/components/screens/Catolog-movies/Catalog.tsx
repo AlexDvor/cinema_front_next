@@ -10,7 +10,11 @@ import { ICatalog } from '@/interfaces/catalog.types'
 // import { getMovieUrl } from '@/configs/url.config'
 import styles from './Catalog.module.scss'
 
-const Catalog: FC<ICatalog> = ({ title, description, movies }) => {
+const Catalog: FC<ICatalog> = ({
+	title = 'test title',
+	description = 'test description',
+	movies,
+}) => {
 	return (
 		<section className={styles.movies}>
 			{movies.map((movie) => (
@@ -20,7 +24,7 @@ const Catalog: FC<ICatalog> = ({ title, description, movies }) => {
 					item={{
 						id: movie.id,
 						title: movie.title,
-						posterPath: movie.poster_path,
+						posterPath: movie.backdrop_path,
 						content: {
 							title: movie.title,
 						},
