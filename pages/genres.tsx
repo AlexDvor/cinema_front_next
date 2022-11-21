@@ -1,5 +1,5 @@
 import { GetStaticProps, NextPage } from 'next'
-import { useQuery } from 'react-query'
+import { QueryClient, dehydrate, useQuery } from 'react-query'
 
 import Collections from '@/components/screens/Collections/Collections'
 
@@ -10,34 +10,30 @@ import { getGenresData } from '@/utils/movie/getGenresData'
 const GenresPage: NextPage<{ genreCategory: IGenreItem[] }> = ({
 	genreCategory,
 }) => {
-	// const { data, isLoading } = useQuery('Genre List', () => getGenresData(), {
-	// 	staleTime: 120 * 1000,
-	// })
-
-	// return (
-	// 	<>
-	// 		{isLoading ? (
-	// 			<div className="text-yellow-700">...Loading</div>
-	// 		) : (
-	// 			<Collections collections={data?.genreCategory || []} />
-	// 		)}
-	// 	</>
-	// )
+	const { data, isLoading } = useQuery('Genre List', () => getGenresData(), {
+		staleTime: 120 * 1000,
+	})
 
 	return (
 		<>
-			<Collections collections={genreCategory || []} />
+			{isLoading ? (
+				<div className="text-yellow-700">...Loading</div>
+			) : (
+				<Collections collections={data?.genreCategory || []} />
+			)}
 		</>
 	)
 }
 
 export const getStaticProps: GetStaticProps = async () => {
+	const queryClient = new QueryClient()
 	try {
-		const { genreCategory } = await getGenresData()
+		await queryClient.prefetchQuery('Genre List', () => getGenresData())
 
 		return {
-			props: { genreCategory },
-			revalidate: 60,
+			props: {
+				dehydratedState: dehydrate(queryClient),
+			},
 		}
 	} catch (e) {
 		// console.log(errorCatch(e))
