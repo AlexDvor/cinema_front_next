@@ -1,3 +1,5 @@
+import { IMovie } from './movie.types'
+
 export type TGenres =
 	| 'Action'
 	| 'Adventure'
@@ -33,4 +35,13 @@ export interface IGenreItem {
 	genreName: string
 	posterPath: string
 	backdropPath: string
+}
+
+export interface IGenreProps {
+	movies: IMovie[]
+	genre: {
+		id: number
+		name: string
+	}
+	description?: string
 }

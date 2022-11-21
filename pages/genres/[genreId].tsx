@@ -3,18 +3,13 @@ import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 
 import Genre from '@/components/screens/Genre/Genre'
 
-import { IMovie } from '@/interfaces/movie.types'
+// import Error404 from '../404'
+import { IGenreProps } from '@/interfaces/genres.types'
 
 import { GenreServices } from '@/services/genre.service'
 
-// import Error404 from '../404'
-
-interface IGenrePage {
-	movies: IMovie[]
-}
-
-const GenrePage: NextPage<IGenrePage> = ({ movies }) => {
-	return movies ? <Genre genre={movies} movies={movies} /> : <div>Error404</div>
+const GenrePage: NextPage<IGenreProps> = ({ movies, genre }) => {
+	return movies ? <Genre genre={genre} movies={movies} /> : <div>Error404</div>
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -22,12 +17,14 @@ export const getStaticPaths: GetStaticPaths = async () => {
 		const { genres } = await GenreServices.getGenresMovies()
 
 		const paths = genres.map((genre: { id: number; name: string }) => ({
-			params: { genreId: genre.id.toString() },
+			params: {
+				genreId: genre.id.toString(),
+			},
 		}))
 
 		return {
 			paths,
-			fallback: 'blocking',
+			fallback: false,
 		}
 	} catch (e) {
 		// console.log(errorCatch(e))
@@ -44,9 +41,14 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
 	try {
 		const movies = await GenreServices.getMoviesByGenre(id)
+		const { genres } = await GenreServices.getGenresMovies()
+
+		const genre = genres.find(
+			(item: { id: number; name: string }) => item.id === Number(id)
+		)
 
 		return {
-			props: { movies },
+			props: { movies, genre },
 		}
 	} catch (e) {
 		// console.log(errorCatch(e))

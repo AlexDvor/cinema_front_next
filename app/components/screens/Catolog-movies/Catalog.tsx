@@ -1,6 +1,8 @@
 import { FC } from 'react'
 
 import GalleryItem from '@/components/ui/Gallery/GalleryItem'
+import Description from '@/components/ui/Heading/Description'
+import Heading from '@/components/ui/Heading/Heading'
 
 import { ICatalog } from '@/interfaces/catalog.types'
 
@@ -16,22 +18,25 @@ const Catalog: FC<ICatalog> = ({
 	movies,
 }) => {
 	return (
-		<section className={styles.movies}>
-			{movies.map((movie) => (
-				<GalleryItem
-					key={movie.id}
-					variant="horizontal"
-					item={{
-						id: movie.id,
-						title: movie.title,
-						posterPath: movie.backdrop_path,
-						content: {
+		<>
+			<Heading title={title} className={styles.heading} />
+			<section className={styles.movies}>
+				{movies.map((movie) => (
+					<GalleryItem
+						key={movie.id}
+						variant="horizontal"
+						item={{
+							id: movie.id,
 							title: movie.title,
-						},
-					}}
-				/>
-			))}
-		</section>
+							posterPath: movie.backdrop_path,
+							content: {
+								title: movie.title,
+							},
+						}}
+					/>
+				))}
+			</section>
+		</>
 	)
 
 	//////

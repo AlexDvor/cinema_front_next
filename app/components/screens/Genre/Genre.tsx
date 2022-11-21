@@ -1,8 +1,10 @@
 import { FC } from 'react'
 
+import { IGenreProps } from '@/interfaces/genres.types'
+
 import Catalog from '../Catolog-movies/Catalog'
 
-const Genre: FC<IGenrePage> = ({ genre, movies }) => {
+const Genre: FC<IGenreProps> = ({ genre, movies }) => {
 	return (
 		<Catalog
 			movies={movies}

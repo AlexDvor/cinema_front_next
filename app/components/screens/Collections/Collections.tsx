@@ -1,6 +1,8 @@
 import { FC } from 'react'
 
-import { IGenreItem, IGenresItem } from '@/interfaces/genres.types'
+import Heading from '@/components/ui/Heading/Heading'
+
+import { IGenreItem } from '@/interfaces/genres.types'
 
 // import Description from '@/components/ui/heading/Description'
 // import Heading from '@/components/ui/heading/Heading'
@@ -13,11 +15,14 @@ import styles from './Collections.module.scss'
 
 const Collections: FC<{ collections: IGenreItem[] }> = ({ collections }) => {
 	return (
-		<section className={styles.collections}>
-			{collections.map((collection) => (
-				<CollectionItem key={collection.genreId} collection={collection} />
-			))}
-		</section>
+		<>
+			<Heading title="Discovery"></Heading>
+			<section className={styles.collections}>
+				{collections.map((collection) => (
+					<CollectionItem key={collection.genreId} collection={collection} />
+				))}
+			</section>
+		</>
 	)
 	////
 

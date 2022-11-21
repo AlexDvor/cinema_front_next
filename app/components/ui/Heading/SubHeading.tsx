@@ -1,13 +1,7 @@
 import { FC } from 'react'
 
-import styles from './SubHeading.module.scss'
-
 const SubHeading: FC<{ title: string }> = ({ title }) => {
-	return (
-		<>
-			<h2 className={styles.title}>{title}</h2>
-		</>
-	)
+	return <h2 className="text-white text-xl mb-5 font-semibold">{title}</h2>
 }
 
 export default SubHeading
