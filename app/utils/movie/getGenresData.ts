@@ -12,7 +12,7 @@ export const getGenresData = async () => {
 			typesGenres.map(async (item: IGenresItem) => {
 				const typeItem = item
 				return await GenreServices.getMovieByGenres(item.id).then((item) => {
-					const genreItem = item[getRandomInt()]
+					const genreItem = item[getRandomInt(0, 15)]
 					return {
 						genreId: typeItem.id,
 						genreName: typeItem.name,
