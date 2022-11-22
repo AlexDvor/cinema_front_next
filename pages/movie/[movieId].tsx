@@ -2,13 +2,16 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { useRouter } from 'next/router'
 import { useQuery } from 'react-query'
+import { idText } from 'typescript'
 
 import SingleMovie from '@/components/screens/Single-movie/SingleMovie'
 
+import { IActor } from '@/interfaces/actor.types'
 import { IGalleryItem } from '@/interfaces/gallery.types'
 import { IMovieDescription } from '@/interfaces/movie.types'
 import { ISingleMovie } from '@/interfaces/single-movie.types'
 
+import { ActorServices } from '@/services/actor.service'
 import { MovieService } from '@/services/movie.service'
 
 import { getMovieUrl } from '@/configs/url.config'
@@ -18,7 +21,7 @@ import Error404 from '../404'
 const SingleMoviePage: NextPage<ISingleMovie> = ({ movie, similarMovies }) => {
 	const { movieId } = useRouter().query
 
-	const { data, isLoading } = useQuery(
+	const { data: movies, isLoading: isLoadingMovie } = useQuery(
 		['Single Movie', movieId],
 		() => MovieService.getMovieByID(Number(movieId)),
 		{
@@ -26,8 +29,27 @@ const SingleMoviePage: NextPage<ISingleMovie> = ({ movie, similarMovies }) => {
 		}
 	)
 
-	return data ? (
-		<SingleMovie movie={data} similarMovies={similarMovies} />
+	const { data: actors, isLoading: isLoadingActors } = useQuery(
+		['Actors', movieId],
+		() => ActorServices.getActorsByIdMovie(Number(movieId)),
+		{
+			enabled: !!movieId,
+
+			select: (data) => {
+				const res = data
+					.filter((item: IActor) => item.profile_path !== null)
+					.slice(0, 15)
+				return res.map((item: IActor) => ({
+					id: item.cast_id,
+					title: item.name,
+					posterPath: item.profile_path,
+				}))
+			},
+		}
+	)
+
+	return movies ? (
+		<SingleMovie movie={movies} cast={actors} similarMovies={similarMovies} />
 	) : (
 		<Error404 />
 	)

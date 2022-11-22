@@ -1,6 +1,7 @@
 import axios from 'axios'
 
 import { IActorData } from '@/interfaces/actor.types'
+import { ICastData } from '@/interfaces/single-movie.types'
 
 const API_KEY = process.env.API_MOVIE_KEY
 
@@ -15,10 +16,10 @@ export const ActorServices = {
 	},
 	async getActorsByIdMovie(id: string | number, lang = 'en') {
 		return axios
-			.get<IActorData>(
-				`https://api.themoviedb.org/3/movie/${id}/credits?api_key=93e18502a4f670f89316c5fc1b091bd6&language=${page}`
+			.get<ICastData>(
+				`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${API_KEY}&language=${lang}`
 			)
-			.then((res) => res.data)
+			.then((res) => res.data.cast)
 			.catch((error) => error.massage)
 	},
 }

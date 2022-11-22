@@ -9,6 +9,10 @@ export interface IActor {
 	popularity: number
 	profile_path: string
 	known_for: IMovie[]
+	cast_id: number
+	character: string
+	credit_id: string
+	order: 0
 }
 export interface IActorData {
 	page: number

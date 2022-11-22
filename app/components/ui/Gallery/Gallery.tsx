@@ -9,9 +9,10 @@ const Gallery: FC<IGallery> = ({ items }) => {
 	return (
 		<>
 			<div className={styles.gallery}>
-				{items.map((item) => (
-					<GalleryItem key={item.id} item={item} variant="vertical" />
-				))}
+				{items &&
+					items.map((item) => (
+						<GalleryItem key={item.id} item={item} variant="vertical" />
+					))}
 			</div>
 		</>
 	)
