@@ -39,4 +39,13 @@ export const MovieService = {
 			.then((res) => res.data)
 			.catch((error) => error.massage)
 	},
+
+	async getMovieByID(id: number | string, lang: string = 'en-US') {
+		return await axios
+			.get(
+				`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=${lang}`
+			)
+			.then((res) => res.data)
+			.catch((error) => error.massage)
+	},
 }

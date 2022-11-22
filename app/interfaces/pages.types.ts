@@ -1,4 +1,4 @@
-import { IGalleryItem } from './Gallery.types'
+import { IGalleryItem } from './gallery.types'
 import { SliderProps } from './slider.types'
 
 export interface IHome {

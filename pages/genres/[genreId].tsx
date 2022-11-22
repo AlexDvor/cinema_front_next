@@ -3,13 +3,14 @@ import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 
 import Genre from '@/components/screens/Genre/Genre'
 
-// import Error404 from '../404'
 import { IGenreProps } from '@/interfaces/genres.types'
 
 import { GenreServices } from '@/services/genre.service'
 
+import Error404 from '../404'
+
 const GenrePage: NextPage<IGenreProps> = ({ movies, genre }) => {
-	return movies ? <Genre genre={genre} movies={movies} /> : <div>Error404</div>
+	return movies ? <Genre genre={genre} movies={movies} /> : <Error404 />
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {

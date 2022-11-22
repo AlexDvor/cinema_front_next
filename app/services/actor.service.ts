@@ -13,4 +13,12 @@ export const ActorServices = {
 			.then((res) => res.data)
 			.catch((error) => error.massage)
 	},
+	async getActorsByIdMovie(id: string | number, lang = 'en') {
+		return axios
+			.get<IActorData>(
+				`https://api.themoviedb.org/3/movie/${id}/credits?api_key=93e18502a4f670f89316c5fc1b091bd6&language=${page}`
+			)
+			.then((res) => res.data)
+			.catch((error) => error.massage)
+	},
 }

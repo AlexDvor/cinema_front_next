@@ -12,7 +12,7 @@ import styles from './Gallery.module.scss'
 const GalleryItem: FC<IGalleryItemProps> = ({ item, variant }) => {
 	return (
 		<Link
-			href={''}
+			href={`/movie/${item.id}`}
 			className={cn(styles.item, {
 				[styles.withText]: item.title,
 				[styles.horizontal]: variant === 'horizontal',
