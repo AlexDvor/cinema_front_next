@@ -1,4 +1,4 @@
-import { IActor } from './actor.types'
+import { IActorItem } from './actor.types'
 import { IGalleryItem } from './gallery.types'
 import { IMovieDescription } from './movie.types'
 
@@ -24,6 +24,6 @@ type TCrewItem = {
 
 export interface ICastData {
 	id: number
-	cast: IActor[]
+	cast: IActorItem[]
 	crew: TCrewItem[]
 }

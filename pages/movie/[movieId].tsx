@@ -3,21 +3,24 @@ import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { useRouter } from 'next/router'
 import { useQuery } from 'react-query'
 
+import { IMenuItem } from '@/components/layout/Navigation/MenuContainer/Menu/Menu.types'
 import SingleMovie from '@/components/screens/Single-movie/SingleMovie'
 
 import { IActorItem } from '@/interfaces/actor.types'
+import { IMovieItem } from '@/interfaces/movie.types'
 // import { IGalleryItem } from '@/interfaces/gallery.types'
 // import { IMovieDescription } from '@/interfaces/movie.types'
 import { ISingleMovie } from '@/interfaces/single-movie.types'
 
 import { ActorServices } from '@/services/actor.service'
+import { GenreServices } from '@/services/genre.service'
 import { MovieService } from '@/services/movie.service'
 
 import { getActorUrl, getMovieUrl } from '@/configs/url.config'
 
 import Error404 from '../404'
 
-const SingleMoviePage: NextPage<ISingleMovie> = ({ movie, similarMovies }) => {
+const SingleMoviePage: NextPage<ISingleMovie> = () => {
 	const { movieId } = useRouter().query
 
 	const { data: movies, isLoading: isLoadingMovie } = useQuery(
@@ -43,6 +46,30 @@ const SingleMoviePage: NextPage<ISingleMovie> = ({ movie, similarMovies }) => {
 					title: item.name,
 					posterPath: item.profile_path,
 					url: getActorUrl(item.cast_id),
+				}))
+			},
+		}
+	)
+
+	const currentGenreId = movies?.genres[0].id || null
+
+	const { data: similarMovies, isLoading: isLoadingSimilarMovies } = useQuery(
+		['SimilarMovies', movieId],
+		() => GenreServices.getMoviesByGenre(currentGenreId, undefined, 2),
+		{
+			enabled: !!currentGenreId,
+			select: (data) => {
+				const res = data
+					.filter(
+						(item: IMovieItem) =>
+							item.poster_path !== null && item.id !== Number(movieId)
+					)
+					.slice(0, 10)
+				return res.map((item: IMovieItem) => ({
+					id: item.id,
+					title: item.title,
+					posterPath: item.poster_path,
+					url: getMovieUrl(item.id),
 				}))
 			},
 		}

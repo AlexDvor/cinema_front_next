@@ -1,4 +1,4 @@
-import { IMovie } from './movie.types'
+import { IMovieItem } from './movie.types'
 
 export interface IActorItem {
 	adult: boolean
@@ -8,7 +8,7 @@ export interface IActorItem {
 	name: string
 	popularity: number
 	profile_path: string
-	known_for: IMovie[]
+	known_for: IMovieItem[]
 	cast_id: number
 	character: string
 	credit_id: string
