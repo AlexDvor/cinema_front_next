@@ -1,6 +1,17 @@
 import { IGenresItem } from './genres.types'
 
-export interface IMovie {
+export type TCompaniesItem = {
+	id: number
+	logo_path: string
+	name: string
+	origin_country: string
+}
+
+export type TCountriesItem = {
+	iso_3166_1: string
+	name: string
+}
+export interface IMovieItem {
 	poster_path: string
 	adult: boolean
 	overview: string
@@ -20,14 +31,14 @@ export interface IMovie {
 
 export interface IMovieData {
 	page: number
-	results: IMovie[]
+	results: IMovieItem[]
 	total_pages: number
 	total_results: number
 }
 
 export interface IMovieDescription
 	extends Pick<
-		IMovie,
+		IMovieItem,
 		| 'id'
 		| 'adult'
 		| 'title'
@@ -44,16 +55,8 @@ export interface IMovieDescription
 	budget: number
 	imdb_id: string
 	popularity: number
-	production_companies: {
-		id: number
-		logo_path: string
-		name: string
-		origin_country: string
-	}[]
-	production_countries: {
-		iso_3166_1: string
-		name: string
-	}[]
+	production_companies: TCompaniesItem[]
+	production_countries: TCountriesItem[]
 	release_date: string
 	revenue: number
 	runtime: number

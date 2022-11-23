@@ -6,6 +6,8 @@ import Heading from '@/components/ui/Heading/Heading'
 
 import { ICatalog } from '@/interfaces/catalog.types'
 
+import { getMovieUrl } from '@/configs/url.config'
+
 // import Description from '@/components/ui/heading/Description'
 // import Heading from '@/components/ui/heading/Heading'
 // import { Meta } from '@/utils/meta'
@@ -29,9 +31,7 @@ const Catalog: FC<ICatalog> = ({
 							id: movie.id,
 							title: movie.title,
 							posterPath: movie.backdrop_path,
-							content: {
-								title: movie.title,
-							},
+							url: getMovieUrl(movie.id),
 						}}
 					/>
 				))}

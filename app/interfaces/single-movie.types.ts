@@ -1,4 +1,4 @@
-import { IActor, IActorData } from './actor.types'
+import { IActor } from './actor.types'
 import { IGalleryItem } from './gallery.types'
 import { IMovieDescription } from './movie.types'
 

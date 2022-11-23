@@ -2,7 +2,7 @@ import { FC } from 'react'
 
 import MaterialIcon from '@/components/ui/MaterialIcon/MaterialIcon'
 
-import { IMovie, IMovieDescription } from '@/interfaces/movie.types'
+import { IMovieDescription } from '@/interfaces/movie.types'
 
 import { timeConvert } from '@/utils/movie/timeConvert'
 
@@ -30,7 +30,7 @@ const Content: FC<{ movie: IMovieDescription }> = ({ movie }) => {
 			<ContentList
 				name="Genres"
 				links={movie.genres.map((item) => ({
-					link: getGenreUrl(item.id.toString()),
+					link: getGenreUrl(item.id),
 					title: item.name,
 					id: item.id.toString(),
 				}))}

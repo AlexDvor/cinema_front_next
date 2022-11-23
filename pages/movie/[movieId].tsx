@@ -2,19 +2,18 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { useRouter } from 'next/router'
 import { useQuery } from 'react-query'
-import { idText } from 'typescript'
 
 import SingleMovie from '@/components/screens/Single-movie/SingleMovie'
 
-import { IActor } from '@/interfaces/actor.types'
-import { IGalleryItem } from '@/interfaces/gallery.types'
-import { IMovieDescription } from '@/interfaces/movie.types'
+import { IActorItem } from '@/interfaces/actor.types'
+// import { IGalleryItem } from '@/interfaces/gallery.types'
+// import { IMovieDescription } from '@/interfaces/movie.types'
 import { ISingleMovie } from '@/interfaces/single-movie.types'
 
 import { ActorServices } from '@/services/actor.service'
 import { MovieService } from '@/services/movie.service'
 
-import { getMovieUrl } from '@/configs/url.config'
+import { getActorUrl, getMovieUrl } from '@/configs/url.config'
 
 import Error404 from '../404'
 
@@ -37,12 +36,13 @@ const SingleMoviePage: NextPage<ISingleMovie> = ({ movie, similarMovies }) => {
 
 			select: (data) => {
 				const res = data
-					.filter((item: IActor) => item.profile_path !== null)
+					.filter((item: IActorItem) => item.profile_path !== null)
 					.slice(0, 15)
-				return res.map((item: IActor) => ({
+				return res.map((item: IActorItem) => ({
 					id: item.cast_id,
 					title: item.name,
 					posterPath: item.profile_path,
+					url: getActorUrl(item.cast_id),
 				}))
 			},
 		}

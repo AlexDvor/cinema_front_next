@@ -1,4 +1,4 @@
-import { IMovie } from './movie.types'
+import { IMovieItem } from './movie.types'
 
 export type IGenresItem = {
 	id: number
@@ -17,7 +17,7 @@ export interface IGenreItem {
 }
 
 export interface IGenreProps {
-	movies: IMovie[]
+	movies: IMovieItem[]
 	genre: {
 		id: number
 		name: string

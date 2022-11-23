@@ -1,6 +1,6 @@
 import { IMovie } from './movie.types'
 
-export interface IActor {
+export interface IActorItem {
 	adult: boolean
 	gender: number
 	id: number
@@ -12,11 +12,11 @@ export interface IActor {
 	cast_id: number
 	character: string
 	credit_id: string
-	order: 0
+	order: number
 }
 export interface IActorData {
 	page: number
-	results: IActor[]
+	results: IActorItem[]
 	total_pages: number
 	total_results: number
 }

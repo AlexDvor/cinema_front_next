@@ -24,7 +24,6 @@ import Content from './Content/Content'
 // })
 
 const SingleMovie: FC<ISingleMovie> = ({ movie, cast, similarMovies }) => {
-	console.log('🚀 - cast', cast)
 	// useUpdateCountOpened(movie.slug)
 
 	return (

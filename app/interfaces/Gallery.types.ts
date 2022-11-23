@@ -1,16 +1,11 @@
 export interface IGalleryItem {
 	id: number
 	posterPath: string
+	backdropPath?: string
 	title: string
-	content?: {
-		title: string
-		subTitle?: string
-	}
+	url: string
 }
 
-export interface IGallery {
-	items: IGalleryItem[]
-}
 export interface IGalleryItemProps {
 	item: IGalleryItem
 	variant: 'horizontal' | 'vertical'

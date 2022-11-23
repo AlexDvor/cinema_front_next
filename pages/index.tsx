@@ -10,6 +10,8 @@ import { IHome } from '@/interfaces/pages.types'
 import { ActorServices } from '@/services/actor.service'
 import { MovieService } from '@/services/movie.service'
 
+import { getActorUrl, getMovieUrl } from '@/configs/url.config'
+
 const HomePage: NextPage<IHome> = (props) => {
 	return (
 		<>
@@ -28,6 +30,7 @@ export const getStaticProps: GetStaticProps = async () => {
 				id: actor.id,
 				title: actor.name,
 				posterPath: actor.profile_path,
+				url: getActorUrl(actor.cast_id),
 			})
 		)
 
@@ -36,6 +39,7 @@ export const getStaticProps: GetStaticProps = async () => {
 				id: movie.id,
 				title: movie.title,
 				posterPath: movie.poster_path,
+				url: getMovieUrl(movie.id),
 			})
 		)
 
@@ -44,6 +48,7 @@ export const getStaticProps: GetStaticProps = async () => {
 				id: movie.id,
 				title: movie.title,
 				posterPath: movie.backdrop_path,
+				url: getMovieUrl(movie.id),
 			})
 		)
 

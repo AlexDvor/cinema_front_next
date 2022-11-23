@@ -1,8 +1,6 @@
 import { FC } from 'react'
 import { useQuery } from 'react-query'
 
-import { IMovie } from '@/interfaces/movie.types'
-
 import { MovieService } from '@/services/movie.service'
 
 // import SkeletonLoader from '@/components/ui/skeleton-loader/SkeletonLoader'
@@ -10,7 +8,7 @@ import { MovieService } from '@/services/movie.service'
 import MovieList from '../MovieList'
 
 const PopularMovieList: FC = () => {
-	const { isLoading, data: popularMovies } = useQuery(
+	const { data: popularMovies, isLoading } = useQuery(
 		'Most popular movie in sidebar',
 		() => MovieService.getPopularMovies(),
 		{

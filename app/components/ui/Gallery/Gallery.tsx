@@ -1,11 +1,11 @@
 import { FC } from 'react'
 
-import { IGallery } from '@/interfaces/gallery.types'
+import { IGalleryItem } from '@/interfaces/gallery.types'
 
 import styles from './Gallery.module.scss'
 import GalleryItem from './GalleryItem'
 
-const Gallery: FC<IGallery> = ({ items }) => {
+const Gallery: FC<{ items: IGalleryItem[] }> = ({ items }) => {
 	return (
 		<>
 			<div className={styles.gallery}>
