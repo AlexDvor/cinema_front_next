@@ -4,6 +4,7 @@ import MaterialIcon from '@/components/ui/MaterialIcon/MaterialIcon'
 
 import { IMovieDescription } from '@/interfaces/movie.types'
 
+import { parseReleaseData } from '@/utils/movie/parseReleaseData'
 import { timeConvert } from '@/utils/movie/timeConvert'
 
 import { getActorUrl, getGenreUrl } from '@/configs/url.config'
@@ -12,7 +13,6 @@ import { getActorUrl, getGenreUrl } from '@/configs/url.config'
 import styles from './Content.module.scss'
 import ContentList from './ContentList/ContentList'
 
-const parseReleaseData = (date: string) => date.slice(0, 4)
 const Content: FC<{ movie: IMovieDescription }> = ({ movie }) => {
 	return (
 		<div className={styles.content}>
@@ -23,8 +23,8 @@ const Content: FC<{ movie: IMovieDescription }> = ({ movie }) => {
 				<span>{movie.vote_average.toFixed(1)}</span>
 			</div>
 			<div className={styles.details}>
-				<span>{parseReleaseData(movie.release_date)} · </span>
-				<span>{movie.production_countries[0].iso_3166_1} · </span>
+				<span>{parseReleaseData(movie.release_date, 0, 4)} · </span>
+				<span>{movie.production_countries[0]?.iso_3166_1} · </span>
 				<span>{timeConvert(movie.runtime)} min.</span>
 			</div>
 			<ContentList

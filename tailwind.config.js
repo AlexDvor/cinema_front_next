@@ -43,6 +43,7 @@ module.exports = {
 				0: '0%',
 				20: '20%',
 				0.5: '0.12rem',
+				400: '40rem',
 				layout: '2.75rem',
 			},
 			fontSize: {

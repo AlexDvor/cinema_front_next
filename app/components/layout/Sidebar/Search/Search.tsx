@@ -5,6 +5,8 @@ import SearchField from '@/components/ui/Search-field/SearchField'
 
 import { useDebounce } from '@/hooks/useDebounce'
 
+import { MovieService } from '@/services/movie.service'
+
 // import { MovieService } from '@/services/movie/movie.service'
 import styles from './Search.module.scss'
 import SearchList from './SearchList/SearchList'
@@ -13,23 +15,25 @@ const Search: FC = () => {
 	const [searchTerm, setSearchTerm] = useState('')
 	const debouncedSearch = useDebounce(searchTerm, 500)
 
-	// const { isSuccess, data: popularMovies } = useQuery(
-	// 	['search movie list', debouncedSearch],
-	// 	() => MovieService.getMovies(debouncedSearch),
-	// 	{
-	// 		select: ({ data }) => data,
-	// 		enabled: !!debouncedSearch,
-	// 	}
-	// )
+	const { isSuccess, data: popularMovies } = useQuery(
+		['search movie list', debouncedSearch],
+		() => MovieService.fetchMovieByName(debouncedSearch),
+		{
+			enabled: !!debouncedSearch,
+			select: (data) => data.slice(0, 7),
+		}
+	)
 
 	const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
 		setSearchTerm(e.target.value)
 	}
 
+	console.log(popularMovies)
+
 	return (
 		<div className={styles.wrapper}>
 			<SearchField searchTerm={searchTerm} handleSearch={handleSearch} />
-			{/* {isSuccess && <SearchList movies={popularMovies || []} />} */}
+			{isSuccess && <SearchList movies={popularMovies || []} />}
 		</div>
 	)
 }

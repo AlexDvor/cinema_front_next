@@ -48,4 +48,17 @@ export const MovieService = {
 			.then((res) => res.data)
 			.catch((error) => error.massage)
 	},
+
+	async fetchMovieByName(
+		movieName: string,
+		page: number = 1,
+		lang: string = 'en-US'
+	) {
+		return await axios
+			.get<IMovieData>(
+				`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${movieName}&language=${lang}&page=${page}`
+			)
+			.then((res) => res.data.results)
+			.catch((error) => error.massage)
+	},
 }

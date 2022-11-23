@@ -2,32 +2,34 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { FC } from 'react'
 
-import { IGalleryItem } from '@/interfaces/gallery.types'
+import { IMovieItem } from '@/interfaces/movie.types'
+
+import { getMovieUrl, getPosterImage } from '@/configs/url.config'
 
 import styles from './SearchList.module.scss'
 
 // import { IWidgetMovie } from '../../MoviesContainer/movie.types'
 
-const SearchList: FC<{ movies: IGalleryItem[] }> = ({ movies }) => {
+const SearchList: FC<{ movies: IMovieItem[] }> = ({ movies }) => {
 	return (
 		<div className={styles.list}>
 			{movies.length ? (
 				movies.map((movie) => (
-					<Link key={movie.id} href={`/movie/${movie.link}`}>
+					<Link key={movie.id} href={getMovieUrl(movie.id)}>
 						<Image
-							src={movie.url || ''}
+							src={getPosterImage(movie.poster_path)}
 							width={50}
 							height={50}
 							objectFit="cover"
 							objectPosition="top"
-							alt={movie.name}
+							alt={movie.title}
 							draggable={false}
 						/>
-						<span>{movie.name}</span>
+						<span>{movie.title}</span>
 					</Link>
 				))
 			) : (
-				<div className="text-white text-center my-4">Movies not found!</div>
+				<div className="text-white text-center my-4">Movie not found!</div>
 			)}
 		</div>
 	)

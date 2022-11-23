@@ -34,12 +34,14 @@ const SingleMovie: FC<ISingleMovie> = ({ movie, cast, similarMovies }) => {
 			/>
 			<h3 className="text-gray-500 my-4">{movie.overview}</h3>
 
-			{/* {movies.length && <Gallery items={movies} />} */}
-
-			<div className="mt-12">
-				<SubHeading title="Cast" />
-				<Gallery items={cast} />
-			</div>
+			{cast?.length && (
+				<>
+					<div className="mt-12">
+						<SubHeading title="Cast" />
+						<Gallery items={cast} />
+					</div>
+				</>
+			)}
 
 			<div className="mt-12">
 				<SubHeading title="Similar" />
