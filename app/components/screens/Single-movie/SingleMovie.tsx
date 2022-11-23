@@ -1,4 +1,4 @@
-// import dynamic from 'next/dynamic'
+import dynamic from 'next/dynamic'
 import { FC } from 'react'
 
 import Banner from '@/components/ui/Banner/Banner'
@@ -16,9 +16,9 @@ import Content from './Content/Content'
 
 // import { useUpdateCountOpened } from './useUpdateCountOpened'
 
-// const DynamicPlayer = dynamic(() => import('@/ui/video-player/VideoPlayer'), {
-// 	ssr: false,
-// })
+const DynamicPlayer = dynamic(() => import('@/ui/Video-player/VideoPlayer'), {
+	ssr: false,
+})
 // const DynamicRateMovie = dynamic(() => import('./RateMovie/RateMovie'), {
 // 	ssr: false,
 // })
@@ -33,6 +33,8 @@ const SingleMovie: FC<ISingleMovie> = ({ movie, cast, similarMovies }) => {
 				Detail={() => <Content movie={movie} />}
 			/>
 			<h3 className="text-gray-500 my-4">{movie.overview}</h3>
+
+			<DynamicPlayer videoSource={movie.videoUrl} slug={movie.slug} />
 
 			{cast?.length && (
 				<>
