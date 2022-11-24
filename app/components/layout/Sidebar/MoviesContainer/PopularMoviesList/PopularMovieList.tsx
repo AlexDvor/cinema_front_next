@@ -3,17 +3,15 @@ import { useQuery } from 'react-query'
 
 import { MovieService } from '@/services/movie.service'
 
+import { getPopularList } from '@/utils/movie/getPopularMovieIds'
+
 // import SkeletonLoader from '@/components/ui/skeleton-loader/SkeletonLoader'
 // import { MovieService } from '@/services/movie/movie.service'
 import MovieList from '../MovieList'
 
 const PopularMovieList: FC = () => {
-	const { data: popularMovies, isLoading } = useQuery(
-		'Most popular movie in sidebar',
-		() => MovieService.getPopularMovies(),
-		{
-			select: (data) => data.results.slice(0, 3),
-		}
+	const { data, isLoading } = useQuery('Most popular movie in sidebar', () =>
+		getPopularList()
 	)
 
 	return isLoading ? (
@@ -25,7 +23,7 @@ const PopularMovieList: FC = () => {
 		<MovieList
 			list={{
 				link: '/trending',
-				movies: popularMovies || [],
+				movies: data || [],
 				title: 'Popular movies',
 			}}
 		/>

@@ -18,7 +18,7 @@ const VideoPlayer: FC<IVideoPlayer> = ({ videoSource, slug }) => {
 	return (
 		<div
 			className={cn(styles.wrapper, {
-				'h-96': !true,
+				'h-96': true,
 			})}
 		>
 			{true ? (
@@ -28,6 +28,8 @@ const VideoPlayer: FC<IVideoPlayer> = ({ videoSource, slug }) => {
 						className={styles.video}
 						src={`${videoSource}#t=8`}
 						preload="metadata"
+						width={640}
+						height={450}
 					/>
 
 					<div className={styles.progressBarContainer}>

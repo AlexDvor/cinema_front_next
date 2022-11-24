@@ -1,15 +1,26 @@
 import { IGenresItem } from './genres.types'
+import { ITrailerItem } from './trailer.types'
 
-export type TCompaniesItem = {
+type TCompaniesItem = {
 	id: number
 	logo_path: string
 	name: string
 	origin_country: string
 }
 
-export type TCountriesItem = {
+type TCountriesItem = {
 	iso_3166_1: string
 	name: string
+}
+
+type TImagesItem = {
+	aspect_ratio: number
+	height: number
+	iso_639_1: string | null
+	file_path: string
+	vote_average: number
+	vote_count: number
+	width: number
 }
 export interface IMovieItem {
 	poster_path: string
@@ -62,4 +73,12 @@ export interface IMovieDescription
 	runtime: number
 	status: string
 	tagline: string
+	videos: {
+		results: ITrailerItem[]
+	}
+	images: {
+		backdrops: TImagesItem[]
+		logos: TImagesItem[]
+		posters: TImagesItem[]
+	}
 }

@@ -1,4 +1,4 @@
-type TTrailer = {
+export interface ITrailerItem {
 	iso_639_1: string
 	iso_3166_1: string
 	name: string
@@ -13,5 +13,5 @@ type TTrailer = {
 
 interface ITrailerData {
 	id: number
-	results: TTrailer[]
+	results: ITrailerItem[]
 }

@@ -4,6 +4,7 @@ import { IVideoElement } from '@/interfaces/video.types'
 
 export const useVideo = () => {
 	const videoRef = useRef<IVideoElement>(null)
+	console.log('🚀 - videoRef', videoRef)
 
 	const [isPlaying, setIsPlaying] = useState(false)
 	const [currentTime, setCurrentTime] = useState(0)

@@ -1,25 +1,18 @@
-import Image, { ImageLoaderProps } from 'next/image'
+import Image from 'next/image'
 import Link from 'next/link'
 import { FC } from 'react'
 
 import MaterialIcon from '@/components/ui/MaterialIcon/MaterialIcon'
 
-import { IMovieItem } from '@/interfaces/movie.types'
+import { IMovieDescription } from '@/interfaces/movie.types'
 
 import { getGenresListEach } from '@/utils/movie/getGenresList'
 
-// import { getGenresListEach } from '@/utils/movie/getGenresList'
 import { getGenreUrl, getMovieUrl, getPosterImage } from '@/configs/url.config'
 
 import styles from './MovieList.module.scss'
 
-const myLoader = ({ src }: ImageLoaderProps) => {
-	return `https://image.tmdb.org/t/p/w500${src}`
-}
-
-const MovieItem: FC<{ movie: IMovieItem }> = ({ movie }) => {
-	// const a = getGenresData(movie.genre_ids)
-	// console.log(a)
+const MovieItem: FC<{ movie: IMovieDescription }> = ({ movie }) => {
 	return (
 		<div className={styles.item}>
 			<Link href={getMovieUrl(movie.id)}>
@@ -27,7 +20,6 @@ const MovieItem: FC<{ movie: IMovieItem }> = ({ movie }) => {
 					alt={movie.title}
 					width={65}
 					height={97}
-					loader={myLoader}
 					src={getPosterImage(movie.poster_path)}
 					draggable={false}
 					priority
@@ -36,7 +28,13 @@ const MovieItem: FC<{ movie: IMovieItem }> = ({ movie }) => {
 			<div className={styles.info}>
 				<div>
 					<div className={styles.title}>{movie.title}</div>
-					{/* <div className={styles.genres}>{movie.genre_ids.map((item)=>}</div> */}
+					<div className={styles.genres}>
+						{movie.genres.map((item, idx) => (
+							<Link key={item.id} href={getGenreUrl(item.id)}>
+								{getGenresListEach(idx, movie.genres.length, item.name)}
+							</Link>
+						))}
+					</div>
 				</div>
 				<div className={styles.rating}>
 					<MaterialIcon name="MdStarRate" />

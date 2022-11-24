@@ -25,6 +25,7 @@ const DynamicPlayer = dynamic(() => import('@/ui/Video-player/VideoPlayer'), {
 
 const SingleMovie: FC<ISingleMovie> = ({ movie, cast, similarMovies }) => {
 	// useUpdateCountOpened(movie.slug)
+	// const test = 'https://www.youtube.com/embed/b1pMQasDnhM'
 
 	return (
 		<>
@@ -34,7 +35,9 @@ const SingleMovie: FC<ISingleMovie> = ({ movie, cast, similarMovies }) => {
 			/>
 			<h3 className="text-gray-500 my-4">{movie.overview}</h3>
 
-			<DynamicPlayer videoSource={movie.videoUrl} slug={movie.slug} />
+			{/* <>
+				<DynamicPlayer videoSource={test} slug={movie.id.toString()} />
+			</> */}
 
 			{cast?.length && (
 				<>
