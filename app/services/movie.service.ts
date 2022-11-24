@@ -32,15 +32,6 @@ export const MovieService = {
 			.catch((error) => error.massage)
 	},
 
-	async fetchTrailer(movieId: number, lang: string = 'en-US') {
-		return await axios
-			.get<ITrailerData>(
-				`https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${API_KEY}&language=${lang}`
-			)
-			.then((res) => res.data.results)
-			.catch((error) => error.massage)
-	},
-
 	async getMovieByID(id: number | string, lang: string = 'en-US') {
 		return await axios
 			.get(
@@ -50,7 +41,7 @@ export const MovieService = {
 			.catch((error) => error.massage)
 	},
 
-	async fetchMovieByName(
+	async getMovieByName(
 		movieName: string,
 		page: number = 1,
 		lang: string = 'en-US'

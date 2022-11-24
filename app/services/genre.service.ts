@@ -8,7 +8,7 @@ import { filterMovieData } from '@/utils/movie/filterMovieData'
 const API_KEY = process.env.API_MOVIE_KEY
 
 export const GenreServices = {
-	async getGenresMovies(lang = 'en-US') {
+	async getGenreList(lang = 'en-US') {
 		return await axios
 			.get<IGenresData>(
 				`https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=${lang}`

@@ -1,12 +1,17 @@
-import { IGenresItem } from '@/interfaces/genres.types'
+import { IGenresItem } from '@/interfaces/genres.types';
 
-import { GenreServices } from '@/services/genre.service'
 
-import { getRandomInt } from '../getRandomInt'
+
+import { GenreServices } from '@/services/genre.service';
+
+
+
+import { getRandomInt } from '../getRandomInt';
+
 
 export const getGenresData = async () => {
 	try {
-		const { genres: typesGenres } = await GenreServices.getGenresMovies()
+		const { genres: typesGenres } = await GenreServices.getGenreList()
 
 		const genreCategory = await Promise.all(
 			typesGenres.map(async (item: IGenresItem) => {

@@ -17,7 +17,7 @@ const Search: FC = () => {
 
 	const { isSuccess, data: popularMovies } = useQuery(
 		['search movie list', debouncedSearch],
-		() => MovieService.fetchMovieByName(debouncedSearch),
+		() => MovieService.getMovieByName(debouncedSearch),
 		{
 			enabled: !!debouncedSearch,
 			select: (data) => data.slice(0, 7),

@@ -15,7 +15,7 @@ const GenrePage: NextPage<IGenreProps> = ({ movies, genre }) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
 	try {
-		const { genres } = await GenreServices.getGenresMovies()
+		const { genres } = await GenreServices.getGenreList()
 
 		const paths = genres.map((genre: { id: number; name: string }) => ({
 			params: {
@@ -42,7 +42,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
 	try {
 		const movies = await GenreServices.getMoviesByGenre(id)
-		const { genres } = await GenreServices.getGenresMovies()
+		const { genres } = await GenreServices.getGenreList()
 
 		const genre = genres.find(
 			(item: { id: number; name: string }) => item.id === Number(id)
