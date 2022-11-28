@@ -16,16 +16,18 @@ import Content from './Content/Content'
 
 // import { useUpdateCountOpened } from './useUpdateCountOpened'
 
-const DynamicPlayer = dynamic(() => import('@/ui/Video-player/VideoPlayer'), {
-	ssr: false,
-})
+const DynamicPlayer = dynamic(
+	() => import('@/components/ui/Video-palyer/VideoPlayer'),
+	{
+		ssr: false,
+	}
+)
 // const DynamicRateMovie = dynamic(() => import('./RateMovie/RateMovie'), {
 // 	ssr: false,
 // })
 
 const SingleMovie: FC<ISingleMovie> = ({ movie, cast, similarMovies }) => {
 	// useUpdateCountOpened(movie.slug)
-	// const test = 'https://www.youtube.com/embed/b1pMQasDnhM'
 
 	return (
 		<>
@@ -35,9 +37,9 @@ const SingleMovie: FC<ISingleMovie> = ({ movie, cast, similarMovies }) => {
 			/>
 			<h3 className="text-gray-500 my-4">{movie.overview}</h3>
 
-			{/* <>
-				<DynamicPlayer videoSource={test} slug={movie.id.toString()} />
-			</> */}
+			<>
+				<DynamicPlayer trailers={movie.videos.results} />{' '}
+			</>
 
 			{cast?.length && (
 				<>

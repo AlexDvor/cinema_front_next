@@ -5,6 +5,9 @@ export const getActorUrl = (id: string | number): string => `/actor/${id}`
 // export const getAdminUrl = (url: string) => `/manage/${url}`
 // export const getAdminHomeUrl = () => getAdminUrl('').slice(0, -1)
 
+export const getYouTubeUrl = (idTrailer: string | number): string =>
+	`https://www.youtube.com/watch?v=${idTrailer}`
+
 export const getOriginalBackdrop = (image: string | number) =>
 	`https://image.tmdb.org/t/p/original${image}`
 
