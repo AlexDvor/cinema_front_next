@@ -7,6 +7,7 @@ import { useQuery } from 'react-query'
 import Gallery from '@/components/ui/Gallery/Gallery'
 import Heading from '@/components/ui/Heading/Heading'
 import SubHeading from '@/components/ui/Heading/SubHeading'
+import MaterialIcon from '@/components/ui/MaterialIcon/MaterialIcon'
 
 import { TImageActor } from '@/interfaces/actor.types'
 
@@ -47,7 +48,7 @@ const ActorPage: NextPage = () => {
 	return (
 		data && (
 			<>
-				<section className={styles.section}>
+				<section className="flex">
 					<div>
 						<div className="rounded-md overflow-hidden w-60 h-80 relative">
 							<Image
@@ -58,12 +59,12 @@ const ActorPage: NextPage = () => {
 							></Image>
 						</div>
 
-						<div className=" mt-10">
+						<div className="mt-10">
 							<p className="text-white mb-4">
 								<strong className="block">
 									<bdi>Date of Birth</bdi>
 								</strong>
-								{data.birthday}
+								{data.birthday || 'unknown'}
 							</p>
 
 							{data.deathday && (
@@ -79,79 +80,52 @@ const ActorPage: NextPage = () => {
 								<strong className="block">
 									<bdi>Place of Birth</bdi>
 								</strong>
-								{data.place_of_birth}
+								{data.place_of_birth || 'unknown'}
 							</p>
 
-							<p className="text-white mb-1">
-								<strong className="block">
-									<bdi>Also Known As</bdi>
-								</strong>
-							</p>
-							{data.also_known_as && (
-								<ul className="list-disc ml-5">
-									{data.also_known_as.map((item: string[], index: number) => (
-										<li key={index} className="text-white">
-											{item}
-										</li>
-									))}
-								</ul>
+							{data.also_known_as.length > 0 && (
+								<>
+									<p className="text-white mb-1">
+										<strong className="block">
+											<bdi>Also Known As</bdi>
+										</strong>
+									</p>
+									<ul className="list-disc ml-4">
+										{data.also_known_as.map((item: string[], index: number) => (
+											<li key={index} className="text-white">
+												{item}
+											</li>
+										))}
+									</ul>
+								</>
 							)}
 						</div>
 					</div>
 
-					<div className="p-8">
+					<div className="ml-6 overflow-hidden">
 						<h3 className="text-white text-3xl mb-10">{data.name}</h3>
-						<h3 className="text-white font-bold text-2xl mb-5 ">Biography</h3>
-						<p className="text-white">{data.biography}</p>
+
+						{data.biography ? (
+							<>
+								<h3 className="text-white font-bold text-2xl mb-5 ">
+									Biography
+								</h3>
+								<p className="text-white mb-3">{data.biography}</p>
+							</>
+						) : (
+							<div className="p-20">
+								<p className="text-primary mb-3">{`Sorry, we do not have information about ${data.name}`}</p>
+							</div>
+						)}
 					</div>
 				</section>
-				<SubHeading title="Known For" />
-				<Gallery items={movies} />
+				<section>
+					<SubHeading title="Known For" />
+					<Gallery items={movies} />
+				</section>
 			</>
 		)
 	)
-
-	// return (
-	// 	data && (
-	// 		<section className="flex">
-	// 			<div className="w-400 relative">
-	// 				<Image
-	// 					alt="name"
-	// 					src={getPosterImage(data.profile_path)}
-	// 					layout="fill"
-	// 					className="image-like-bg"
-	// 				></Image>
-	// 			</div>
-
-	// 			<div className="ml-10">
-	// 				<h3 className="text-white text-3xl mb-10">{data.name}</h3>
-	// 				<h3 className="text-white font-bold text-2xl mb-5 ">Biography</h3>
-	// 				<p className="text-white">{data.biography}</p>
-	// 				{/* <p className="text-white">Date of Birth: {data.birthday}</p>
-	// 					<p className="text-white">Place of Birth: {data.place_of_birth}</p> */}
-	// 			</div>
-
-	// 			{/* <ul className="grid grid-cols-4 gap-4">
-	// 				{data.images.profiles
-	// 					.slice(1)
-	// 					.map((item: TImageActor, index: number) => (
-	// 						<li key={index} className="">
-	// 							<Image
-	// 								src={getPosterImage(item.file_path)}
-	// 								alt="name"
-	// 								width={150}
-	// 								height={200}
-	// 							></Image>
-	// 						</li>
-	// 					))}
-	// 			</ul> */}
-
-	// 			{/* <div>
-	// 				<Gallery items={movies} />
-	// 			</div> */}
-	// 		</section>
-	// 	)
-	// )
 }
 
 export default ActorPage

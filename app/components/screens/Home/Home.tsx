@@ -21,6 +21,11 @@ const Home: FC<IHome> = ({ actors, movies, slider }) => {
 				<SubHeading title="Best actors" />
 				{actors.length && <Gallery items={actors} />}
 			</div>
+
+			{/* <div>
+				<SubHeading title="TV Series" />
+				{actors.length && <Gallery items={actors} />}
+			</div> */}
 		</>
 	)
 }
