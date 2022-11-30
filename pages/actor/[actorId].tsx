@@ -115,12 +115,12 @@ const ActorPage: NextPage = () => {
 								<p className="text-primary mb-3">{`Sorry, we do not have information about ${data.name}`}</p>
 							</div>
 						)}
+
+						<SubHeading title="Known For" />
+						<Gallery items={movies} />
 					</div>
 				</section>
-				<section>
-					<SubHeading title="Known For" />
-					<Gallery items={movies} />
-				</section>
+				<section></section>
 			</>
 		)
 	)
