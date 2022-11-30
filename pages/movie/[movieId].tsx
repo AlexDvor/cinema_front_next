@@ -9,7 +9,7 @@ import SingleMovie from '@/components/screens/Single-movie/SingleMovie'
 import { IActorItem } from '@/interfaces/actor.types'
 import { IMovieItem } from '@/interfaces/movie.types'
 // import { IGalleryItem } from '@/interfaces/gallery.types'
-// import { IMovieDescription } from '@/interfaces/movie.types'
+// import { IMovieDescriptionItem } from '@/interfaces/movie.types'
 import { ISingleMovie } from '@/interfaces/single-movie.types'
 
 import { ActorServices } from '@/services/actor.service'
@@ -45,7 +45,7 @@ const SingleMoviePage: NextPage<ISingleMovie> = () => {
 					id: item.cast_id,
 					title: item.name,
 					posterPath: item.profile_path,
-					url: getActorUrl(item.cast_id),
+					url: getActorUrl(item.id),
 				}))
 			},
 		}

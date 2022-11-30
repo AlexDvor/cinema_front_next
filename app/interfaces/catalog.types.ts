@@ -1,7 +1,7 @@
-import { IMovie } from './movie.types'
+import { IMovieItem } from './movie.types'
 
 export interface ICatalog {
 	title: string
 	description?: string
-	movies: IMovie[]
+	movies: IMovieItem[]
 }

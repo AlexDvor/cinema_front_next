@@ -2,6 +2,7 @@ export const getMovieUrl = (id: string | number): string => `/movie/${id}`
 export const getGenreUrl = (id: string | number): string => `/genres/${id}`
 export const getActorUrl = (id: string | number): string => `/actor/${id}`
 
+
 // export const getAdminUrl = (url: string) => `/manage/${url}`
 // export const getAdminHomeUrl = () => getAdminUrl('').slice(0, -1)
 

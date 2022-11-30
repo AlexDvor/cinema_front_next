@@ -40,14 +40,14 @@ export interface IMovieItem {
 	media_type?: string
 }
 
-export interface IMovieData {
+export interface IFetchMovie {
 	page: number
 	results: IMovieItem[]
 	total_pages: number
 	total_results: number
 }
 
-export interface IMovieDescription
+export interface IMovieDescriptionItem
 	extends Pick<
 		IMovieItem,
 		| 'id'

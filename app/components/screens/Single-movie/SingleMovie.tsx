@@ -6,7 +6,7 @@ import Gallery from '@/components/ui/Gallery/Gallery'
 import SubHeading from '@/components/ui/Heading/SubHeading'
 
 import { IGalleryItem } from '@/interfaces/gallery.types'
-import { IMovieDescription } from '@/interfaces/movie.types'
+import { IMovieDescriptionItem } from '@/interfaces/movie.types'
 import { ISingleMovie } from '@/interfaces/single-movie.types'
 
 import { getOriginalBackdrop } from '@/configs/url.config'
@@ -37,9 +37,9 @@ const SingleMovie: FC<ISingleMovie> = ({ movie, cast, similarMovies }) => {
 			/>
 			<h3 className="text-gray-500 my-4">{movie.overview}</h3>
 
-			<>
+			{/* <>
 				<DynamicPlayer trailers={movie.videos.results} />{' '}
-			</>
+			</> */}
 
 			{cast?.length && (
 				<>

@@ -1,13 +1,19 @@
 import axios from 'axios'
 
-import { IMovieData } from '@/interfaces/movie.types'
+import { IFetchMovie } from '@/interfaces/movie.types'
 
 const API_KEY = process.env.API_MOVIE_KEY
+
+type TFetchCastByMovies = {
+	cast: []
+	crew: []
+	id: number
+}
 
 export const MovieService = {
 	async getPopularMovies(lang = 'en-US', page = 1) {
 		return axios
-			.get<IMovieData>(
+			.get<IFetchMovie>(
 				`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=${lang}&page=${page}`
 			)
 			.then((res) => res.data)
@@ -16,7 +22,7 @@ export const MovieService = {
 
 	async getTrendingMovies(lang = 'en-US', page = 1) {
 		return axios
-			.get<IMovieData>(
+			.get<IFetchMovie>(
 				`https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}&language=${lang}&page=${page}`
 			)
 			.then((res) => res.data)
@@ -25,7 +31,7 @@ export const MovieService = {
 
 	async getFreshMovies(lang = 'en-US', page = 1) {
 		return axios
-			.get<IMovieData>(
+			.get<IFetchMovie>(
 				`https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=${lang}&page=${page}`
 			)
 			.then((res) => res.data)
@@ -47,10 +53,19 @@ export const MovieService = {
 		lang: string = 'en-US'
 	) {
 		return await axios
-			.get<IMovieData>(
+			.get<IFetchMovie>(
 				`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${movieName}&language=${lang}&page=${page}`
 			)
 			.then((res) => res.data.results)
+			.catch((error) => error.massage)
+	},
+
+	async getMoviesByActorId(actorId: string | number, lang: string = 'en-US') {
+		return await axios
+			.get<TFetchCastByMovies>(
+				`https://api.themoviedb.org/3/person/${actorId}/movie_credits?api_key=${API_KEY}&language=${lang}`
+			)
+			.then((res) => res.data.cast)
 			.catch((error) => error.massage)
 	},
 }

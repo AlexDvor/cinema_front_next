@@ -1,6 +1,9 @@
 import axios from 'axios'
 
-import { IActorData } from '@/interfaces/actor.types'
+import {
+	IDetailsAboutActor,
+	IFetchPopularDataActors,
+} from '@/interfaces/actor.types'
 import { ICastData } from '@/interfaces/single-movie.types'
 
 const API_KEY = process.env.API_MOVIE_KEY
@@ -8,7 +11,7 @@ const API_KEY = process.env.API_MOVIE_KEY
 export const ActorServices = {
 	async getPopularActors(lang = 'en', page = 1) {
 		return axios
-			.get<IActorData>(
+			.get<IFetchPopularDataActors>(
 				`https://api.themoviedb.org/3/person/popular?api_key=${API_KEY}&language=${lang}&page=${page}`
 			)
 			.then((res) => res.data)
@@ -20,6 +23,14 @@ export const ActorServices = {
 				`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${API_KEY}&language=${lang}`
 			)
 			.then((res) => res.data.cast)
+			.catch((error) => error.massage)
+	},
+	async getDetailsAboutActor(personId: string | number, lang = 'en') {
+		return axios
+			.get<IDetailsAboutActor>(
+				`https://api.themoviedb.org/3/person/${personId}?api_key=${API_KEY}&language=${lang}&append_to_response=images`
+			)
+			.then((res) => res.data)
 			.catch((error) => error.massage)
 	},
 }

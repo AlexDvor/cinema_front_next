@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 import { IGenresData } from '@/interfaces/genres.types'
-import { IMovieData } from '@/interfaces/movie.types'
+import { IFetchMovie } from '@/interfaces/movie.types'
 
 import { filterMovieData } from '@/utils/movie/filterMovieData'
 
@@ -23,7 +23,7 @@ export const GenreServices = {
 		page = 1
 	) {
 		return axios
-			.get<IMovieData>(
+			.get<IFetchMovie>(
 				`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=${genreId}&language=${lang}&page=${page}`
 			)
 			.then((res) => {

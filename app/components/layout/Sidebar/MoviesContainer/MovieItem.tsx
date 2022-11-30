@@ -4,7 +4,7 @@ import { FC } from 'react'
 
 import MaterialIcon from '@/components/ui/MaterialIcon/MaterialIcon'
 
-import { IMovieDescription } from '@/interfaces/movie.types'
+import { IMovieDescriptionItem } from '@/interfaces/movie.types'
 
 import { getGenresListEach } from '@/utils/movie/getGenresList'
 
@@ -12,7 +12,7 @@ import { getGenreUrl, getMovieUrl, getPosterImage } from '@/configs/url.config'
 
 import styles from './MovieList.module.scss'
 
-const MovieItem: FC<{ movie: IMovieDescription }> = ({ movie }) => {
+const MovieItem: FC<{ movie: IMovieDescriptionItem }> = ({ movie }) => {
 	return (
 		<div className={styles.item}>
 			<Link href={getMovieUrl(movie.id)}>

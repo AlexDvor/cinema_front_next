@@ -2,7 +2,7 @@ import { FC } from 'react'
 
 import MaterialIcon from '@/components/ui/MaterialIcon/MaterialIcon'
 
-import { IMovieDescription } from '@/interfaces/movie.types'
+import { IMovieDescriptionItem } from '@/interfaces/movie.types'
 
 import { parseReleaseData } from '@/utils/movie/parseReleaseData'
 import { timeConvert } from '@/utils/movie/timeConvert'
@@ -13,7 +13,7 @@ import { getActorUrl, getGenreUrl } from '@/configs/url.config'
 import styles from './Content.module.scss'
 import ContentList from './ContentList/ContentList'
 
-const Content: FC<{ movie: IMovieDescription }> = ({ movie }) => {
+const Content: FC<{ movie: IMovieDescriptionItem }> = ({ movie }) => {
 	return (
 		<div className={styles.content}>
 			<h1>{movie.title}</h1>

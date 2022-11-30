@@ -1,9 +1,9 @@
 import { IActorItem } from './actor.types'
 import { IGalleryItem } from './gallery.types'
-import { IMovieDescription } from './movie.types'
+import { IMovieDescriptionItem } from './movie.types'
 
 export interface ISingleMovie {
-	movie: IMovieDescription
+	movie: IMovieDescriptionItem
 	similarMovies: IGalleryItem[]
 	cast: IGalleryItem[]
 }
