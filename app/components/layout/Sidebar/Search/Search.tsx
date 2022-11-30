@@ -28,8 +28,6 @@ const Search: FC = () => {
 		setSearchTerm(e.target.value)
 	}
 
-	console.log(popularMovies)
-
 	return (
 		<div className={styles.wrapper}>
 			<SearchField searchTerm={searchTerm} handleSearch={handleSearch} />
