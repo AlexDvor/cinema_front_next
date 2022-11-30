@@ -71,7 +71,7 @@ const ActorPage: NextPage = () => {
 									<strong className="block">
 										<bdi>Day of Death</bdi>
 									</strong>
-									{data.birthday}
+									{data.deathday}
 								</p>
 							)}
 
@@ -103,13 +103,10 @@ const ActorPage: NextPage = () => {
 						<h3 className="text-white text-3xl mb-10">{data.name}</h3>
 						<h3 className="text-white font-bold text-2xl mb-5 ">Biography</h3>
 						<p className="text-white">{data.biography}</p>
-
-						<SubHeading title="Known For" />
 					</div>
 				</section>
-				{/* <div>
-					<Gallery items={movies} />
-				</div> */}
+				<SubHeading title="Known For" />
+				<Gallery items={movies} />
 			</>
 		)
 	)
