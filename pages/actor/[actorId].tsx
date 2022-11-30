@@ -16,8 +16,6 @@ import { MovieService } from '@/services/movie.service'
 
 import { getMovieUrl, getPosterImage } from '@/configs/url.config'
 
-import styles from './actor.module.scss'
-
 const ActorPage: NextPage = () => {
 	const { actorId } = useRouter().query
 
