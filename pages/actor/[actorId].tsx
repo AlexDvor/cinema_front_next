@@ -28,7 +28,7 @@ const ActorPage: NextPage = () => {
 	)
 
 	const { data: movies } = useQuery(
-		['111111 ', actorId],
+		['Known for ', actorId],
 		() => MovieService.getMoviesByActorId(Number(actorId)),
 		{
 			enabled: !!actorId,
@@ -105,9 +105,8 @@ const ActorPage: NextPage = () => {
 
 						{data.biography ? (
 							<>
-								<h3 className="text-white font-bold text-2xl mb-5 ">
-									Biography
-								</h3>
+								<SubHeading title="Biography" />
+
 								<p className="text-white mb-3">{data.biography}</p>
 							</>
 						) : (
@@ -120,7 +119,6 @@ const ActorPage: NextPage = () => {
 						<Gallery items={movies} />
 					</div>
 				</section>
-				<section></section>
 			</>
 		)
 	)

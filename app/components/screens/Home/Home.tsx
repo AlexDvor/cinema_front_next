@@ -7,7 +7,7 @@ import { IHome } from '@/interfaces/pages.types'
 import Gallery from '../../ui/Gallery/Gallery'
 import Slider from '../../ui/Slider/Slider'
 
-const Home: FC<IHome> = ({ actors, movies, slider }) => {
+const Home: FC<IHome> = ({ actors, movies, slider, tvSerials }) => {
 	return (
 		<>
 			{slider.length && <Slider sliderData={slider} />}
@@ -17,15 +17,15 @@ const Home: FC<IHome> = ({ actors, movies, slider }) => {
 				{movies.length && <Gallery items={movies} />}
 			</div>
 
-			<div>
+			<div className="my-10">
+				<SubHeading title="TV Series" />
+				{tvSerials.length && <Gallery items={tvSerials} />}
+			</div>
+
+			<div className="my-10">
 				<SubHeading title="Best actors" />
 				{actors.length && <Gallery items={actors} />}
 			</div>
-
-			{/* <div>
-				<SubHeading title="TV Series" />
-				{actors.length && <Gallery items={actors} />}
-			</div> */}
 		</>
 	)
 }

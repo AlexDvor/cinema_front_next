@@ -2,6 +2,8 @@ import axios from 'axios'
 
 import { IFetchMovie } from '@/interfaces/movie.types'
 
+import { filterMovieData } from '@/utils/movie/filterMovieData'
+
 const API_KEY = process.env.API_MOVIE_KEY
 
 type TFetchCastByMovies = {
@@ -65,7 +67,10 @@ export const MovieService = {
 			.get<TFetchCastByMovies>(
 				`https://api.themoviedb.org/3/person/${actorId}/movie_credits?api_key=${API_KEY}&language=${lang}`
 			)
-			.then((res) => res.data.cast)
+			.then((res) => {
+				const movies = filterMovieData(res.data.cast)
+				return movies
+			})
 			.catch((error) => error.massage)
 	},
 }

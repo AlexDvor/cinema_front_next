@@ -6,9 +6,11 @@ import { IActorItem } from '@/interfaces/actor.types'
 import { IGalleryItem } from '@/interfaces/gallery.types'
 import { IMovieItem } from '@/interfaces/movie.types'
 import { IHome } from '@/interfaces/pages.types'
+import { ITvItem } from '@/interfaces/tv.types'
 
 import { ActorServices } from '@/services/actor.service'
 import { MovieService } from '@/services/movie.service'
+import { TvServices } from '@/services/tv.service'
 
 import { getActorUrl, getMovieUrl } from '@/configs/url.config'
 
@@ -24,8 +26,9 @@ export const getStaticProps: GetStaticProps = async () => {
 	try {
 		const { results: dataActors } = await ActorServices.getPopularActors()
 		const { results: dataMovies } = await MovieService.getTrendingMovies()
+		const { results: dataTv } = await TvServices.getTopTv()
 
-		const actors: IActorItem[] = dataActors.slice(0, 7).map(
+		const actors: IActorItem[] = dataActors.slice(0, 12).map(
 			(actor: IActorItem): IGalleryItem => ({
 				id: actor.id,
 				title: actor.name,
@@ -34,7 +37,7 @@ export const getStaticProps: GetStaticProps = async () => {
 			})
 		)
 
-		const movies: IMovieItem[] = dataMovies.slice(0, 7).map(
+		const movies: IMovieItem[] = dataMovies.slice(0, 12).map(
 			(movie: IMovieItem): IGalleryItem => ({
 				id: movie.id,
 				title: movie.title,
@@ -43,7 +46,7 @@ export const getStaticProps: GetStaticProps = async () => {
 			})
 		)
 
-		const slider: IMovieItem[] = dataMovies.slice(7, 15).map(
+		const slider: IMovieItem[] = dataMovies.slice(12, 19).map(
 			(movie: IMovieItem): IGalleryItem => ({
 				id: movie.id,
 				title: movie.title,
@@ -52,8 +55,17 @@ export const getStaticProps: GetStaticProps = async () => {
 			})
 		)
 
+		const tvSerials: ITvItem[] = dataTv.map(
+			(movie: ITvItem): IGalleryItem => ({
+				id: movie.id,
+				title: movie.name,
+				posterPath: movie.poster_path,
+				url: getMovieUrl(movie.id),
+			})
+		)
+
 		return {
-			props: { actors, movies, slider },
+			props: { actors, movies, slider, tvSerials },
 		}
 	} catch (error) {
 		console.log(error)
