@@ -2,8 +2,6 @@ import axios from 'axios'
 
 import { IFetchMovie, IMovieItem } from '@/interfaces/movie.types'
 
-import { filterMovieData } from '@/utils/movie/filterMovieData'
-
 const API_KEY = process.env.API_MOVIE_KEY
 
 type TFetchCastByMovies = {
@@ -27,7 +25,9 @@ export const MovieService = {
 			.get<IFetchMovie>(
 				`https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}&language=${lang}&page=${page}`
 			)
-			.then((res) => res.data)
+			.then((res) =>
+				res.data.results.filter((item) => item.backdrop_path !== null)
+			)
 			.catch((error) => error.massage)
 	},
 

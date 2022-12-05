@@ -24,8 +24,8 @@ const HomePage: NextPage<IHome> = (props) => {
 
 export const getStaticProps: GetStaticProps = async () => {
 	try {
-		const { results: dataActors } = await ActorServices.getPopularActors()
-		const { results: dataMovies } = await MovieService.getTrendingMovies()
+		const dataActors = await ActorServices.getPopularActors()
+		const dataMovies = await MovieService.getTrendingMovies()
 		const dataTv = await TvServices.getTopTv()
 
 		const actors: IActorItem[] = dataActors.slice(0, 12).map(

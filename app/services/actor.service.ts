@@ -1,6 +1,7 @@
 import axios from 'axios'
 
 import {
+	IActorItem,
 	IDetailsAboutActor,
 	IFetchPopularDataActors,
 } from '@/interfaces/actor.types'
@@ -14,7 +15,11 @@ export const ActorServices = {
 			.get<IFetchPopularDataActors>(
 				`https://api.themoviedb.org/3/person/popular?api_key=${API_KEY}&language=${lang}&page=${page}`
 			)
-			.then((res) => res.data)
+			.then((res) =>
+				res.data.results.filter(
+					(item: IActorItem) => item.profile_path !== null
+				)
+			)
 			.catch((error) => error.massage)
 	},
 	async getActorsByIdMovie(id: string | number, lang = 'en') {

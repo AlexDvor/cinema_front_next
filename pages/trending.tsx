@@ -3,6 +3,8 @@ import { QueryClient, dehydrate, useQuery } from 'react-query'
 
 import Catalog from '@/components/screens/Catolog-movies/Catalog'
 
+import { IMovieItem } from '@/interfaces/movie.types'
+
 import { MovieService } from '@/services/movie.service'
 
 const TrendingPage: NextPage = () => {
@@ -11,7 +13,9 @@ const TrendingPage: NextPage = () => {
 		() => MovieService.getPopularMovies(),
 		{
 			select(data) {
-				return data.results
+				return data.results.filter(
+					(item: IMovieItem) => item.backdrop_path !== null
+				)
 			},
 		}
 	)
