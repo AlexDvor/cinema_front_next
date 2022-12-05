@@ -9,71 +9,58 @@ import { IGalleryItem } from '@/interfaces/gallery.types'
 import { IMovieDescriptionItem } from '@/interfaces/movie.types'
 import { ISingleMovie } from '@/interfaces/single-movie.types'
 
-import { getOriginalBackdrop } from '@/configs/url.config'
+import { Meta } from '@/utils/meta'
 
-// import { Meta } from '@/utils/meta'
+import { getOriginalBackdrop, getPosterImage } from '@/configs/url.config'
+
 import Content from './Content/Content'
 
 // import { useUpdateCountOpened } from './useUpdateCountOpened'
 
-const DynamicPlayer = dynamic(
-	() => import('@/components/ui/Video-palyer/VideoPlayer'),
-	{
-		ssr: false,
-	}
-)
+// const DynamicPlayer = dynamic(
+// 	() => import('@/components/ui/Video-palyer/VideoPlayer'),
+// 	{
+// 		ssr: false,
+// 	}
+// )
 // const DynamicRateMovie = dynamic(() => import('./RateMovie/RateMovie'), {
 // 	ssr: false,
 // })
 
 const SingleMovie: FC<ISingleMovie> = ({ movie, cast, similarMovies }) => {
-	// useUpdateCountOpened(movie.slug)
-
 	return (
 		<>
-			<Banner
-				imagePath={getOriginalBackdrop(movie.backdrop_path)}
-				Detail={() => <Content movie={movie} />}
-			/>
-			<h3 className="text-gray-500 my-4">{movie.overview}</h3>
+			<Meta
+				title={movie.title}
+				description={`Watch ${movie.title}`}
+				image={getPosterImage(movie.poster_path)}
+			>
+				<Banner
+					imagePath={getOriginalBackdrop(movie.backdrop_path)}
+					Detail={() => <Content movie={movie} />}
+				/>
+				<h3 className="text-gray-500 my-4">{movie.overview}</h3>
 
-			{/* <>
+				{/* <>
 				<DynamicPlayer trailers={movie.videos.results} />{' '}
 			</> */}
 
-			{cast?.length && (
-				<>
-					<div className="mt-12">
-						<SubHeading title="Cast" />
-						<Gallery items={cast} />
-					</div>
-				</>
-			)}
+				{cast?.length && (
+					<>
+						<div className="mt-12">
+							<SubHeading title="Cast" />
+							<Gallery items={cast} />
+						</div>
+					</>
+				)}
 
-			<div className="mt-12">
-				<SubHeading title="Similar" />
-				<Gallery items={similarMovies} />
-			</div>
+				<div className="mt-12">
+					<SubHeading title="Similar" />
+					<Gallery items={similarMovies} />
+				</div>
+			</Meta>
 		</>
 	)
-
-	// return (
-	// 		<Meta title={movie.title} description={`Watch ${movie.title}`}>
-	// 			<Banner
-	// 				imagePath={movie.backdrop_path}
-	// 				Detail={() => <Content movie={movie} />}
-	// 			/>
-
-	// 			{/* <DynamicPlayer videoSource={movie.videoUrl} slug={movie.slug} /> */}
-
-	// 			<div className="mt-12">
-	// 				<SubHeading title="Similar" />
-	// 				<Gallery items={similarMovies} />
-	// 			</div>
-
-	// 			{/* <DynamicRateMovie slug={movie.slug} _id={movie._id} /> */}
-	// 		</Meta>
-	// 	)
 }
 
 export default SingleMovie

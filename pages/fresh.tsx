@@ -2,11 +2,11 @@ import { GetStaticProps, NextPage } from 'next'
 
 import Catalog from '@/components/screens/Catolog-movies/Catalog'
 
-import { IMovie } from '@/interfaces/movie.types'
+import { IMovieItem } from '@/interfaces/movie.types'
 
 import { MovieService } from '@/services/movie.service'
 
-const FreshPage: NextPage<{ movies: IMovie[] }> = ({ movies }) => {
+const FreshPage: NextPage<{ movies: IMovieItem[] }> = ({ movies }) => {
 	return (
 		<>
 			<Catalog

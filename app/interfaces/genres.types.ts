@@ -3,6 +3,7 @@ import { IMovieItem } from './movie.types'
 export type IGenresItem = {
 	id: number
 	name: string
+	description?: string
 }
 
 export interface IGenresData {
@@ -18,9 +19,6 @@ export interface IGenreItem {
 
 export interface IGenreProps {
 	movies: IMovieItem[]
-	genre: {
-		id: number
-		name: string
-	}
+	genre: IGenresItem
 	description?: string
 }

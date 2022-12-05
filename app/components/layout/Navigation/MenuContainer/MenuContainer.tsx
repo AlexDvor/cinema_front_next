@@ -9,6 +9,7 @@ const MenuContainer: FC = () => {
 		<>
 			<Menu menu={menus[0]}></Menu>
 			<Menu menu={menus[1]}></Menu>
+			<Menu menu={{ title: 'General', items: [] }} />
 		</>
 	)
 }

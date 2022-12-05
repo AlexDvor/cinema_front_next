@@ -21,12 +21,12 @@ const CollectionItem: FC<{ collection: IGenreItem }> = ({ collection }) => {
 			</div>
 
 			{/* <div className={`${styles.behind} ${styles.second}`}>
-				<CollectionImage collection={collection} />
-			</div>
+					<CollectionImage collection={collection} />
+				</div>
 
-			<div className={`${styles.behind} ${styles.third}`}>
-				<CollectionImage collection={collection} />
-			</div> */}
+				<div className={`${styles.behind} ${styles.third}`}>
+					<CollectionImage collection={collection} />
+				</div> */}
 		</Link>
 	)
 }
