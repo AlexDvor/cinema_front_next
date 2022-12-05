@@ -11,6 +11,7 @@ const GenresPage: NextPage<{ genreCategory: IGenreItem[] }> = () => {
 	const { data, isLoading } = useQuery('Genre List', () => getGenresData(), {
 		staleTime: 120 * 1000,
 	})
+	console.log('🚀 - data', data)
 
 	return (
 		<>

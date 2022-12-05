@@ -1,4 +1,4 @@
-import { IMenuItem } from '@/components/layout/Navigation/MenuContainer/Menu/Menu.types'
+import { IMenuItem } from '@/components/layout/Navigation/MenuContainer/Menu.types'
 
 import { IMovieItem } from '@/interfaces/movie.types'
 

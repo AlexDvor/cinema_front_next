@@ -3,7 +3,7 @@ import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { useRouter } from 'next/router'
 import { useQuery } from 'react-query'
 
-import { IMenuItem } from '@/components/layout/Navigation/MenuContainer/Menu/Menu.types'
+import { IMenuItem } from '@/components/layout/Navigation/MenuContainer/Menu.types'
 import SingleMovie from '@/components/screens/Single-movie/SingleMovie'
 
 import { IActorItem } from '@/interfaces/actor.types'
