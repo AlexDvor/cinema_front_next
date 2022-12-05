@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-import { IFetchMovie } from '@/interfaces/movie.types'
+import { IFetchMovie, IMovieItem } from '@/interfaces/movie.types'
 
 import { filterMovieData } from '@/utils/movie/filterMovieData'
 
@@ -68,8 +68,9 @@ export const MovieService = {
 				`https://api.themoviedb.org/3/person/${actorId}/movie_credits?api_key=${API_KEY}&language=${lang}`
 			)
 			.then((res) => {
-				const movies = filterMovieData(res.data.cast)
-				return movies
+				return res.data.cast.filter(
+					(item: IMovieItem) => item.poster_path !== null
+				)
 			})
 			.catch((error) => error.massage)
 	},

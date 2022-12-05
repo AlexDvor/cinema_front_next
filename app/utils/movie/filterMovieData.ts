@@ -1,4 +1,5 @@
 import { IMovieItem } from '@/interfaces/movie.types'
+import { ITvItem } from '@/interfaces/tv.types'
 
 export const filterMovieData = (data: IMovieItem[]) => {
 	return data.filter(

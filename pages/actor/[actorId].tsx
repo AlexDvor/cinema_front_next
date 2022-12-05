@@ -9,7 +9,7 @@ import Heading from '@/components/ui/Heading/Heading'
 import SubHeading from '@/components/ui/Heading/SubHeading'
 import MaterialIcon from '@/components/ui/MaterialIcon/MaterialIcon'
 
-import { TImageActor } from '@/interfaces/actor.types'
+import { IMovieItem } from '@/interfaces/movie.types'
 
 import { ActorServices } from '@/services/actor.service'
 import { MovieService } from '@/services/movie.service'
@@ -33,7 +33,7 @@ const ActorPage: NextPage = () => {
 		{
 			enabled: !!actorId,
 			select: (data) => {
-				return data.slice(0, 19).map((movie) => ({
+				return data.map((movie: IMovieItem) => ({
 					id: movie.id,
 					title: movie.title,
 					posterPath: movie.poster_path,
@@ -48,7 +48,7 @@ const ActorPage: NextPage = () => {
 			<>
 				<section className="flex">
 					<div>
-						<div className="rounded-md overflow-hidden w-60 h-80 relative">
+						<div className="rounded-md overflow-hidden w-60 h-80 relative mb-5">
 							<Image
 								alt="name"
 								src={getPosterImage(data.profile_path)}
@@ -56,7 +56,9 @@ const ActorPage: NextPage = () => {
 								layout="fill"
 							></Image>
 						</div>
-
+						<h3 className="text-white text-2xl mb-10 text-center font-bold">
+							{data.name}
+						</h3>
 						<div className="mt-10">
 							<p className="text-white mb-4">
 								<strong className="block">
@@ -101,8 +103,6 @@ const ActorPage: NextPage = () => {
 					</div>
 
 					<div className="ml-6 overflow-hidden">
-						<h3 className="text-white text-3xl mb-10">{data.name}</h3>
-
 						{data.biography ? (
 							<>
 								<SubHeading title="Biography" />
@@ -110,8 +110,10 @@ const ActorPage: NextPage = () => {
 								<p className="text-white mb-3">{data.biography}</p>
 							</>
 						) : (
-							<div className="p-20">
-								<p className="text-primary mb-3">{`Sorry, we do not have information about ${data.name}`}</p>
+							<div className="m-20">
+								<div className="p-10 bg-gray-800 rounded-lg outline outline-1 outline-gray-700">
+									<p className="text-primary mb-3 text-center">{`Sorry, we do not have information about ${data.name}`}</p>
+								</div>
 							</div>
 						)}
 

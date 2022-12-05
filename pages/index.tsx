@@ -12,7 +12,7 @@ import { ActorServices } from '@/services/actor.service'
 import { MovieService } from '@/services/movie.service'
 import { TvServices } from '@/services/tv.service'
 
-import { getActorUrl, getMovieUrl } from '@/configs/url.config'
+import { getActorUrl, getMovieUrl, getTvUrl } from '@/configs/url.config'
 
 const HomePage: NextPage<IHome> = (props) => {
 	return (
@@ -26,7 +26,7 @@ export const getStaticProps: GetStaticProps = async () => {
 	try {
 		const { results: dataActors } = await ActorServices.getPopularActors()
 		const { results: dataMovies } = await MovieService.getTrendingMovies()
-		const { results: dataTv } = await TvServices.getTopTv()
+		const dataTv = await TvServices.getTopTv()
 
 		const actors: IActorItem[] = dataActors.slice(0, 12).map(
 			(actor: IActorItem): IGalleryItem => ({
@@ -60,7 +60,7 @@ export const getStaticProps: GetStaticProps = async () => {
 				id: movie.id,
 				title: movie.name,
 				posterPath: movie.poster_path,
-				url: getMovieUrl(movie.id),
+				url: getTvUrl(movie.id),
 			})
 		)
 

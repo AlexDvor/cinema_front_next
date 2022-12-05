@@ -7,7 +7,6 @@ import { useDebounce } from '@/hooks/useDebounce'
 
 import { MovieService } from '@/services/movie.service'
 
-// import { MovieService } from '@/services/movie/movie.service'
 import styles from './Search.module.scss'
 import SearchList from './SearchList/SearchList'
 

@@ -1,12 +1,10 @@
 import { FC } from 'react'
 import { useQuery } from 'react-query'
 
-import { MovieService } from '@/services/movie.service'
+import SkeletonLoader from '@/components/ui/Skeleton-loader/SkeletonLoader'
 
 import { getPopularList } from '@/utils/movie/getPopularMovieIds'
 
-// import SkeletonLoader from '@/components/ui/skeleton-loader/SkeletonLoader'
-// import { MovieService } from '@/services/movie/movie.service'
 import MovieList from '../MovieList'
 
 const PopularMovieList: FC = () => {
@@ -16,8 +14,7 @@ const PopularMovieList: FC = () => {
 
 	return isLoading ? (
 		<div className="mt-11">
-			{/* <SkeletonLoader count={3} className="h-28 mb-4" /> */}
-			<div>Loading...</div>
+			<SkeletonLoader count={3} className="h-28 mb-4" />
 		</div>
 	) : (
 		<MovieList
