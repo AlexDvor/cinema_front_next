@@ -41,5 +41,16 @@ export const user = {
 
 export const staticData = {
 	quantityUsers: 15,
-	users: [{}],
+	users: [
+		{
+			_id: '1',
+			editUrl: 'test',
+			items: ['fsdfsdf'],
+		},
+		{
+			_id: '2',
+			editUrl: 'test',
+			items: [],
+		},
+	],
 }
