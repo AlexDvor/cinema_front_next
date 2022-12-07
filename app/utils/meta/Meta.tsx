@@ -20,7 +20,6 @@ export const Meta: FC<ISeo> = ({
 	const { asPath } = useRouter()
 	const currentUrl = `${process.env.APP_URL}${asPath}`
 
-	console.log('🚀 - currentUrl', currentUrl)
 	return (
 		<>
 			{description ? (
