@@ -1,4 +1,4 @@
-import { IMovieItem } from './movie.types'
+import { IMovieDescriptionItem, IMovieItem } from './movie.types'
 
 export interface ICatalog {
 	title: string

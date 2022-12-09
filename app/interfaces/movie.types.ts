@@ -69,16 +69,17 @@ export interface IMovieDescriptionItem
 	production_companies: TCompaniesItem[]
 	production_countries: TCountriesItem[]
 	release_date: string
+	belongs_to_collection: null | any
 	revenue: number
 	runtime: number
 	status: string
 	tagline: string
 	videos: {
-		results: ITrailerItem[]
+		results: ITrailerItem[] | null | []
 	}
 	images: {
-		backdrops: TImagesItem[]
-		logos: TImagesItem[]
-		posters: TImagesItem[]
+		backdrops: TImagesItem[] | []
+		logos: TImagesItem[] | []
+		posters: TImagesItem[] | []
 	}
 }

@@ -2,7 +2,6 @@ import { FC } from 'react'
 
 import Menu from './Menu'
 import { menus } from './Menu.data'
-import styles from './MenuContainer.module.scss'
 
 const MenuContainer: FC = () => {
 	return (

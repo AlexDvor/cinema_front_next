@@ -28,6 +28,7 @@ const DynamicPlayer = dynamic(
 // })
 
 const SingleMovie: FC<ISingleMovie> = ({ movie, cast, similarMovies }) => {
+	console.log('🚀 - movie', movie)
 	return (
 		<>
 			<Meta

@@ -34,7 +34,8 @@ const VideoPlayer: FC<IVideoProps> = ({ trailers }) => {
 						))}
 				</ul>
 			) : (
-				<AuthPlaceholder slug={trailers[0].name} />
+				// <AuthPlaceholder slug={trailers[0].name} />
+				<div>Some AuthPlaceHolder</div>
 			)}
 		</>
 	)

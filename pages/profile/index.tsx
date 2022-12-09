@@ -1,4 +1,4 @@
-import Profile from '@/components/screens/Profile/Profile'
+import Profile from '@/components/screens/User/Profile-section/Profile'
 
 import { NextPageAuth } from '@/interfaces/auth.types'
 

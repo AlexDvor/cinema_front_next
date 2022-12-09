@@ -6,8 +6,8 @@ import { useQuery } from 'react-query'
 
 import Gallery from '@/components/ui/Gallery/Gallery'
 import Heading from '@/components/ui/Heading/Heading'
-import SubHeading from '@/components/ui/Heading/SubHeading'
 import MaterialIcon from '@/components/ui/MaterialIcon/MaterialIcon'
+import SubHeading from '@/components/ui/heading/SubHeading'
 
 import { IMovieItem } from '@/interfaces/movie.types'
 
@@ -26,6 +26,8 @@ const ActorPage: NextPage = () => {
 			enabled: !!actorId,
 		}
 	)
+
+	console.log(data)
 
 	const { data: movies } = useQuery(
 		['Known for ', actorId],
