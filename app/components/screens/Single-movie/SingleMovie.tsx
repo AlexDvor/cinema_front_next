@@ -3,7 +3,7 @@ import { FC } from 'react'
 
 import Banner from '@/components/ui/Banner/Banner'
 import Gallery from '@/components/ui/Gallery/Gallery'
-import SubHeading from '@/components/ui/Heading/SubHeading'
+import SubHeading from '@/components/ui/heading/SubHeading'
 
 import { IGalleryItem } from '@/interfaces/gallery.types'
 import { IMovieDescriptionItem } from '@/interfaces/movie.types'
@@ -48,14 +48,14 @@ const SingleMovie: FC<ISingleMovie> = ({ movie, cast, similarMovies }) => {
 				{cast?.length && (
 					<>
 						<div className="mt-12">
-							<SubHeading title="Cast" />
+							{/* <SubHeading title="Cast" /> */}
 							<Gallery items={cast} />
 						</div>
 					</>
 				)}
 
 				<div className="mt-12">
-					<SubHeading title="Similar" />
+					{/* <SubHeading title="Similar" /> */}
 					<Gallery items={similarMovies} />
 				</div>
 			</Meta>

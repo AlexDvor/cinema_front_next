@@ -28,7 +28,7 @@ const UserList: FC = () => {
 			<AdminTable
 				tableItems={staticData.users || []}
 				headerItems={['Email', 'Date register']}
-				isLoading={false}
+				isLoading={true}
 				removeHandler={() => 'Remove User'}
 			/>
 		</Meta>
