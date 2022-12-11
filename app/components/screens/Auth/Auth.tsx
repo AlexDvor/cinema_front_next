@@ -1,71 +1,82 @@
-// import styles from './Auth.module.scss'
-// import { FC, useState } from 'react'
-// import { SubmitHandler, useForm } from 'react-hook-form'
+import { FC, useState } from 'react'
+import { SubmitHandler, useForm } from 'react-hook-form'
 
-// import AuthFields from '@/components/shared/user/AuthFields'
-// import Button from '@/components/ui/form-elements/Button'
-// import Heading from '@/components/ui/heading/Heading'
+import AuthFields from '@/components/shared/user/AuthFields'
+import Heading from '@/components/ui/Heading/Heading'
+import Button from '@/components/ui/form-elements/Button'
 
-// // import { useActions } from '@/hooks/useActions'
-// // import { useAuth } from '@/hooks/useAuth'
+import { Meta } from '@/utils/meta'
 
-// // import { Meta } from '@/utils/meta'
+import styles from './Auth.module.scss'
 
-// // import { IAuthInput } from './auth.interface'
-// // import { useAuthRedirect } from './useAuthRedirect'
+interface IAuthInput {
+	email: string
+	password: string
+}
 
-// const Auth: FC = () => {
-// 	// useAuthRedirect()
+// import { useActions } from '@/hooks/useActions'
+// import { useAuth } from '@/hooks/useAuth'
 
-// 	// const { isLoading } = useAuth()
+// import { Meta } from '@/utils/meta'
 
-// 	const [type, setType] = useState<'login' | 'register'>('login')
+// import { IAuthInput } from './auth.interface'
+// import { useAuthRedirect } from './useAuthRedirect'
 
-// 	const {
-// 		register: registerInput,
-// 		handleSubmit,
-// 		formState,
-// 		reset,
-// 	} = useForm<IAuthInput>({
-// 		mode: 'onChange',
-// 	})
+const Auth: FC = () => {
+	// useAuthRedirect()
 
-// 	const { login, register } = useActions()
+	// const { isLoading } = useAuth()
 
-// 	const onSubmit: SubmitHandler<IAuthInput> = (data) => {
-// 		if (type === 'login') login(data)
-// 		else if (type === 'register') register(data)
+	const [type, setType] = useState<'login' | 'register'>('login')
 
-// 		reset()
-// 	}
+	const {
+		register: registerInput,
+		handleSubmit,
+		formState,
+		reset,
+	} = useForm<IAuthInput>({
+		mode: 'onChange',
+	})
 
-// 	return (
-// 		<Meta title="Auth">
-// 			<section className={styles.wrapper}>
-// 				<form onSubmit={handleSubmit(onSubmit)}>
-// 					<Heading title="Auth" className="mb-6" />
-// 					<AuthFields register={registerInput} formState={formState} />
+	// const { login, register } = useActions()
 
-// 					<div className={styles.buttons}>
-// 						<Button
-// 							type="submit"
-// 							onClick={() => setType('login')}
-// 							disabled={isLoading}
-// 						>
-// 							Login
-// 						</Button>
-// 						<Button
-// 							type="submit"
-// 							onClick={() => setType('register')}
-// 							disabled={isLoading}
-// 						>
-// 							Register
-// 						</Button>
-// 					</div>
-// 				</form>
-// 			</section>
-// 		</Meta>
-// 	)
-// }
+	const onSubmit: SubmitHandler<IAuthInput> = (data) => {
+		// if (type === 'login') login(data)
+		// else if (type === 'register') register(data)
 
-// export default Auth
+		// reset()
+		console.log(data)
+
+		reset()
+	}
+
+	return (
+		<Meta title="Auth">
+			<section className={styles.wrapper}>
+				<form onSubmit={handleSubmit(onSubmit)}>
+					<Heading title="Auth" className="mb-6" />
+					<AuthFields register={registerInput} formState={formState} />
+
+					<div className={styles.buttons}>
+						<Button
+							type="submit"
+							onClick={() => setType('login')}
+							disabled={false}
+						>
+							Login
+						</Button>
+						<Button
+							type="submit"
+							onClick={() => setType('register')}
+							disabled={false}
+						>
+							Register
+						</Button>
+					</div>
+				</form>
+			</section>
+		</Meta>
+	)
+}
+
+export default Auth

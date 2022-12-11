@@ -15,6 +15,7 @@ const Logo: FC = () => {
 					width={247}
 					height={34}
 					alt="Movie app"
+					priority
 					draggable={false}
 				/>
 			</Link>

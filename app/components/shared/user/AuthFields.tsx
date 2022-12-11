@@ -14,7 +14,7 @@ interface IAuthFields {
 const AuthFields: FC<IAuthFields> = ({
 	register,
 	formState: { errors },
-	isPasswordRequired = false,
+	isPasswordRequired = true,
 }) => {
 	return (
 		<>
@@ -28,6 +28,8 @@ const AuthFields: FC<IAuthFields> = ({
 				})}
 				placeholder="E-mail"
 				error={errors.email}
+				type="email"
+				autoComplete="username"
 			/>
 			<Field
 				{...register(
@@ -45,6 +47,7 @@ const AuthFields: FC<IAuthFields> = ({
 				placeholder="Password"
 				type="password"
 				error={errors.password}
+				autoComplete="current-password"
 			/>
 		</>
 	)
