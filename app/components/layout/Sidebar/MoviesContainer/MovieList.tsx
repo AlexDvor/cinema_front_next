@@ -1,16 +1,14 @@
 import Link from 'next/link'
 import { FC } from 'react'
 
-// import { IMovieList } from './movie.types'
-// import { IGalleryItem } from '@/interfaces/Gallery.types'
-import { IMovieItem } from '@/interfaces/movie.types'
+import { IMovieDescriptionItem, IMovieItem } from '@/interfaces/movie.types'
 
 import MovieItem from './MovieItem'
 import styles from './MovieList.module.scss'
 
 interface IMovieList {
 	link: string
-	movies: IMovieItem[]
+	movies: IMovieDescriptionItem[]
 	title: string
 }
 

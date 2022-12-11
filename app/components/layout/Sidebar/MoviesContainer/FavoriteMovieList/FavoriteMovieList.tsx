@@ -2,6 +2,8 @@ import { FC } from 'react'
 
 import SkeletonLoader from '@/components/ui/Skeleton-loader/SkeletonLoader'
 
+import { getUserFavoriteMoviesUrl } from '@/configs/url.config'
+
 import { user } from '@/store/user'
 
 // import { useFavorites } from '@/components/screens/favorites/useFavorites'
@@ -13,8 +15,8 @@ import NotAuthFavorites from './NotAuthFavorites'
 const FavoriteMovieList: FC = () => {
 	// const { isLoading, favoritesMovies } = useFavorites()
 	// const { user } = useAuth()
-	const testUser = user
-	if (!testUser.isAuthUser) return <NotAuthFavorites />
+
+	if (!user.isAuthUser) return <NotAuthFavorites />
 
 	return false ? (
 		<div className="mt-11">
@@ -23,8 +25,8 @@ const FavoriteMovieList: FC = () => {
 	) : (
 		<MovieList
 			list={{
-				link: '/favorites',
-				movies: testUser.favorite.movies?.slice(0, 3) || [],
+				link: getUserFavoriteMoviesUrl(),
+				movies: user.favorite.movies?.slice(0, 3) || [],
 				title: 'Favorites',
 			}}
 		/>
