@@ -2,6 +2,8 @@ import axios from 'axios'
 
 import { IFetchMovie, IMovieItem } from '@/interfaces/movie.types'
 
+import { filterMovieData } from '@/utils/movie/filterMovieData'
+
 const API_KEY = process.env.API_MOVIE_KEY
 
 type TFetchCastByMovies = {
@@ -16,7 +18,7 @@ export const MovieService = {
 			.get<IFetchMovie>(
 				`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=${lang}&page=${page}`
 			)
-			.then((res) => res.data)
+			.then((res) => filterMovieData(res.data.results))
 			.catch((error) => error.massage)
 	},
 
@@ -25,9 +27,7 @@ export const MovieService = {
 			.get<IFetchMovie>(
 				`https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}&language=${lang}&page=${page}`
 			)
-			.then((res) =>
-				res.data.results.filter((item) => item.backdrop_path !== null)
-			)
+			.then((res) => filterMovieData(res.data.results))
 			.catch((error) => error.massage)
 	},
 
@@ -36,7 +36,7 @@ export const MovieService = {
 			.get<IFetchMovie>(
 				`https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=${lang}&page=${page}`
 			)
-			.then((res) => res.data)
+			.then((res) => filterMovieData(res.data.results))
 			.catch((error) => error.massage)
 	},
 
@@ -58,7 +58,7 @@ export const MovieService = {
 			.get<IFetchMovie>(
 				`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${movieName}&language=${lang}&page=${page}`
 			)
-			.then((res) => res.data.results)
+			.then((res) => filterMovieData(res.data.results))
 			.catch((error) => error.massage)
 	},
 
@@ -67,11 +67,7 @@ export const MovieService = {
 			.get<TFetchCastByMovies>(
 				`https://api.themoviedb.org/3/person/${actorId}/movie_credits?api_key=${API_KEY}&language=${lang}`
 			)
-			.then((res) => {
-				return res.data.cast.filter(
-					(item: IMovieItem) => item.poster_path !== null
-				)
-			})
+			.then((res) => filterMovieData(res.data.cast))
 			.catch((error) => error.massage)
 	},
 }

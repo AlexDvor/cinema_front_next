@@ -26,9 +26,7 @@ export const GenreServices = {
 			.get<IFetchMovie>(
 				`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=${genreId}&language=${lang}&page=${page}`
 			)
-			.then((res) => {
-				return filterMovieData(res.data.results)
-			})
+			.then((res) => filterMovieData(res.data.results))
 			.catch((error) => error.massage)
 	},
 }

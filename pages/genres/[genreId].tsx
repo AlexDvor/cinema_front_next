@@ -1,5 +1,6 @@
 // import { errorCatch } from 'api/api.helpers'
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
+import { useRouter } from 'next/router'
 
 import Genre from '@/components/screens/Genre/Genre'
 
@@ -10,7 +11,13 @@ import { GenreServices } from '@/services/genre.service'
 import Error404 from '../404'
 
 const GenrePage: NextPage<IGenreProps> = ({ movies, genre }) => {
-	return movies ? <Genre genre={genre} movies={movies} /> : <Error404 />
+	const { genreId } = useRouter().query
+
+	return movies ? (
+		<Genre genre={genre} movies={movies} genreId={genreId} />
+	) : (
+		<Error404 />
+	)
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {

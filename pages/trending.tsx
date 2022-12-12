@@ -8,16 +8,8 @@ import { IMovieItem } from '@/interfaces/movie.types'
 import { MovieService } from '@/services/movie.service'
 
 const TrendingPage: NextPage = () => {
-	const { data } = useQuery(
-		'Popular movies',
-		() => MovieService.getPopularMovies(),
-		{
-			select(data) {
-				return data.results.filter(
-					(item: IMovieItem) => item.backdrop_path !== null
-				)
-			},
-		}
+	const { data } = useQuery('Popular movies', () =>
+		MovieService.getPopularMovies()
 	)
 
 	return (
@@ -25,6 +17,7 @@ const TrendingPage: NextPage = () => {
 			movies={data || []}
 			title="Trending movies"
 			description="Trending movies in excellent quality: legal, safe, without ads"
+			fetchName="Trending movies"
 		/>
 	)
 }

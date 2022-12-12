@@ -13,6 +13,7 @@ const FreshPage: NextPage<{ movies: IMovieItem[] }> = ({ movies }) => {
 				movies={movies || []}
 				title="Fresh movies"
 				description="New movies and series in excellent quality: legal, safe, without ads"
+				fetchName="Fresh movies"
 			></Catalog>
 		</>
 	)
@@ -20,7 +21,7 @@ const FreshPage: NextPage<{ movies: IMovieItem[] }> = ({ movies }) => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
 	try {
-		const { results: movies } = await MovieService.getFreshMovies()
+		const movies = await MovieService.getFreshMovies()
 
 		return {
 			props: { movies },

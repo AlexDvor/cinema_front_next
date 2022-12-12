@@ -21,4 +21,5 @@ export interface IGenreProps {
 	movies: IMovieItem[]
 	genre: IGenresItem
 	description?: string
+	genreId?: string | string[] | undefined
 }
