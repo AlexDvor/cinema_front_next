@@ -3,7 +3,7 @@ import { FC } from 'react'
 // import { useAuth } from '@/hooks/useAuth'
 import { getAdminHomeUrl } from '@/configs/url.config'
 
-import { user } from '@/store/user'
+import { user } from '@/store/user.test.'
 
 import MenuItem from '../MenuItem'
 

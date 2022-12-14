@@ -6,4 +6,5 @@ export type NextPageAuth<P = {}> = NextPage<P> & TypeRoles
 
 export type TypeComponentAuthFields = {
 	Component: TypeRoles
+	children: React.ReactNode
 }

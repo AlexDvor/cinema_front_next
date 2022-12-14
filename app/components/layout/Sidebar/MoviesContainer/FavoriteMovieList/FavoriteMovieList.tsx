@@ -4,7 +4,7 @@ import SkeletonLoader from '@/components/ui/Skeleton-loader/SkeletonLoader'
 
 import { getUserFavoriteMoviesUrl } from '@/configs/url.config'
 
-import { user } from '@/store/user'
+import { user } from '@/store/user.test.'
 
 // import { useFavorites } from '@/components/screens/favorites/useFavorites'
 // import { useAuth } from '@/hooks/useAuth'

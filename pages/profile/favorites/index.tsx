@@ -3,7 +3,7 @@ import Favorites from '@/components/screens/User/Favorites-section/Favorites'
 import { NextPageAuth } from '@/interfaces/auth.types'
 import { IUserFavoriteItem } from '@/interfaces/user-favorite-item.types'
 
-import { user } from '@/store/user'
+import { user } from '@/store/user.test.'
 
 const FavoritesPage: NextPageAuth = () => {
 	const movies = user.favorite.movies.map(

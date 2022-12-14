@@ -4,7 +4,7 @@ import { NextPageAuth } from '@/interfaces/auth.types'
 
 import { getMovieUrl, getOriginalBackdrop } from '@/configs/url.config'
 
-import { user } from '@/store/user'
+import { user } from '@/store/user.test.'
 
 const FavoriteMovies: NextPageAuth = () => {
 	const movies = user.favorite.movies.map((item) => ({

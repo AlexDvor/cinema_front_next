@@ -8,7 +8,7 @@ import AdminTable from '@/ui/admin-table/AdminTable/AdminTable'
 
 import { Meta } from '@/utils/meta'
 
-import { staticData } from '@/store/user'
+import { staticData } from '@/store/user.test.'
 
 import { useUsers } from '../../../../hooks/useUsers'
 

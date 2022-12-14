@@ -4,7 +4,7 @@ import { useQuery } from 'react-query'
 
 import SkeletonLoader from '@/components/ui/Skeleton-loader/SkeletonLoader'
 
-import { staticData } from '@/store/user'
+import { staticData } from '@/store/user.test.'
 
 // import { AdminService } from '@/services/admin/admin.service'
 import styles from '../Admin.module.scss'

@@ -4,7 +4,7 @@ import { NextPageAuth } from '@/interfaces/auth.types'
 
 import { getActorUrl, getPosterImage } from '@/configs/url.config'
 
-import { user } from '@/store/user'
+import { user } from '@/store/user.test.'
 
 const FavoritesActors: NextPageAuth = () => {
 	const actors = user.favorite.actors.map((item) => ({

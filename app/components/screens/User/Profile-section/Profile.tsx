@@ -13,7 +13,7 @@ import UserNavigation from '@/components/ui/user-navigation/UserNavigation'
 // import { toastError } from '@/utils/api/withToastrErrorRedux'
 import { Meta } from '@/utils/meta'
 
-import { user } from '@/store/user'
+import { user } from '@/store/user.test.'
 
 import styles from './Profile.module.scss'
 import { IProfileInput } from './profile.interface'
