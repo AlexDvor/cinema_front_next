@@ -1,16 +1,16 @@
 import { FC } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useMutation, useQuery } from 'react-query'
+import { toastr } from 'react-redux-toastr'
 
 import ProfileFields from '@/components/shared/user/ProfiileFields'
-// import { toastr } from 'react-redux-toastr'
 import Heading from '@/components/ui/Heading/Heading'
 import SkeletonLoader from '@/components/ui/Skeleton-loader/SkeletonLoader'
 import Button from '@/components/ui/form-elements/Button'
 import UserNavigation from '@/components/ui/user-navigation/UserNavigation'
 
 // import { UserService } from '@/services/user/user.service'
-// import { toastError } from '@/utils/api/withToastrErrorRedux'
+import { toastError } from '@/utils/api/withToastrErrorRedux'
 import { Meta } from '@/utils/meta'
 
 import { user } from '@/store/user.test.'

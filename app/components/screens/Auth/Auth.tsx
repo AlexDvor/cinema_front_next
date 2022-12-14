@@ -5,27 +5,23 @@ import AuthFields from '@/components/shared/user/AuthFields'
 import Heading from '@/components/ui/Heading/Heading'
 import Button from '@/components/ui/form-elements/Button'
 
+import { useActions } from '@/hooks/useActions'
+import { useAuth } from '@/hooks/useAuth'
+
 import { Meta } from '@/utils/meta'
 
 import styles from './Auth.module.scss'
+import { useAuthRedirect } from './useAuthRedirect'
 
 interface IAuthInput {
 	email: string
 	password: string
 }
 
-// import { useActions } from '@/hooks/useActions'
-// import { useAuth } from '@/hooks/useAuth'
-
-// import { Meta } from '@/utils/meta'
-
-// import { IAuthInput } from './auth.interface'
-// import { useAuthRedirect } from './useAuthRedirect'
-
 const Auth: FC = () => {
-	// useAuthRedirect()
+	useAuthRedirect()
 
-	// const { isLoading } = useAuth()
+	const { isLoading } = useAuth()
 
 	const [type, setType] = useState<'login' | 'register'>('login')
 
@@ -38,14 +34,11 @@ const Auth: FC = () => {
 		mode: 'onChange',
 	})
 
-	// const { login, register } = useActions()
+	const { login, register } = useActions()
 
 	const onSubmit: SubmitHandler<IAuthInput> = (data) => {
-		// if (type === 'login') login(data)
-		// else if (type === 'register') register(data)
-
-		// reset()
-		console.log(data)
+		if (type === 'login') login(data)
+		else if (type === 'register') register(data)
 
 		reset()
 	}
@@ -61,14 +54,14 @@ const Auth: FC = () => {
 						<Button
 							type="submit"
 							onClick={() => setType('login')}
-							disabled={false}
+							disabled={isLoading}
 						>
 							Login
 						</Button>
 						<Button
 							type="submit"
 							onClick={() => setType('register')}
-							disabled={false}
+							disabled={isLoading}
 						>
 							Register
 						</Button>

@@ -1,22 +1,19 @@
 import { FC } from 'react'
 
-// import { useAuth } from '@/hooks/useAuth'
-import { getAdminHomeUrl } from '@/configs/url.config'
+import { useAuth } from '@/hooks/useAuth'
 
-import { user } from '@/store/user.test.'
+import { getAdminHomeUrl } from '@/configs/url.config'
 
 import MenuItem from '../MenuItem'
 
 import LogoutButton from './LogoutButton'
 
 const AuthItems: FC = () => {
-	// const { user } = useAuth()
-
-	const testUser = user
+	const { user } = useAuth()
 
 	return (
 		<>
-			{testUser.isAuthUser ? (
+			{user ? (
 				<>
 					<MenuItem
 						item={{
@@ -31,7 +28,7 @@ const AuthItems: FC = () => {
 				<MenuItem item={{ icon: 'MdLogin', link: '/auth', title: 'Login' }} />
 			)}
 
-			{testUser?.isAdmin && (
+			{user?.isAdmin && (
 				<MenuItem
 					item={{
 						icon: 'MdOutlineLock',
