@@ -1,6 +1,6 @@
-import axios from 'axios'
+import axios, { axiosClassicMovies } from 'api/interceptors'
 
-import { IFetchMovie, IMovieItem } from '@/interfaces/movie.types'
+import { IFetchMovie } from '@/interfaces/movie.types'
 
 import { filterMovieData } from '@/utils/movie/filterMovieData'
 
@@ -14,36 +14,36 @@ type TFetchCastByMovies = {
 
 export const MovieService = {
 	async getPopularMovies(lang = 'en-US', page = 1) {
-		return axios
+		return axiosClassicMovies
 			.get<IFetchMovie>(
-				`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=${lang}&page=${page}`
+				`/movie/popular?api_key=${API_KEY}&language=${lang}&page=${page}`
 			)
 			.then((res) => filterMovieData(res.data.results))
 			.catch((error) => error.massage)
 	},
 
 	async getTrendingMovies(lang = 'en-US', page = 1) {
-		return axios
+		return axiosClassicMovies
 			.get<IFetchMovie>(
-				`https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}&language=${lang}&page=${page}`
+				`/trending/movie/day?api_key=${API_KEY}&language=${lang}&page=${page}`
 			)
 			.then((res) => filterMovieData(res.data.results))
 			.catch((error) => error.massage)
 	},
 
 	async getFreshMovies(lang = 'en-US', page = 1) {
-		return axios
+		return axiosClassicMovies
 			.get<IFetchMovie>(
-				`https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=${lang}&page=${page}`
+				`/movie/upcoming?api_key=${API_KEY}&language=${lang}&page=${page}`
 			)
 			.then((res) => filterMovieData(res.data.results))
 			.catch((error) => error.massage)
 	},
 
 	async getMovieByID(id: number | string, lang: string = 'en-US') {
-		return await axios
+		return await axiosClassicMovies
 			.get(
-				`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=${lang}&append_to_response=videos,images`
+				`/movie/${id}?api_key=${API_KEY}&language=${lang}&append_to_response=videos,images`
 			)
 			.then((res) => res.data)
 			.catch((error) => error.massage)
@@ -54,18 +54,18 @@ export const MovieService = {
 		page: number = 1,
 		lang: string = 'en-US'
 	) {
-		return await axios
+		return await axiosClassicMovies
 			.get<IFetchMovie>(
-				`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${movieName}&language=${lang}&page=${page}`
+				`/search/movie?api_key=${API_KEY}&query=${movieName}&language=${lang}&page=${page}`
 			)
 			.then((res) => filterMovieData(res.data.results))
 			.catch((error) => error.massage)
 	},
 
 	async getMoviesByActorId(actorId: string | number, lang: string = 'en-US') {
-		return await axios
+		return await axiosClassicMovies
 			.get<TFetchCastByMovies>(
-				`https://api.themoviedb.org/3/person/${actorId}/movie_credits?api_key=${API_KEY}&language=${lang}`
+				`/person/${actorId}/movie_credits?api_key=${API_KEY}&language=${lang}`
 			)
 			.then((res) => filterMovieData(res.data.cast))
 			.catch((error) => error.massage)

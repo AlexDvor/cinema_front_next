@@ -5,4 +5,8 @@ export interface IUser {
 	password: string
 	createdAt: string
 	isAdmin: boolean
+	favorite: {
+		movies: []
+		actors: []
+	}
 }

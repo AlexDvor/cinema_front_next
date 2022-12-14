@@ -8,9 +8,9 @@ export const getAdminHomeUrl = () => getAdminUrl('').slice(0, -1)
 
 export const getUserUrl = () => `/profile`
 
-export const getUserFavoriteListUrl = () => getUserUrl() + `/favorites`
-export const getUserFavoriteMoviesUrl = () => getUserUrl() + `/favorites/movies`
-export const getUserFavoriteActorsUrl = () => getUserUrl() + `/favorites/actors`
+export const getUserFavoriteListUrl = () => `${getUserUrl()}/favorites`
+export const getUserFavoriteMoviesUrl = () => `${getUserUrl()}/favorites/movies`
+export const getUserFavoriteActorsUrl = () => `${getUserUrl()}/favorites/actors`
 
 export const getYouTubeUrl = (idTrailer: string | number): string =>
 	`https://www.youtube.com/watch?v=${idTrailer}`
