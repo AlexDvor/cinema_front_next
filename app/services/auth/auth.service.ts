@@ -9,11 +9,10 @@ import { IAuthResponse } from '@/store/user/user.interface'
 import { removeTokensStorage, saveToStorage } from './auth.helper'
 
 export const AuthService = {
-	async register(name: string, email: string, password: string) {
+	async register(email: string, password: string) {
 		const response = await axios.post<IAuthResponse>(
 			`${SERVER_API}${getAuthUrl('/register')}`,
 			{
-				name,
 				email,
 				password,
 			}

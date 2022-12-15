@@ -6,6 +6,7 @@ const ReduxToastr: FC = () => {
 		<ReduxToastrLib
 			newestOnTop={false}
 			preventDuplicates
+			position="top-right"
 			progressBar
 			closeOnToastrClick
 			timeOut={4000}
