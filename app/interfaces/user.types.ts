@@ -1,12 +1,16 @@
 export interface IUser {
 	_id: string
-	name: string
 	email: string
 	password: string
 	createdAt: string
-	isAdmin: boolean
 	favorite: {
 		movies: []
 		actors: []
 	}
+}
+
+export interface IResponseUser {
+	status: string
+	code: number
+	user: IUser
 }

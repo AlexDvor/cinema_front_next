@@ -1,4 +1,4 @@
-import axios from 'axios'
+import { axiosClassicMovies } from 'api/interceptors'
 
 import { IGenresData } from '@/interfaces/genres.types'
 import { IFetchMovie } from '@/interfaces/movie.types'
@@ -9,7 +9,7 @@ const API_KEY = process.env.API_MOVIE_KEY
 
 export const GenreServices = {
 	async getGenreList(lang = 'en-US') {
-		return await axios
+		return await axiosClassicMovies
 			.get<IGenresData>(
 				`https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=${lang}`
 			)
@@ -22,7 +22,7 @@ export const GenreServices = {
 		lang = 'en-US',
 		page = 1
 	) {
-		return axios
+		return axiosClassicMovies
 			.get<IFetchMovie>(
 				`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=${genreId}&language=${lang}&page=${page}`
 			)

@@ -20,7 +20,13 @@ export interface InterfaceEmailPassword {
 	password: string
 }
 
+export interface ISaveToStorage {
+	user: IUser & ITokens
+}
+
 export interface IAuthResponse extends ITokens {
+	status: string
+	code: number
 	user: IUser & {
 		isAdmin: boolean
 	}

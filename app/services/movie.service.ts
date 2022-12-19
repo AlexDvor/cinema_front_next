@@ -1,4 +1,4 @@
-import axios, { axiosClassicMovies } from 'api/interceptors'
+import { axiosClassicMovies } from 'api/interceptors'
 
 import { IFetchMovie } from '@/interfaces/movie.types'
 

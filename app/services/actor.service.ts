@@ -1,4 +1,4 @@
-import axios from 'axios'
+import { axiosClassicMovies } from 'api/interceptors'
 
 import {
 	IActorItem,
@@ -11,7 +11,7 @@ const API_KEY = process.env.API_MOVIE_KEY
 
 export const ActorServices = {
 	async getPopularActors(lang = 'en', page = 1) {
-		return axios
+		return axiosClassicMovies
 			.get<IFetchPopularDataActors>(
 				`https://api.themoviedb.org/3/person/popular?api_key=${API_KEY}&language=${lang}&page=${page}`
 			)
@@ -23,7 +23,7 @@ export const ActorServices = {
 			.catch((error) => error.massage)
 	},
 	async getActorsByIdMovie(id: string | number, lang = 'en') {
-		return axios
+		return axiosClassicMovies
 			.get<ICastData>(
 				`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${API_KEY}&language=${lang}`
 			)
@@ -31,7 +31,7 @@ export const ActorServices = {
 			.catch((error) => error.massage)
 	},
 	async getDetailsAboutActor(personId: string | number, lang = 'en') {
-		return axios
+		return axiosClassicMovies
 			.get<IDetailsAboutActor>(
 				`https://api.themoviedb.org/3/person/${personId}?api_key=${API_KEY}&language=${lang}&append_to_response=images`
 			)

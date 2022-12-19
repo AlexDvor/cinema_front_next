@@ -1,11 +1,20 @@
 import axios from 'api/interceptors'
 
-import { IFetchFavoriteItems } from '@/interfaces/favorites.types'
+import { IResponseFavoriteItems } from '@/interfaces/favorites.types'
+import { IResponseUser, IUser } from '@/interfaces/user.types'
 
 import { getUsersUrl } from '@/configs/api.config'
 
 export const UserService = {
 	async getFavorites() {
-		return axios.get<IFetchFavoriteItems>(getUsersUrl('/profile/favorites'))
+		const response = await axios.get<IResponseFavoriteItems>(
+			getUsersUrl('/profile/favorites')
+		)
+		return response.data
+	},
+
+	async getProfile() {
+		const { data } = await axios.get<IResponseUser>(getUsersUrl('/profile'))
+		return data
 	},
 }

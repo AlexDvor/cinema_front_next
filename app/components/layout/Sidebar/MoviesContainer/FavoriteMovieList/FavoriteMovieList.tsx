@@ -13,6 +13,7 @@ import NotAuthFavorites from './NotAuthFavorites'
 
 const FavoriteMovieList: FC = () => {
 	const { isLoading, favoritesMovies } = useFavorites()
+	console.log('🚀 - favoritesMovies', favoritesMovies)
 	const { user } = useAuth()
 
 	if (!user) return <NotAuthFavorites />

@@ -1,4 +1,3 @@
-import { IAuthResponse, InterfaceEmailPassword } from './user.interface'
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { errorCatch } from 'api/api.helpers'
 import { toastr } from 'react-redux-toastr'
@@ -6,6 +5,8 @@ import { toastr } from 'react-redux-toastr'
 import { AuthService } from '@/services/auth/auth.service'
 
 import { toastError } from '@/utils/api/withToastrErrorRedux'
+
+import { IAuthResponse, InterfaceEmailPassword } from './user.interface'
 
 export const register = createAsyncThunk<IAuthResponse, InterfaceEmailPassword>(
 	'auth/register',
@@ -44,15 +45,16 @@ export const checkAuth = createAsyncThunk<IAuthResponse>(
 	async (_, thunkAPI) => {
 		try {
 			const response = await AuthService.getNewTokens()
+			console.log('🚀 - response', response)
 			return response.data
 		} catch (error) {
-			if (errorCatch(error) === 'jwt expired') {
-				toastr.error(
-					'Logout',
-					'Your authorizaiton is finished, plz sign in again'
-				)
-				thunkAPI.dispatch(logout())
-			}
+			console.log('🚀 - error', error)
+			toastr.error(
+				'Logout',
+				'Your authorizaiton is finished, plz sign in again'
+			)
+			thunkAPI.dispatch(logout())
+
 			return thunkAPI.rejectWithValue(error)
 		}
 	}

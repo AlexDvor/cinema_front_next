@@ -12,9 +12,11 @@ export const useFavorites = () => {
 		data: favoritesMovies,
 		refetch,
 	} = useQuery('Favorite movies', () => UserService.getFavorites(), {
-		select: ({ data }) => data,
+		select: ({ data }) => data.movies,
 		enabled: !!user,
 	})
+
+	console.log(favoritesMovies)
 
 	return { isLoading, favoritesMovies, refetch }
 }

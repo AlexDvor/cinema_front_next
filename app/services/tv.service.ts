@@ -1,4 +1,4 @@
-import axios from 'axios'
+import { axiosClassicMovies } from 'api/interceptors'
 
 import { IFetchTv } from '@/interfaces/tv.types'
 
@@ -6,7 +6,7 @@ const API_KEY = process.env.API_MOVIE_KEY
 
 export const TvServices = {
 	async getTopTv(lang = 'en-US', page = 1) {
-		return axios
+		return axiosClassicMovies
 			.get<IFetchTv>(
 				`https://api.themoviedb.org/3/tv/popular?api_key=${API_KEY}&language=${lang}&page=${page}`
 			)
@@ -17,7 +17,7 @@ export const TvServices = {
 	},
 
 	async getTvByID(tvId: string | number, lang = 'en-US') {
-		return axios
+		return axiosClassicMovies
 			.get<IFetchTv>(
 				`https://api.themoviedb.org/3/tv/${tvId}?api_key=${API_KEY}&language=${lang}`
 			)

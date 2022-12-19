@@ -24,6 +24,7 @@ export const AuthService = {
 
 		return response
 	},
+
 	async login(email: string, password: string) {
 		const response = await axios.post<IAuthResponse>(
 			`${SERVER_API}${getAuthUrl('/login')}`,
@@ -48,7 +49,7 @@ export const AuthService = {
 	async getNewTokens() {
 		const refreshToken = Cookies.get('refreshToken')
 		const response = await axios.post<IAuthResponse>(
-			`${SERVER_API}${getAuthUrl('/login/access-token')}`,
+			`${SERVER_API}${getAuthUrl('/refresh-token')}`,
 			{
 				refreshToken,
 			},
