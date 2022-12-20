@@ -57,7 +57,7 @@ instance.interceptors.response.use(
 					errorCatch(error) === 'jwt expired'
 				) {
 					console.log('Delete tokens from local store')
-					push('/auth')
+					push('/')
 					toastr.error(
 						'Logout',
 						'Your authorizaiton is finished, plz sign in again'
