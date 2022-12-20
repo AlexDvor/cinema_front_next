@@ -23,19 +23,15 @@ const Profile: FC = () => {
 			mode: 'onChange',
 		})
 
-	const { data, isLoading } = useQuery(
-		'profile',
-		() => UserService.getProfile(),
-		{
-			onSuccess({ data }) {
-				setValue('email', data.email)
-				setValue('name', data.name)
-			},
-			onError(error) {
-				toastError(error, 'Get profile')
-			},
-		}
-	)
+	const { isLoading } = useQuery('profile', () => UserService.getProfile(), {
+		onSuccess({ data }) {
+			setValue('email', data.user.email)
+			// setValue('name', data.user.name)
+		},
+		onError(error) {
+			toastError(error, 'Get profile')
+		},
+	})
 
 	const onSubmit: SubmitHandler<IProfileInput> = async (data) => {
 		console.log('onSubmit', data)

@@ -14,7 +14,11 @@ export const UserService = {
 	},
 
 	async getProfile() {
-		const { data } = await axios.get<IResponseUser>(getUsersUrl('/profile'))
-		return data
+		const response = await axios.get<IResponseUser>(getUsersUrl('/profile'))
+		return response
+	},
+	async getCurrentUser() {
+		const response = await axios.get<IResponseUser>(getUsersUrl('/profile'))
+		return response
 	},
 }

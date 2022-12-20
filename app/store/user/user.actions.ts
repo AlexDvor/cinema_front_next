@@ -45,16 +45,20 @@ export const checkAuth = createAsyncThunk<IAuthResponse>(
 	async (_, thunkAPI) => {
 		try {
 			const response = await AuthService.getNewTokens()
-			console.log('🚀 - response', response)
 			return response.data
 		} catch (error) {
-			console.log('🚀 - error', error)
-			toastr.error(
-				'Logout',
-				'Your authorizaiton is finished, plz sign in again'
-			)
-			thunkAPI.dispatch(logout())
-
+			console.log('🚀 - error checkAuth', error)
+			if (
+				errorCatch(error) ===
+					'Refresh token was expired. Please make a new signin request' ||
+				errorCatch(error) === 'Refresh token is not in database!'
+			) {
+				toastr.error(
+					'Logout',
+					'Your authorizaiton is finished, plz sign in again'
+				)
+				thunkAPI.dispatch(logout())
+			}
 			return thunkAPI.rejectWithValue(error)
 		}
 	}
