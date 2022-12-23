@@ -4,7 +4,7 @@ import { useAuth } from '@/hooks/useAuth'
 
 import { UserService } from '@/services/user/user.service'
 
-export const useFavorites = () => {
+export const useFavoritesMovies = () => {
 	const { user } = useAuth()
 
 	const {
@@ -15,8 +15,6 @@ export const useFavorites = () => {
 		select: ({ data }) => data.movies,
 		enabled: !!user,
 	})
-
-	console.log(favoritesMovies)
 
 	return { isLoading, favoritesMovies, refetch }
 }

@@ -7,9 +7,10 @@ import { IMovieDescriptionItem } from '@/interfaces/movie.types'
 import { parseReleaseData } from '@/utils/movie/parseReleaseData'
 import { timeConvert } from '@/utils/movie/timeConvert'
 
-import { getActorUrl, getGenreUrl } from '@/configs/url.config'
+import { getGenreUrl } from '@/configs/url.config'
 
-// import FavoriteButton from '../FavoriteButton/FavoriteButton'
+import FavoriteButton from '../FavoriteButton/FavoriteButton'
+
 import styles from './Content.module.scss'
 import ContentList from './ContentList/ContentList'
 
@@ -17,7 +18,7 @@ const Content: FC<{ movie: IMovieDescriptionItem }> = ({ movie }) => {
 	return (
 		<div className={styles.content}>
 			<h1>{movie.title}</h1>
-			{/* <FavoriteButton movieId={movie._id} /> */}
+			<FavoriteButton movie={movie} />
 			<div className={styles.rating}>
 				<MaterialIcon name="MdStarRate" />
 				<span>{movie.vote_average.toFixed(1)}</span>

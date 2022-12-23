@@ -1,15 +1,15 @@
-// import { useQuery } from 'react-query'
+import { useQuery } from 'react-query'
 
-// import { UserService } from '@/services/user/user.service'
+import { UserService } from '@/services/user/user.service'
 
-// export const useFavorites = () => {
-// 	const {
-// 		isLoading,
-// 		data: favoritesMovies,
-// 		refetch,
-// 	} = useQuery('Favorite movies', () => UserService.getFavorites(), {
-// 		select: ({ data }) => data,
-// 	})
+export const useFavorites = () => {
+	const {
+		isLoading,
+		data: favoritesMovies,
+		refetch,
+	} = useQuery('Favorite movies', () => UserService.getFavorites(), {
+		select: ({ data }) => data,
+	})
 
-// 	return { isLoading, favoritesMovies, refetch }
-// }
+	return { isLoading, favoritesMovies, refetch }
+}

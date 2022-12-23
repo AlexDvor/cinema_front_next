@@ -1,9 +1,15 @@
 import axios from 'api/interceptors'
 
 import { IResponseFavoriteItems } from '@/interfaces/favorites.types'
-import { IResponseUser, IUser } from '@/interfaces/user.types'
+import { IMovieDescriptionItem } from '@/interfaces/movie.types'
 
 import { getUsersUrl } from '@/configs/api.config'
+
+import { IAuthResponse } from '@/store/user/user.interface'
+
+const TOGGLE_FAVORITE_MOVIES_URL = `${getUsersUrl(
+	'/profile/favorite/movies/toggle'
+)}`
 
 export const UserService = {
 	async getFavorites() {
@@ -14,11 +20,13 @@ export const UserService = {
 	},
 
 	async getProfile() {
-		const response = await axios.get<IResponseUser>(getUsersUrl('/profile'))
+		const response = await axios.get<IAuthResponse>(getUsersUrl('/profile'))
 		return response
 	},
-	async getCurrentUser() {
-		const response = await axios.get<IResponseUser>(getUsersUrl('/profile'))
-		return response
+
+	async toggleFavoriteMovies(movie: IMovieDescriptionItem) {
+		return axios.post(TOGGLE_FAVORITE_MOVIES_URL, {
+			movie,
+		})
 	},
 }
