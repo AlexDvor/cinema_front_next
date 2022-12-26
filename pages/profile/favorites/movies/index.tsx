@@ -1,17 +1,18 @@
 import FavoriteList from '@/components/screens/User/Favorite-list/FavoriteList'
+import { useFavoritesList } from '@/components/screens/User/Favorite-list/useFavorites'
 
 import { NextPageAuth } from '@/interfaces/auth.types'
 
-import { getMovieUrl, getOriginalBackdrop } from '@/configs/url.config'
-
-import { user } from '@/store/user.test.'
+import { getMovieUrl, getPosterImage } from '@/configs/url.config'
 
 const FavoriteMovies: NextPageAuth = () => {
-	const movies = user.favorite.movies.map((item) => ({
+	const { favoritesList, refetch, isLoading } = useFavoritesList()
+
+	const movies = favoritesList?.movies.map((item) => ({
 		id: item.id,
 		title: item.title,
 		url: getMovieUrl(item.id),
-		posterPath: getOriginalBackdrop(item.backdrop_path),
+		posterPath: getPosterImage(item.poster_path),
 	}))
 	return (
 		<>

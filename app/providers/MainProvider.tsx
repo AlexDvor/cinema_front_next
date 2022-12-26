@@ -13,7 +13,7 @@ import { TypeComponentAuthFields } from '@/interfaces/auth.types'
 import AuthProvider from './AuthProvider/AuthProvider'
 import HeadProvider from './HeadProvider/HeadProvider'
 
-const queryClient = new QueryClient({
+export const queryClientMovie = new QueryClient({
 	defaultOptions: {
 		queries: {
 			refetchOnWindowFocus: false,
@@ -26,7 +26,7 @@ const MainProvider: FC<TypeComponentAuthFields> = ({ children, Component }) => {
 		<>
 			<HeadProvider>
 				<Provider store={store}>
-					<QueryClientProvider client={queryClient}>
+					<QueryClientProvider client={queryClientMovie}>
 						<ReduxToastr />
 						<AuthProvider Component={Component}>
 							<Layout>{children}</Layout>

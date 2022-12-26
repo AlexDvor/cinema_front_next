@@ -16,6 +16,7 @@ interface Biography {
 }
 
 const Biography: FC<Biography> = ({ actor, knowForMovies }) => {
+	console.log('🚀 - actor', actor)
 	return (
 		<>
 			<section className="flex">
@@ -29,10 +30,7 @@ const Biography: FC<Biography> = ({ actor, knowForMovies }) => {
 							priority
 						></Image>
 
-						<FavoriteButton
-							article={{ id: actor.id, name: actor.name }}
-							typeArticle="actors"
-						/>
+						<FavoriteButton article={actor} typeArticle="actors" />
 					</div>
 					<h3 className="text-white text-2xl mb-10 text-center font-bold">
 						{actor.name}

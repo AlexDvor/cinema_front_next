@@ -1,13 +1,14 @@
 import FavoriteList from '@/components/screens/User/Favorite-list/FavoriteList'
+import { useFavoritesList } from '@/components/screens/User/Favorite-list/useFavorites'
 
 import { NextPageAuth } from '@/interfaces/auth.types'
 
 import { getActorUrl, getPosterImage } from '@/configs/url.config'
 
-import { user } from '@/store/user.test.'
-
 const FavoritesActors: NextPageAuth = () => {
-	const actors = user.favorite.actors.map((item) => ({
+	const { favoritesList } = useFavoritesList()
+
+	const actors = favoritesList?.actors.map((item) => ({
 		id: item.id,
 		title: item.name,
 		url: getActorUrl(item.id),

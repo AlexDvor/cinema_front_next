@@ -8,8 +8,8 @@ import { IUserFavoriteItem } from '@/interfaces/user-favorite-item.types'
 import { Meta } from '@/utils/meta'
 
 interface IFavoriteList {
-	movie: IUserFavoriteItem
-	actor: IUserFavoriteItem
+	movie: IUserFavoriteItem | undefined
+	actor: IUserFavoriteItem | undefined
 }
 
 const Favorites: FC<IFavoriteList> = ({ movie, actor }) => {
@@ -17,9 +17,9 @@ const Favorites: FC<IFavoriteList> = ({ movie, actor }) => {
 		<>
 			<Meta title="Favorite List">
 				<UserNavigation />
-				<div className="">
-					<UserFavoriteItem item={movie}></UserFavoriteItem>
-					<UserFavoriteItem item={actor}></UserFavoriteItem>
+				<div>
+					{movie && <UserFavoriteItem item={movie}></UserFavoriteItem>}
+					{actor && <UserFavoriteItem item={actor}></UserFavoriteItem>}
 				</div>
 			</Meta>
 		</>
