@@ -3,21 +3,24 @@ import { FC, useEffect, useState } from 'react'
 import { useMutation } from 'react-query'
 import { toastr } from 'react-redux-toastr'
 
-import { IMovieDescriptionItem } from '@/interfaces/movie.types'
-
-import { UserService } from '@/services/user/user.service'
+import { TArticle, UserService } from '@/services/user/user.service'
 
 import { toastError } from '@/utils/api/withToastrErrorRedux'
 import { debounceClick } from '@/utils/debounce/debounceClick'
 
-import { useFavoritesMovies } from '../../User/Favorite-list/useFavorites'
+import { useFavoritesList } from '../../screens/User/Favorite-list/useFavorites'
 
 import styles from './FavoriteButton.module.scss'
 import HeartImage from './heart-animation.png'
 
-const FavoriteButton: FC<{ movie: IMovieDescriptionItem }> = ({ movie }) => {
+interface IFavoriteButton {
+	article: { id: number; title?: string; name?: string }
+	typeArticle: TArticle
+}
+
+const FavoriteButton: FC<IFavoriteButton> = ({ article, typeArticle }) => {
 	const [isFavoriteItem, setIsFavoriteItem] = useState(false)
-	const { favoritesMovies, refetch } = useFavoritesMovies()
+	const { favoritesList, refetch } = useFavoritesList()
 	const [count, setCount] = useState(0)
 	const [isBlockedButton, setBlockedButton] = useState(false)
 
@@ -31,7 +34,9 @@ const FavoriteButton: FC<{ movie: IMovieDescriptionItem }> = ({ movie }) => {
 			setBlockedButton(true)
 			toastr.info(
 				'Attention !!!',
-				`The button has been disabled. Please decide what you want remove or add "${movie.title}"`,
+				`The button has been disabled. Please decide what you want remove or add "${
+					article.title || article.name
+				}"`,
 				{ timeOut: 10000 }
 			)
 		}
@@ -39,15 +44,16 @@ const FavoriteButton: FC<{ movie: IMovieDescriptionItem }> = ({ movie }) => {
 	}, [count])
 
 	useEffect(() => {
-		if (favoritesMovies) {
-			const isHasMovie = favoritesMovies.some((item) => item.id === movie.id)
-			if (isFavoriteItem !== isHasMovie) setIsFavoriteItem(isHasMovie)
+		const favoriteItemData = favoritesList ? favoritesList[typeArticle] : []
+		if (favoriteItemData) {
+			const isHasItem = favoriteItemData.some((item) => item.id === article.id)
+			if (isFavoriteItem !== isHasItem) setIsFavoriteItem(isHasItem)
 		}
-	}, [favoritesMovies, isFavoriteItem, movie])
+	}, [article, favoritesList, isFavoriteItem, typeArticle])
 
 	const { mutateAsync } = useMutation(
-		'update actor',
-		() => UserService.toggleFavoriteMovies(movie),
+		'update favorite list',
+		() => UserService.toggleFavoriteList(article, typeArticle),
 		{
 			onError(error) {
 				toastError(error, 'Update favorite list')
@@ -56,9 +62,15 @@ const FavoriteButton: FC<{ movie: IMovieDescriptionItem }> = ({ movie }) => {
 				setIsFavoriteItem(!isFavoriteItem)
 				refetch()
 				if (!isFavoriteItem) {
-					toastr.success(`${movie.title}`, 'Successfully added to the library')
+					toastr.success(
+						`${article.title || article.name} `,
+						'Successfully added to the library'
+					)
 				} else {
-					toastr.info(`${movie.title}`, 'Successfully removed')
+					toastr.info(
+						`${article.title || article.name}`,
+						'Successfully removed'
+					)
 				}
 			},
 		}
@@ -70,6 +82,8 @@ const FavoriteButton: FC<{ movie: IMovieDescriptionItem }> = ({ movie }) => {
 			onClick={handleClick}
 			className={cn(styles.button, {
 				[styles.animate]: isFavoriteItem,
+				[styles.movieButton]: typeArticle === 'movies',
+				[styles.actorButton]: typeArticle === 'actors',
 			})}
 			style={{ backgroundImage: `url(${HeartImage.src})` }}
 		/>

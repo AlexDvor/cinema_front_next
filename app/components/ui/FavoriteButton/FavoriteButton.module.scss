@@ -1,11 +1,20 @@
 .button {
-	@apply absolute right-0 pt-8 bg-no-repeat w-24 h-16 bg-left mx-auto bg-transparent;
+	@apply absolute pt-8 bg-no-repeat w-24 h-16 bg-left mx-auto bg-transparent;
 	background-size: 2900%;
-	bottom: 54%;
 }
 
 .animate {
 	animation: heart-burst 0.8s steps(28) forwards;
+}
+
+.movieButton {
+	bottom: 54%;
+	right: 0%;
+}
+
+.actorButton {
+	bottom: 0%;
+	right: 0%;
 }
 
 @keyframes heart-burst {

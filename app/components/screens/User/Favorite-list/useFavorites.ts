@@ -4,17 +4,17 @@ import { useAuth } from '@/hooks/useAuth'
 
 import { UserService } from '@/services/user/user.service'
 
-export const useFavoritesMovies = () => {
+export const useFavoritesList = () => {
 	const { user } = useAuth()
 
 	const {
 		isLoading,
-		data: favoritesMovies,
+		data: favoritesList,
 		refetch,
-	} = useQuery('Favorite movies', () => UserService.getFavorites(), {
-		select: ({ data }) => data.movies,
+	} = useQuery('Favorite List', () => UserService.getFavorites(), {
+		select: ({ data }) => data,
 		enabled: !!user,
 	})
 
-	return { isLoading, favoritesMovies, refetch }
+	return { isLoading, favoritesList, refetch }
 }
