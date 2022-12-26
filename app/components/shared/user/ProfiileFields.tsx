@@ -19,13 +19,6 @@ const ProfileFields: FC<IProfileFields> = ({
 	return (
 		<>
 			<Field
-				{...register('name', {
-					required: 'Name is required!',
-				})}
-				placeholder="Name"
-				error={errors.name}
-			/>
-			<Field
 				{...register('email', {
 					required: 'Email is required!',
 					pattern: {
