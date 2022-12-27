@@ -5,7 +5,7 @@ import Home from '@/components/screens/Home/Home'
 import { IActorItem } from '@/interfaces/actor.types'
 import { IGalleryItem } from '@/interfaces/gallery.types'
 import { IMovieItem } from '@/interfaces/movie.types'
-import { IHome } from '@/interfaces/pages.types'
+import { SliderProps } from '@/interfaces/slider.types'
 import { ITvItem } from '@/interfaces/tv.types'
 
 import { ActorServices } from '@/services/actor.service'
@@ -13,6 +13,13 @@ import { MovieService } from '@/services/movie.service'
 import { TvServices } from '@/services/tv.service'
 
 import { getActorUrl, getMovieUrl, getTvUrl } from '@/configs/url.config'
+
+export interface IHome {
+	actors: IGalleryItem[]
+	movies: IGalleryItem[]
+	slider: SliderProps[]
+	tvSerials: IGalleryItem[]
+}
 
 const HomePage: NextPage<IHome> = (props) => {
 	return (

@@ -1,8 +1,8 @@
 import Image from 'next/legacy/image'
 import { FC } from 'react'
 
-import FavoriteButton from '@/components/ui/FavoriteButton/FavoriteButton'
-import Gallery from '@/components/ui/Gallery/Gallery'
+import FavoriteButton from '@/components/ui/favoriteButton/FavoriteButton'
+import Gallery from '@/components/ui/gallery/Gallery'
 import SubHeading from '@/components/ui/heading/SubHeading'
 
 import { IDetailsAboutActor } from '@/interfaces/actor.types'
@@ -87,7 +87,7 @@ const Biography: FC<Biography> = ({ actor, knowForMovies }) => {
 					) : (
 						<div className="m-20">
 							<div className="p-10 bg-gray-800 rounded-lg outline outline-1 outline-gray-700">
-								<p className="text-primary mb-3 text-center">{`Sorry, we do not have information about ${data.name}`}</p>
+								<p className="text-primary mb-3 text-center">{`Sorry, we do not have information about ${actor.name}`}</p>
 							</div>
 						</div>
 					)}

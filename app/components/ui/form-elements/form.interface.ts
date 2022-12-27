@@ -1,5 +1,10 @@
 import { EditorProps } from 'draft-js'
-import { ButtonHTMLAttributes, CSSProperties, InputHTMLAttributes } from 'react'
+import {
+	ButtonHTMLAttributes,
+	CSSProperties,
+	InputHTMLAttributes,
+	ReactNode,
+} from 'react'
 import { FieldError, FieldErrorsImpl } from 'react-hook-form'
 
 export interface IFieldProps {

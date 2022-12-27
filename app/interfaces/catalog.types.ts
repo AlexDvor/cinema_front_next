@@ -7,5 +7,5 @@ export interface ICatalog {
 	description?: string
 	movies: IMovieItem[]
 	fetchName: TFetch
-	genreId?
+	genreId?: number
 }

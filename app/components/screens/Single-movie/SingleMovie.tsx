@@ -1,12 +1,10 @@
 import dynamic from 'next/dynamic'
 import { FC } from 'react'
 
-import Banner from '@/components/ui/Banner/Banner'
-import Gallery from '@/components/ui/Gallery/Gallery'
+import Banner from '@/components/ui/banner/Banner'
+import Gallery from '@/components/ui/gallery/Gallery'
 import SubHeading from '@/components/ui/heading/SubHeading'
 
-import { IGalleryItem } from '@/interfaces/gallery.types'
-import { IMovieDescriptionItem } from '@/interfaces/movie.types'
 import { ISingleMovie } from '@/interfaces/single-movie.types'
 
 import { Meta } from '@/utils/meta'
@@ -41,21 +39,21 @@ const SingleMovie: FC<ISingleMovie> = ({ movie, cast, similarMovies }) => {
 				/>
 				<h3 className="text-gray-500 my-4">{movie.overview}</h3>
 
-				<>
-					<DynamicPlayer trailers={movie.videos.results} />{' '}
-				</>
+				{/* <>
+					<DynamicPlayer trailers={movie.videos.results} />
+				</> */}
 
 				{cast?.length && (
 					<>
 						<div className="mt-12">
-							{/* <SubHeading title="Cast" /> */}
+							<SubHeading title="Cast" />
 							<Gallery items={cast} />
 						</div>
 					</>
 				)}
 
 				<div className="mt-12">
-					{/* <SubHeading title="Similar" /> */}
+					<SubHeading title="Similar" />
 					<Gallery items={similarMovies} />
 				</div>
 			</Meta>

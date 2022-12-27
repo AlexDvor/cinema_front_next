@@ -7,9 +7,6 @@ import { IUserFavoriteItem } from '@/interfaces/user-favorite-item.types'
 
 import { getFullWidthBackdrop } from '@/configs/url.config'
 
-import SkeletonLoader from '../Skeleton-loader/SkeletonLoader'
-import SubHeading from '../heading/SubHeading'
-
 import styles from './UserFavoriteItem.module.scss'
 
 const UserFavoriteItem: FC<{ item: IUserFavoriteItem }> = ({ item }) => {

@@ -1,7 +1,7 @@
 import { ChangeEvent, FC, useState } from 'react'
 import { useQuery } from 'react-query'
 
-import SearchField from '@/components/ui/Search-field/SearchField'
+import SearchField from '@/components/ui/search-field/SearchField'
 
 import { useDebounce } from '@/hooks/useDebounce'
 

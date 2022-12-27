@@ -1,10 +1,7 @@
 import { FC } from 'react'
 
-import Description from '@/components/ui/Heading/Description'
-import Heading from '@/components/ui/Heading/Heading'
-
-import { IMovieDescriptionItem } from '@/interfaces/movie.types'
-import { TestMovie } from '@/interfaces/test.movies.types'
+import Description from '@/components/ui/heading/Description'
+import Heading from '@/components/ui/heading/Heading'
 
 import { Meta } from '@/utils/meta'
 

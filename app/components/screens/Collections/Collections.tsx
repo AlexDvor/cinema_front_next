@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
-import Description from '@/components/ui/Heading/Description'
-import Heading from '@/components/ui/Heading/Heading'
+import Description from '@/components/ui/heading/Description'
+import Heading from '@/components/ui/heading/Heading'
 
 import { IGenreItem } from '@/interfaces/genres.types'
 

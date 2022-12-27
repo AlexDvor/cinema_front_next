@@ -1,6 +1,6 @@
 import { FC, MouseEvent } from 'react'
 
-import MaterialIcon from '@/components/ui/MaterialIcon/MaterialIcon'
+import MaterialIcon from '@/components/ui/materialIcon/MaterialIcon'
 
 import { useActions } from '@/hooks/useActions'
 

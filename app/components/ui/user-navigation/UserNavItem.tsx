@@ -9,8 +9,7 @@ import styles from './UserNavigation.module.scss'
 
 const UserNavItem: FC<{ navItem: IUserNavItem }> = ({ navItem }) => {
 	const { asPath } = useRouter()
-	// console.log('🚀 - asPath', asPath)
-	// console.log('🚀 - navItem', navItem.link)
+
 	return (
 		<li>
 			<Link

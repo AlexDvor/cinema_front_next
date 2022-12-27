@@ -8,9 +8,3 @@ export interface IUser {
 		actors: []
 	}
 }
-
-export interface IResponseUser {
-	status: string
-	code: number
-	user: IUser
-}

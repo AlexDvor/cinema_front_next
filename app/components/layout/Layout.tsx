@@ -1,13 +1,11 @@
 import { FC } from 'react'
 import React from 'react'
 
-import { TChildren } from '@/interfaces/children.types'
-
 import styles from './Layout.module.scss'
 import Navigation from './Navigation/Navigation'
 import Sidebar from './Sidebar/Sidebar'
 
-const Layout: FC<TChildren> = ({ children }) => {
+const Layout: FC<{ children: React.ReactNode }> = ({ children }) => {
 	return (
 		<>
 			<div className={styles.layout}>

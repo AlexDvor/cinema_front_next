@@ -3,13 +3,18 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { FC } from 'react'
 
-import { ISeo } from '@/interfaces/meta.types'
-
 import logoImage from '@/assets/images/logo.svg'
 
 import { siteName, titleMerge } from '@/configs/seo.config'
 
 import { onlyText } from '../string/clearText'
+
+interface ISeo {
+	title: string
+	description?: string
+	image?: string
+	children: React.ReactNode
+}
 
 export const Meta: FC<ISeo> = ({
 	title,

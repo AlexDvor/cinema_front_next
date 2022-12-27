@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import MaterialIcon from '@/components/ui/MaterialIcon/MaterialIcon'
+import MaterialIcon from '@/components/ui/materialIcon/MaterialIcon'
 
 import { IMovieDescriptionItem } from '@/interfaces/movie.types'
 
@@ -9,7 +9,7 @@ import { timeConvert } from '@/utils/movie/timeConvert'
 
 import { getGenreUrl } from '@/configs/url.config'
 
-import FavoriteButton from '../../../ui/FavoriteButton/FavoriteButton'
+import FavoriteButton from '../../../ui/favoriteButton/FavoriteButton'
 
 import styles from './Content.module.scss'
 import ContentList from './ContentList/ContentList'

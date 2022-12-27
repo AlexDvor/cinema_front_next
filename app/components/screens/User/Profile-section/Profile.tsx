@@ -1,12 +1,10 @@
 import { FC } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { useMutation, useQuery } from 'react-query'
-import { toastr } from 'react-redux-toastr'
+import { useQuery } from 'react-query'
 
 import ProfileFields from '@/components/shared/user/ProfiileFields'
-import Heading from '@/components/ui/Heading/Heading'
-import SkeletonLoader from '@/components/ui/Skeleton-loader/SkeletonLoader'
 import Button from '@/components/ui/form-elements/Button'
+import SkeletonLoader from '@/components/ui/skeleton-loader/SkeletonLoader'
 import UserNavigation from '@/components/ui/user-navigation/UserNavigation'
 
 import { UserService } from '@/services/user/user.service'

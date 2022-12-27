@@ -6,7 +6,7 @@ import { useVideo } from '@/hooks/useVideo'
 
 import { IVideoPlayer } from '@/interfaces/video.types'
 
-import MaterialIcon from '../MaterialIcon/MaterialIcon'
+import MaterialIcon from '../materialIcon/MaterialIcon'
 
 import AuthPlaceholder from './AuthPlaceholder/AuthPlaceholder'
 import styles from './VideoPlayer.module.scss'
