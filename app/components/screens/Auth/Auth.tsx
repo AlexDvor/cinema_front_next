@@ -2,8 +2,8 @@ import { FC, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
 import AuthFields from '@/components/shared/user/AuthFields'
+import Heading from '@/components/ui/Heading/Heading'
 import Button from '@/components/ui/form-elements/Button'
-import Heading from '@/components/ui/heading/Heading'
 
 import { useActions } from '@/hooks/useActions'
 import { useAuth } from '@/hooks/useAuth'

@@ -1,8 +1,8 @@
 import { FC, useEffect, useState } from 'react'
 
 import GalleryItem from '@/components/ui/Gallery/GalleryItem'
-import Description from '@/components/ui/heading/Description'
-import Heading from '@/components/ui/heading/Heading'
+import Description from '@/components/ui/Heading/Description'
+import Heading from '@/components/ui/Heading/Heading'
 
 import { ICatalog } from '@/interfaces/catalog.types'
 

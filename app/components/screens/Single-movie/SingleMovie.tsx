@@ -1,9 +1,9 @@
 import dynamic from 'next/dynamic'
 import { FC } from 'react'
 
-import Banner from '@/components/ui/banner/Banner'
-import Gallery from '@/components/ui/gallery/Gallery'
-import SubHeading from '@/components/ui/heading/SubHeading'
+import Banner from '@/components/ui/Banner/Banner'
+import Gallery from '@/components/ui/Gallery/Gallery'
+import SubHeading from '@/components/ui/Heading/SubHeading'
 
 import { ISingleMovie } from '@/interfaces/single-movie.types'
 

@@ -3,7 +3,7 @@ import Image from 'next/legacy/image'
 import Link from 'next/link'
 import { FC } from 'react'
 
-import { IGalleryItemProps } from '@/interfaces/gallery.types'
+import { IGalleryItemProps } from '@/interfaces/Gallery.types'
 
 import { getPosterImage } from '@/configs/url.config'
 

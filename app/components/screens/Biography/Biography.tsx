@@ -1,9 +1,9 @@
 import Image from 'next/legacy/image'
 import { FC } from 'react'
 
-import FavoriteButton from '@/components/ui/favoriteButton/FavoriteButton'
-import Gallery from '@/components/ui/gallery/Gallery'
-import SubHeading from '@/components/ui/heading/SubHeading'
+import FavoriteButton from '@/components/ui/FavoriteButton/FavoriteButton'
+import Gallery from '@/components/ui/Gallery/Gallery'
+import SubHeading from '@/components/ui/Heading/SubHeading'
 
 import { IDetailsAboutActor } from '@/interfaces/actor.types'
 import { IGalleryItem } from '@/interfaces/gallery.types'

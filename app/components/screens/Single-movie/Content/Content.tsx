@@ -9,7 +9,7 @@ import { timeConvert } from '@/utils/movie/timeConvert'
 
 import { getGenreUrl } from '@/configs/url.config'
 
-import FavoriteButton from '../../../ui/favoriteButton/FavoriteButton'
+import FavoriteButton from '../../../ui/FavoriteButton/FavoriteButton'
 
 import styles from './Content.module.scss'
 import ContentList from './ContentList/ContentList'

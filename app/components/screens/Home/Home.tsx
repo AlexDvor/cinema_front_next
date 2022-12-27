@@ -1,15 +1,15 @@
 import { FC } from 'react'
 
-import Heading from '@/components/ui/heading/Heading'
-import SubHeading from '@/components/ui/heading/SubHeading'
+import Heading from '@/components/ui/Heading/Heading'
+import SubHeading from '@/components/ui/Heading/SubHeading'
 
 import logoImage from '@/assets/images/logo.svg'
 
 import { Meta } from '@/utils/meta'
 
 import { IHome } from '../../../../pages'
+import Gallery from '../../ui/Gallery/Gallery'
 import Slider from '../../ui/Slider/Slider'
-import Gallery from '../../ui/gallery/Gallery'
 
 const Home: FC<IHome> = ({ actors, movies, slider, tvSerials }) => {
 	return (
