@@ -16,7 +16,6 @@ interface Biography {
 }
 
 const Biography: FC<Biography> = ({ actor, knowForMovies }) => {
-	console.log('🚀 - actor', actor)
 	return (
 		<>
 			<section className="flex">
