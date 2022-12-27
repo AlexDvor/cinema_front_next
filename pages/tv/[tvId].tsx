@@ -3,6 +3,8 @@ import { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import { useQuery } from 'react-query'
 
+import TvCard from '@/components/screens/Tv/TvCard'
+
 import { ISingleMovie } from '@/interfaces/single-movie.types'
 
 import { TvServices } from '@/services/tv.service'
@@ -19,7 +21,7 @@ const TvPage: NextPage<ISingleMovie> = () => {
 	)
 	console.log('🚀 - data', data)
 
-	return <div className="text-yellow-700">TV</div>
+	return <>{data && <TvCard tv={data} />}</>
 }
 
 export default TvPage
