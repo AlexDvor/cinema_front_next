@@ -5,7 +5,7 @@ import { FC } from 'react'
 
 import { IUserFavoriteItem } from '@/interfaces/user-favorite-item.types'
 
-import { getOriginalBackdrop } from '@/configs/url.config'
+import { getFullWidthBackdrop } from '@/configs/url.config'
 
 import SkeletonLoader from '../Skeleton-loader/SkeletonLoader'
 import SubHeading from '../heading/SubHeading'
@@ -21,7 +21,7 @@ const UserFavoriteItem: FC<{ item: IUserFavoriteItem }> = ({ item }) => {
 			>
 				<Image
 					alt={item.title}
-					src={getOriginalBackdrop(item.poster)}
+					src={getFullWidthBackdrop(item.poster)}
 					layout="fill"
 					draggable={false}
 					priority

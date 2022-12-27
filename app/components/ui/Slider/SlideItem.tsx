@@ -4,7 +4,7 @@ import { FC } from 'react'
 
 import { SliderProps } from '@/interfaces/slider.types'
 
-import { getOriginalBackdrop } from '@/configs/url.config'
+import { getFullWidthBackdrop } from '@/configs/url.config'
 
 import styles from './Slider.module.scss'
 
@@ -25,7 +25,7 @@ const SlideItem: FC<ISlideItem> = ({
 				<Image
 					layout="fill"
 					className={styles.image}
-					src={getOriginalBackdrop(slide.posterPath)}
+					src={getFullWidthBackdrop(slide.posterPath)}
 					alt={slide.title}
 					draggable={false}
 					priority={true}

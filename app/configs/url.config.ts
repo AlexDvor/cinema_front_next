@@ -18,6 +18,9 @@ export const getYouTubeUrl = (idTrailer: string | number): string =>
 export const getOriginalBackdrop = (image: string | number) =>
 	`https://image.tmdb.org/t/p/original${image}`
 
+export const getFullWidthBackdrop = (image: string | number) =>
+	`https://image.tmdb.org/t/p/w1920_and_h800_multi_faces${image}`
+
 export const getPosterImage = (image: string | number) => {
 	return `https://image.tmdb.org/t/p/w500${image}`
 }

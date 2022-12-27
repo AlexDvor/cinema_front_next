@@ -7,14 +7,17 @@ import { ISingleMovie } from '@/interfaces/single-movie.types'
 
 import { TvServices } from '@/services/tv.service'
 
-import Error404 from '../404'
-
 const TvPage: NextPage<ISingleMovie> = () => {
 	const { tvId } = useRouter().query
 
-	const { data, isLoading } = useQuery(['TV', tvId], () =>
-		TvServices.getTvByID(Number(tvId))
+	const { data, isLoading } = useQuery(
+		['TV', Number(tvId)],
+		() => TvServices.getTvByID(Number(tvId)),
+		{
+			enabled: !!tvId,
+		}
 	)
+	console.log('🚀 - data', data)
 
 	return <div className="text-yellow-700">TV</div>
 }

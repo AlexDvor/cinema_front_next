@@ -11,7 +11,7 @@ import { ISingleMovie } from '@/interfaces/single-movie.types'
 
 import { Meta } from '@/utils/meta'
 
-import { getOriginalBackdrop, getPosterImage } from '@/configs/url.config'
+import { getFullWidthBackdrop, getPosterImage } from '@/configs/url.config'
 
 import Content from './Content/Content'
 
@@ -36,7 +36,7 @@ const SingleMovie: FC<ISingleMovie> = ({ movie, cast, similarMovies }) => {
 				image={getPosterImage(movie.poster_path)}
 			>
 				<Banner
-					imagePath={getOriginalBackdrop(movie.backdrop_path)}
+					imagePath={getFullWidthBackdrop(movie.backdrop_path)}
 					Detail={() => <Content movie={movie} />}
 				/>
 				<h3 className="text-gray-500 my-4">{movie.overview}</h3>
