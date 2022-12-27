@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
 import Heading from '@/components/ui/Heading/Heading'
-import SubHeading from '@/components/ui/Heading/SubHeading'
+import SubHeading from '@/components/ui/heading/SubHeading'
 
 import { IHome } from '@/interfaces/pages.types'
 
