@@ -75,7 +75,7 @@ export interface IMovieDescriptionItem
 	status: string
 	tagline: string
 	videos: {
-		results: ITrailerItem[] | null | []
+		results: ITrailerItem[]
 	}
 	images: {
 		backdrops: TImagesItem[] | []

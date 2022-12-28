@@ -1,5 +1,5 @@
 .placeholder {
-	@apply flex w-full h-80 bg-gray-800 bg-opacity-70;
+	@apply flex w-full h-80 bg-gray-800 bg-opacity-50 rounded-xl;
 
 	> div {
 		@apply m-auto text-center;

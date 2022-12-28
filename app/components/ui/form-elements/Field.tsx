@@ -2,7 +2,6 @@ import cn from 'classnames'
 import { forwardRef } from 'react'
 
 import { IField } from './form.interface'
-
 import styles from './form.module.scss'
 
 const Field = forwardRef<HTMLInputElement, IField>(

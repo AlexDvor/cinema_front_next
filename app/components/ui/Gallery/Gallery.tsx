@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { IGalleryItem } from '@/interfaces/Gallery.types'
+import { IGalleryItem } from '@/interfaces/gallery.types'
 
 import styles from './Gallery.module.scss'
 import GalleryItem from './GalleryItem'

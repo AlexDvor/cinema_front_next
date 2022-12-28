@@ -16,7 +16,7 @@ import Content from './Content/Content'
 // import { useUpdateCountOpened } from './useUpdateCountOpened'
 
 const DynamicPlayer = dynamic(
-	() => import('@/components/ui/Video-palyer/VideoPlayer'),
+	() => import('@/components/ui/Video-player/VideoPlayer'),
 	{
 		ssr: false,
 	}
@@ -39,9 +39,9 @@ const SingleMovie: FC<ISingleMovie> = ({ movie, cast, similarMovies }) => {
 				/>
 				<h3 className="text-gray-500 my-4">{movie.overview}</h3>
 
-				{/* <>
+				<>
 					<DynamicPlayer trailers={movie.videos.results} />
-				</> */}
+				</>
 
 				{cast?.length && (
 					<>

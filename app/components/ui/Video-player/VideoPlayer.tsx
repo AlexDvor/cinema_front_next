@@ -1,6 +1,8 @@
 import { FC } from 'react'
 import ReactPlayer from 'react-player/youtube'
 
+import { useAuth } from '@/hooks/useAuth'
+
 import { ITrailerItem } from '@/interfaces/trailer.types'
 
 import { getYouTubeUrl } from '@/configs/url.config'
@@ -13,7 +15,8 @@ interface IVideoProps {
 }
 
 const VideoPlayer: FC<IVideoProps> = ({ trailers }) => {
-	const user = false // User from Redux
+	const { user } = useAuth()
+
 	return (
 		<>
 			{user ? (
@@ -34,8 +37,9 @@ const VideoPlayer: FC<IVideoProps> = ({ trailers }) => {
 						))}
 				</ul>
 			) : (
-				// <AuthPlaceholder slug={trailers[0].name} />
-				<div>Some AuthPlaceHolder</div>
+				<>
+					<AuthPlaceholder slug={trailers[0].name} />
+				</>
 			)}
 		</>
 	)
