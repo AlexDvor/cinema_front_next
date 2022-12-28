@@ -37,7 +37,7 @@ const SingleMovie: FC<ISingleMovie> = ({ movie, cast, similarMovies }) => {
 					imagePath={getFullWidthBackdrop(movie.backdrop_path)}
 					Detail={() => <Content movie={movie} />}
 				/>
-				<h3 className="text-gray-500 my-4">{movie.overview}</h3>
+				<h3 className="text-gray-500 mt-4">{movie.overview}</h3>
 
 				<>
 					<DynamicPlayer trailers={movie.videos.results} movieKey={movie.id} />
