@@ -32,6 +32,9 @@ const VideoPlayer: FC<IVideoProps> = ({ trailers, movieKey }) => {
 										width="100%"
 										height="100%"
 										controls={true}
+										config={{
+											playerVars: { origin: window.location.origin },
+										}}
 									/>
 								</div>
 							</li>
