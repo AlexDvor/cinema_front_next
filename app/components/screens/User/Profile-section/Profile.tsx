@@ -3,7 +3,7 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { useQuery } from 'react-query'
 
 import ProfileFields from '@/components/shared/user/ProfiileFields'
-import Button from '@/components/ui/form-elements/Button'
+import Button from '@/components/ui/Form-elements/Button'
 import SkeletonLoader from '@/components/ui/skeleton-loader/SkeletonLoader'
 import UserNavigation from '@/components/ui/user-navigation/UserNavigation'
 

@@ -12,9 +12,10 @@ import styles from './VideoPlayer.module.scss'
 
 interface IVideoProps {
 	trailers: ITrailerItem[]
+	movieKey: number
 }
 
-const VideoPlayer: FC<IVideoProps> = ({ trailers }) => {
+const VideoPlayer: FC<IVideoProps> = ({ trailers, movieKey }) => {
 	const { user } = useAuth()
 
 	return (
@@ -38,7 +39,7 @@ const VideoPlayer: FC<IVideoProps> = ({ trailers }) => {
 				</ul>
 			) : (
 				<>
-					<AuthPlaceholder slug={trailers[0].name} />
+					<AuthPlaceholder id={movieKey} />
 				</>
 			)}
 		</>
