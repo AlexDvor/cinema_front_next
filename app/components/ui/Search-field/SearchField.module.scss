@@ -9,6 +9,14 @@
 		@apply text-white placeholder:text-gray-600 block w-full bg-transparent outline-none;
 	}
 
+	> button {
+		@apply ml-0;
+
+		> svg {
+			@apply fill-gray-600 mr-2 text-xl transition-colors;
+		}
+	}
+
 	&:focus-within {
 		@apply border-gray-600;
 		> svg {

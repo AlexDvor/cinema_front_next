@@ -24,12 +24,22 @@ const Search: FC = () => {
 	)
 
 	const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
+		console.log(e.currentTarget)
+		console.log(e.target)
 		setSearchTerm(e.target.value)
+	}
+
+	const handleCleanSearch = () => {
+		setSearchTerm('')
 	}
 
 	return (
 		<div className={styles.wrapper}>
-			<SearchField searchTerm={searchTerm} handleSearch={handleSearch} />
+			<SearchField
+				searchTerm={searchTerm}
+				handleSearch={handleSearch}
+				onClickCloseButton={handleCleanSearch}
+			/>
 			{isSuccess && <SearchList movies={popularMovies || []} />}
 		</div>
 	)
