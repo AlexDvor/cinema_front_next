@@ -33,7 +33,7 @@ const ProfileFields: FC<IProfileFields> = ({
 
 			<Field
 				{...register(
-					'current password',
+					'currentPassword',
 					isPasswordRequired
 						? {
 								required: 'Password is required!',
@@ -51,7 +51,7 @@ const ProfileFields: FC<IProfileFields> = ({
 			/>
 			<Field
 				{...register(
-					'new password',
+					'newPassword',
 					isPasswordRequired
 						? {
 								required: 'Password is required!',

@@ -1,8 +1,9 @@
 import { FC } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { useQuery } from 'react-query'
+import { useMutation, useQuery } from 'react-query'
+import { toastr } from 'react-redux-toastr'
 
-import ProfileFields from '@/components/shared/user/ProfiileFields'
+import ProfileFields from '@/components/shared/user/ProfileFields'
 import Button from '@/components/ui/Form-elements/Button'
 import SkeletonLoader from '@/components/ui/skeleton-loader/SkeletonLoader'
 import UserNavigation from '@/components/ui/user-navigation/UserNavigation'
@@ -31,8 +32,21 @@ const Profile: FC = () => {
 		},
 	})
 
+	const { mutateAsync } = useMutation(
+		'update profile',
+		(data: IProfileInput) => UserService.updateProfile(data),
+		{
+			onError(error) {
+				toastError(error, 'Update profile')
+			},
+			onSuccess() {
+				toastr.success('Update profile', 'update was successful')
+			},
+		}
+	)
+
 	const onSubmit: SubmitHandler<IProfileInput> = async (data) => {
-		console.log('onSubmit', data)
+		await mutateAsync(data)
 	}
 
 	return (

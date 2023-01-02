@@ -1,5 +1,7 @@
 import axios from 'api/interceptors'
 
+import { IProfileInput } from '@/components/screens/User/Profile-section/profile.interface'
+
 import { IResponseFavoriteItems } from '@/interfaces/favorites.types'
 
 import { getUsersUrl } from '@/configs/api.config'
@@ -39,5 +41,9 @@ export const UserService = {
 				actor: article,
 			})
 		}
+	},
+
+	async updateProfile(data: IProfileInput) {
+		return await axios.post(getUsersUrl('/profile/update'), data)
 	},
 }

@@ -1,3 +1,5 @@
-import { IUser } from '@/interfaces/user.types'
-
-export interface IProfileInput extends Pick<IUser, 'email' | 'password'> {}
+export interface IProfileInput {
+	email: string
+	newPassword: string
+	currentPassword: string
+}
