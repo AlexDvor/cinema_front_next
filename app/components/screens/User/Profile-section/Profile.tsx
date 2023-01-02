@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useMutation, useQuery } from 'react-query'
 import { toastr } from 'react-redux-toastr'
@@ -17,6 +17,7 @@ import styles from './Profile.module.scss'
 import { IProfileInput } from './profile.interface'
 
 const Profile: FC = () => {
+	const [hasDisabledBtn, setHasDisabledBtn] = useState(false)
 	const { handleSubmit, register, formState, setValue } =
 		useForm<IProfileInput>({
 			mode: 'onChange',
@@ -40,6 +41,7 @@ const Profile: FC = () => {
 				toastError(error, 'Update profile')
 			},
 			onSuccess() {
+				setHasDisabledBtn(true)
 				toastr.success('Update profile', 'update was successful')
 			},
 		}
@@ -62,7 +64,7 @@ const Profile: FC = () => {
 				<Button
 					type="submit"
 					className="block mx-auto"
-					disabled={isLoading || isUpdateProfile}
+					disabled={isLoading || isUpdateProfile || hasDisabledBtn}
 				>
 					Update
 				</Button>

@@ -7,7 +7,6 @@ import { useDebounce } from '@/hooks/useDebounce'
 
 import { MovieService } from '@/services/movie.service'
 
-import styles from './Search.module.scss'
 import SearchList from './SearchList/SearchList'
 
 const Search: FC = () => {
@@ -24,8 +23,6 @@ const Search: FC = () => {
 	)
 
 	const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
-		console.log(e.currentTarget)
-		console.log(e.target)
 		setSearchTerm(e.target.value)
 	}
 
@@ -34,7 +31,7 @@ const Search: FC = () => {
 	}
 
 	return (
-		<div className={styles.wrapper}>
+		<div className="relative">
 			<SearchField
 				searchTerm={searchTerm}
 				handleSearch={handleSearch}
