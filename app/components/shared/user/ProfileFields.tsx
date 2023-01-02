@@ -47,7 +47,7 @@ const ProfileFields: FC<IProfileFields> = ({
 				)}
 				placeholder="Current Password"
 				type="password"
-				error={errors.password}
+				error={errors.currentPassword}
 				autoComplete="true"
 			/>
 			<Field
@@ -65,7 +65,7 @@ const ProfileFields: FC<IProfileFields> = ({
 				)}
 				placeholder="New Password"
 				type="password"
-				error={errors.password}
+				error={errors.newPassword}
 				autoComplete="true"
 			/>
 		</>
