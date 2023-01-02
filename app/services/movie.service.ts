@@ -71,5 +71,3 @@ export const MovieService = {
 			.catch((error) => error.massage)
 	},
 }
-
-// https://api.themoviedb.org/3/movie/436270?api_key=93e18502a4f670f89316c5fc1b091bd6&append_to_response=videos,images

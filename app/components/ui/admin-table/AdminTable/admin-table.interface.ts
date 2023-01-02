@@ -1,6 +1,6 @@
 export interface ITableItem {
 	_id: string
-	editUrl: string
+	editUrl?: string
 	items: string[]
 }
 

@@ -6,16 +6,17 @@ import MaterialIcon from '@/components/ui/materialIcon/MaterialIcon'
 import styles from './AdminActions.module.scss'
 
 interface IAdminActions {
-	editUrl: string
 	removeHandler: () => void
 }
 
-const AdminActions: FC<IAdminActions> = ({ editUrl, removeHandler }) => {
-	const { push } = useRouter()
-
+const AdminActions: FC<IAdminActions> = ({ removeHandler }) => {
 	return (
 		<div className={styles.actions}>
-			<button onClick={() => push(editUrl)}>
+			<button
+				onClick={() =>
+					console.log("This function doesn't work at moment. Sorry")
+				}
+			>
 				<MaterialIcon name="MdEdit" />
 			</button>
 			<button onClick={removeHandler}>

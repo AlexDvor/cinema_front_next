@@ -1,8 +1,8 @@
-import AdminActions from './AdminActions/AdminActions'
-import { IAdminTableItem } from './admin-table.interface'
 import { FC } from 'react'
 
+import AdminActions from './AdminActions/AdminActions'
 import styles from './AdminTable.module.scss'
+import { IAdminTableItem } from './admin-table.interface'
 
 const AdminTableItem: FC<IAdminTableItem> = ({ tableItem, removeHandler }) => {
 	return (
@@ -11,10 +11,7 @@ const AdminTableItem: FC<IAdminTableItem> = ({ tableItem, removeHandler }) => {
 				<div key={value}>{value}</div>
 			))}
 
-			<AdminActions
-				editUrl={tableItem.editUrl}
-				removeHandler={() => removeHandler(tableItem._id)}
-			/>
+			<AdminActions removeHandler={() => removeHandler(tableItem._id)} />
 		</div>
 	)
 }

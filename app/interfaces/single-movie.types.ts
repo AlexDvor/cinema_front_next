@@ -1,5 +1,5 @@
-import { IGalleryItem } from './Gallery.types'
 import { IActorItem } from './actor.types'
+import { IGalleryItem } from './gallery.types'
 import { IMovieDescriptionItem } from './movie.types'
 
 export interface ISingleMovie {

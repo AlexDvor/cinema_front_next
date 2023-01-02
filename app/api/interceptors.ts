@@ -70,6 +70,13 @@ export const axiosClassicMovies = axios.create({
 	},
 })
 
+export const axiosClassicStats = axios.create({
+	baseURL: SERVER_API,
+	headers: {
+		'Content-Type': 'application/json',
+	},
+})
+
 // import axios from 'axios'
 // import Cookies from 'js-cookie'
 // // import Router from 'next/router'
