@@ -32,7 +32,7 @@ const Profile: FC = () => {
 		},
 	})
 
-	const { mutateAsync } = useMutation(
+	const { mutateAsync, isLoading: isUpdateProfile } = useMutation(
 		'update profile',
 		(data: IProfileInput) => UserService.updateProfile(data),
 		{
@@ -56,14 +56,16 @@ const Profile: FC = () => {
 				{isLoading ? (
 					<SkeletonLoader count={2} />
 				) : (
-					<ProfileFields
-						register={register}
-						formState={formState}
-						isPasswordRequired={false}
-					/>
+					<ProfileFields register={register} formState={formState} />
 				)}
 
-				<Button className="block mx-auto">Update</Button>
+				<Button
+					type="submit"
+					className="block mx-auto"
+					disabled={isLoading || isUpdateProfile}
+				>
+					Update
+				</Button>
 			</form>
 		</Meta>
 	)

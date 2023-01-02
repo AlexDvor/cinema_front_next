@@ -14,7 +14,7 @@ interface IProfileFields {
 const ProfileFields: FC<IProfileFields> = ({
 	register,
 	formState: { errors },
-	isPasswordRequired = false,
+	isPasswordRequired = true,
 }) => {
 	return (
 		<>
@@ -27,6 +27,7 @@ const ProfileFields: FC<IProfileFields> = ({
 					},
 				})}
 				placeholder="E-mail"
+				type="email"
 				error={errors.email}
 				disabled
 			/>
@@ -36,7 +37,7 @@ const ProfileFields: FC<IProfileFields> = ({
 					'currentPassword',
 					isPasswordRequired
 						? {
-								required: 'Password is required!',
+								required: 'Current Password required!',
 								minLength: {
 									value: 6,
 									message: 'Min length should more 6 symbols!',
@@ -54,7 +55,7 @@ const ProfileFields: FC<IProfileFields> = ({
 					'newPassword',
 					isPasswordRequired
 						? {
-								required: 'Password is required!',
+								required: 'New Password is required!',
 								minLength: {
 									value: 6,
 									message: 'Min length should more 6 symbols!',
