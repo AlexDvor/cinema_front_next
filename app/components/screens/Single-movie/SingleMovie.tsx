@@ -13,17 +13,12 @@ import { getFullWidthBackdrop, getPosterImage } from '@/configs/url.config'
 
 import Content from './Content/Content'
 
-// import { useUpdateCountOpened } from './useUpdateCountOpened'
-
 const DynamicPlayer = dynamic(
 	() => import('@/components/ui/Video-player/VideoPlayer'),
 	{
 		ssr: false,
 	}
 )
-// const DynamicRateMovie = dynamic(() => import('./RateMovie/RateMovie'), {
-// 	ssr: false,
-// })
 
 const SingleMovie: FC<ISingleMovie> = ({ movie, cast, similarMovies }) => {
 	return (

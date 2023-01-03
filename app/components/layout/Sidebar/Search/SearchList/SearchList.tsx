@@ -1,3 +1,4 @@
+import classNames from 'classnames'
 import Image from 'next/image'
 import Link from 'next/link'
 import { FC } from 'react'
@@ -17,11 +18,10 @@ const SearchList: FC<{ movies: IMovieItem[] }> = ({ movies }) => {
 				movies.map((movie) => (
 					<Link key={movie.id} href={getMovieUrl(movie.id)}>
 						<Image
+							className="w-auto h-auto"
 							src={getPosterImage(movie.poster_path)}
 							width={50}
 							height={50}
-							objectFit="cover"
-							objectPosition="top"
 							alt={movie.title}
 							draggable={false}
 						/>

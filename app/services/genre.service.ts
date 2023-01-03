@@ -17,11 +17,7 @@ export const GenreServices = {
 			.catch((error) => error.massage)
 	},
 
-	async getMoviesByGenre(
-		genreId: string | number | string[] | undefined,
-		lang = 'en-US',
-		page = 1
-	) {
+	async getMoviesByGenre(genreId: string | number, lang = 'en-US', page = 1) {
 		return axiosClassicMovies
 			.get<IFetchMovie>(
 				`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=${genreId}&language=${lang}&page=${page}`
