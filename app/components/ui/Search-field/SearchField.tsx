@@ -8,7 +8,7 @@ import styles from './SearchField.module.scss'
 interface ISearchField {
 	searchTerm: string
 	handleSearch: (event: ChangeEvent<HTMLInputElement>) => void
-	onClickCloseButton: () => void
+	onClickCloseButton?: () => void
 }
 
 const SearchField: FC<ISearchField> = ({
