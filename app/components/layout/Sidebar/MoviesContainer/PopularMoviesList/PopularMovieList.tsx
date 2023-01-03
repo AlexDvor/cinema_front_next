@@ -5,11 +5,17 @@ import SkeletonLoader from '@/components/ui/Skeleton-loader/SkeletonLoader'
 
 import { getPopularList } from '@/utils/movie/getPopularMovieIds'
 
+import { queryConfig } from '@/configs/reactQuery.config'
+
 import MovieList from '../MovieList'
 
 const PopularMovieList: FC = () => {
-	const { data, isLoading } = useQuery('Most popular movie in sidebar', () =>
-		getPopularList()
+	const { data, isLoading } = useQuery(
+		'Popular list in sidebar',
+		() => getPopularList(),
+		{
+			staleTime: queryConfig.time,
+		}
 	)
 
 	return isLoading ? (
