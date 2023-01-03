@@ -2,6 +2,7 @@
 
 const nextConfig = {
 	reactStrictMode: false,
+	optimizeFonts: false,
 	swcMinify: true,
 	poweredByHeader: false,
 	env: {
