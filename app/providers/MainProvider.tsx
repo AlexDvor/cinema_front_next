@@ -6,7 +6,7 @@ import { store } from 'store/store'
 
 import Layout from '@/components/layout/Layout'
 
-import ReduxToastr from '@/ui/redux-toastr/ReduxToastr'
+import ReduxToastr from '@/ui/Redux-toastr/ReduxToastr'
 
 import { TypeComponentAuthFields } from '@/interfaces/auth.types'
 
