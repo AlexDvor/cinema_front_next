@@ -1,7 +1,7 @@
 import { FC } from 'react'
 
-import UserFavoriteItem from '@/components/ui/user-favorite-item/UserFavoriteItem'
-import UserNavigation from '@/components/ui/user-navigation/UserNavigation'
+import UserFavoriteItem from '@/components/ui/User-favorite-item/UserFavoriteItem'
+import UserNavigation from '@/components/ui/User-navigation/UserNavigation'
 
 import { IUserFavoriteItem } from '@/interfaces/user-favorite-item.types'
 
