@@ -6,7 +6,7 @@ import { toastr } from 'react-redux-toastr'
 import ProfileFields from '@/components/shared/user/ProfileFields'
 import Button from '@/components/ui/Form-elements/Button'
 import SkeletonLoader from '@/components/ui/Skeleton-loader/SkeletonLoader'
-import UserNavigation from '@/components/ui/user-navigation/UserNavigation'
+import UserNavigation from '@/components/ui/User-navigation/UserNavigation'
 
 import { UserService } from '@/services/user/user.service'
 
