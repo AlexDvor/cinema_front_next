@@ -5,7 +5,7 @@ import SkeletonLoader from '@/components/ui/Skeleton-loader/SkeletonLoader'
 
 import { getPopularList } from '@/utils/movie/getPopularMovieIds'
 
-import { queryConfig } from '@/configs/reactQuery.config'
+import { queryConfig } from '@/configs/react-query.config'
 
 import MovieList from '../MovieList'
 

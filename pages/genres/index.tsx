@@ -7,7 +7,7 @@ import { IGenreItem } from '@/interfaces/genres.types'
 
 import { getGenresData } from '@/utils/movie/getGenresData'
 
-import { queryConfig } from '@/configs/reactQuery.config'
+import { queryConfig } from '@/configs/react-query.config'
 
 const GenresPage: NextPage<{ genreCategory: IGenreItem[] }> = () => {
 	const { data, isLoading } = useQuery('Genre List', () => getGenresData(), {
