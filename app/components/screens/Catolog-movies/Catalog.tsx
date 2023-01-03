@@ -18,7 +18,7 @@ const Catalog: FC<ICatalog> = ({
 	description,
 	movies,
 	fetchName,
-	genreId,
+	genreId = undefined,
 }) => {
 	const [data, setData] = useState(movies)
 	const [pageNumber, setPageNumber] = useState(1)

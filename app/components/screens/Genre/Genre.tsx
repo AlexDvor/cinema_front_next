@@ -11,7 +11,7 @@ const Genre: FC<IGenreProps> = ({ genre, movies, genreId }) => {
 			title={genre.name}
 			description={genre.description}
 			fetchName={'Genres'}
-			genreId={genreId}
+			genreId={Number(genreId)}
 		/>
 	)
 }

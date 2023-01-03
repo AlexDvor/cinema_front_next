@@ -1,5 +1,7 @@
 import { IMovieItem } from './movie.types'
 
+export type TGenreId = string | number | undefined
+
 export type IGenresItem = {
 	id: number
 	name: string
@@ -21,5 +23,5 @@ export interface IGenreProps {
 	movies: IMovieItem[]
 	genre: IGenresItem
 	description?: string
-	genreId?: number
+	genreId: TGenreId
 }

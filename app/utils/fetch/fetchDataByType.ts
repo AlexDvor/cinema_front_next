@@ -1,4 +1,5 @@
 import { TFetch } from '@/interfaces/catalog.types'
+import { TGenreId } from '@/interfaces/genres.types'
 
 import { GenreServices } from '@/services/genre.service'
 import { MovieService } from '@/services/movie.service'
@@ -7,7 +8,7 @@ export const fetchDataByType = async (
 	fetchName: TFetch,
 	page: number,
 	lang: string,
-	genreId?: number
+	genreId: TGenreId
 ) => {
 	switch (fetchName) {
 		case 'Fresh movies':

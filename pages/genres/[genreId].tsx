@@ -14,7 +14,7 @@ const GenrePage: NextPage<IGenreProps> = ({ movies, genre }) => {
 	const { genreId } = useRouter().query
 
 	return movies ? (
-		<Genre genre={genre} movies={movies} genreId={genreId} />
+		<Genre genre={genre} movies={movies} genreId={String(genreId)} />
 	) : (
 		<Error404 />
 	)
@@ -48,7 +48,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 	const id = params?.genreId
 
 	try {
-		const movies = await GenreServices.getMoviesByGenre(id)
+		const movies = await GenreServices.getMoviesByGenre(String(id))
 		const { genres } = await GenreServices.getGenreList()
 
 		const genre = genres.find(
