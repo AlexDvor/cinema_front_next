@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { FC } from 'react'
 
-import MaterialIcon from '@/components/ui/materialIcon/MaterialIcon'
+import MaterialIcon from '@/components/ui/MaterialIcon/MaterialIcon'
 
 import { IMovieDescriptionItem } from '@/interfaces/movie.types'
 

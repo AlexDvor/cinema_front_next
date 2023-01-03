@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import MaterialIcon from '@/components/ui/materialIcon/MaterialIcon'
+import MaterialIcon from '@/components/ui/MaterialIcon/MaterialIcon'
 
 import { useAuth } from '@/hooks/useAuth'
 
