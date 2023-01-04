@@ -1,11 +1,11 @@
 import { axiosClassicMovies } from 'api/interceptors'
 
+import { ICastData } from '@/components/screens/Single-movie/single-movie.types'
+
 import {
-	IActorItem,
 	IDetailsAboutActor,
 	IFetchPopularDataActors,
 } from '@/interfaces/actor.types'
-import { ICastData } from '@/interfaces/single-movie.types'
 
 import { filterActorData } from '@/utils/movie/filterActorData'
 
@@ -24,6 +24,14 @@ export const ActorServices = {
 		return axiosClassicMovies
 			.get<ICastData>(
 				`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${API_KEY}&language=${lang}`
+			)
+			.then((res) => filterActorData(res.data.cast))
+			.catch((error) => error.massage)
+	},
+	async getActorsByIdTv(tvId: string | number, lang = 'en') {
+		return axiosClassicMovies
+			.get<ICastData>(
+				`https://api.themoviedb.org/3/tv/${tvId}/credits?api_key=${API_KEY}&language=${lang}`
 			)
 			.then((res) => filterActorData(res.data.cast))
 			.catch((error) => error.massage)

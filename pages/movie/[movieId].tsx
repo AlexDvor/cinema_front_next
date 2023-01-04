@@ -6,32 +6,34 @@ import SingleMovie from '@/components/screens/Single-movie/SingleMovie'
 
 import { IActorItem } from '@/interfaces/actor.types'
 import { IMovieItem } from '@/interfaces/movie.types'
-import { ISingleMovie } from '@/interfaces/single-movie.types'
 
 import { ActorServices } from '@/services/actor.service'
 import { GenreServices } from '@/services/genre.service'
 import { MovieService } from '@/services/movie.service'
 
+import { queryConfig } from '@/configs/react-query.config'
 import { getActorUrl, getMovieUrl } from '@/configs/url.config'
 
 import Error404 from '../404'
 
-const SingleMoviePage: NextPage<ISingleMovie> = () => {
+const SingleMoviePage: NextPage = () => {
 	const { movieId } = useRouter().query
 
-	const { data: movie, isLoading: isLoadingMovie } = useQuery(
+	const { data: movie } = useQuery(
 		[`Movie ${movieId}`, movieId],
 		() => MovieService.getMovieByID(Number(movieId)),
 		{
 			enabled: !!movieId,
+			staleTime: queryConfig.time,
 		}
 	)
 
-	const { data: actors, isLoading: isLoadingActors } = useQuery(
-		['Actors', movieId],
+	const { data: actors } = useQuery(
+		['Actors Movie', movieId],
 		() => ActorServices.getActorsByIdMovie(Number(movieId)),
 		{
 			enabled: !!movieId,
+			staleTime: queryConfig.time,
 
 			select: (data) => {
 				const res = data.slice(0, 15)
@@ -47,11 +49,12 @@ const SingleMoviePage: NextPage<ISingleMovie> = () => {
 
 	const currentGenreId = movie?.genres[0].id || null
 
-	const { data: similarMovies, isLoading: isLoadingSimilarMovies } = useQuery(
+	const { data: similarMovies } = useQuery(
 		['SimilarMovies', movieId],
 		() => GenreServices.getMoviesByGenre(currentGenreId, undefined, 2),
 		{
 			enabled: !!currentGenreId,
+			staleTime: queryConfig.time,
 			select: (data) => {
 				const res = data
 					.filter((item: IMovieItem) => item.id !== Number(movieId))

@@ -1,14 +1,14 @@
 import { axiosClassicMovies } from 'api/interceptors'
 
-import { IFetchMovie } from '@/interfaces/movie.types'
+import { IFetchMovie, IMovieItem } from '@/interfaces/movie.types'
 
 import { filterMovieData } from '@/utils/movie/filterMovieData'
 
 const API_KEY = process.env.API_MOVIE_KEY
 
 type TFetchCastByMovies = {
-	cast: []
-	crew: []
+	cast: IMovieItem[]
+	crew: any[]
 	id: number
 }
 
@@ -67,7 +67,10 @@ export const MovieService = {
 			.get<TFetchCastByMovies>(
 				`/person/${actorId}/movie_credits?api_key=${API_KEY}&language=${lang}`
 			)
-			.then((res) => filterMovieData(res.data.cast))
+			.then((res) => {
+				console.log(res)
+				filterMovieData(res.data.cast)
+			})
 			.catch((error) => error.massage)
 	},
 }

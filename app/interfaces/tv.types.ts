@@ -1,3 +1,5 @@
+import { ITrailerItem } from './trailer.types'
+
 type TCreatedBy = {
 	id: number
 	credit_id: string
@@ -110,4 +112,7 @@ export interface IDescriptionTvItem {
 	type: string
 	vote_average: number
 	vote_count: number
+	videos?: {
+		results: ITrailerItem[]
+	}
 }
