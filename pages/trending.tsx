@@ -1,9 +1,7 @@
 import { GetStaticProps, NextPage } from 'next'
 import { QueryClient, dehydrate, useQuery } from 'react-query'
 
-import Catalog from '@/components/screens/Catolog-movies/Catalog'
-
-import { IMovieItem } from '@/interfaces/movie.types'
+import Catalog from '@/components/screens/Catalog-movies/Catalog'
 
 import { MovieService } from '@/services/movie.service'
 

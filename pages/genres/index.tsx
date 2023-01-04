@@ -1,3 +1,4 @@
+import { errorCatch } from 'api/api.helpers'
 import { GetStaticProps, NextPage } from 'next'
 import { useQuery } from 'react-query'
 
@@ -13,6 +14,8 @@ const GenresPage: NextPage<{ genreCategory: IGenreItem[] }> = () => {
 	const { data, isLoading } = useQuery('Genre List', () => getGenresData(), {
 		staleTime: queryConfig.time,
 	})
+
+	console.log('data', data)
 
 	return (
 		<>
@@ -31,7 +34,7 @@ export const getStaticProps: GetStaticProps = async () => {
 			props: {},
 		}
 	} catch (e) {
-		// console.log(errorCatch(e))
+		console.log(errorCatch(e))
 		return {
 			props: {},
 			// notFound: true,

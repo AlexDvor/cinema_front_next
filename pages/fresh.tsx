@@ -1,6 +1,6 @@
 import { GetStaticProps, NextPage } from 'next'
 
-import Catalog from '@/components/screens/Catolog-movies/Catalog'
+import Catalog from '@/components/screens/Catalog-movies/Catalog'
 
 import { IMovieItem } from '@/interfaces/movie.types'
 
@@ -19,7 +19,7 @@ const FreshPage: NextPage<{ movies: IMovieItem[] }> = ({ movies }) => {
 	)
 }
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps = async () => {
 	try {
 		const movies = await MovieService.getFreshMovies()
 
