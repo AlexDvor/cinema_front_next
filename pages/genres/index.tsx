@@ -1,42 +1,49 @@
 import { errorCatch } from 'api/api.helpers'
 import { GetStaticProps, NextPage } from 'next'
-import { useQuery } from 'react-query'
 
 import Collections from '@/components/screens/Collections/Collections'
 
-import { IGenreItem } from '@/interfaces/genres.types'
+import { IGenreItem, IGenresItem } from '@/interfaces/genres.types'
 
-import { getGenresData } from '@/utils/movie/getGenresData'
+import { GenreServices } from '@/services/genre.service'
 
-import { queryConfig } from '@/configs/react-query.config'
+import { getRandomInt } from '@/utils/getRandomInt'
 
-const GenresPage: NextPage<{ genreCategory: IGenreItem[] }> = () => {
-	const { data, isLoading } = useQuery('Genre List', () => getGenresData(), {
-		staleTime: queryConfig.time,
-	})
-
-	console.log('data', data)
-
+const GenresPage: NextPage<{ genreCategory: IGenreItem[] }> = ({
+	genreCategory,
+}) => {
 	return (
 		<>
-			{isLoading ? (
-				<div className="text-yellow-700">...Loading</div>
-			) : (
-				<Collections collections={data?.genreCategory || []} />
-			)}
+			<Collections collections={genreCategory || []} />
 		</>
 	)
 }
 
 export const getStaticProps: GetStaticProps = async () => {
 	try {
+		const { genres: typesGenres } = await GenreServices.getGenreList()
+		const genreCategory = await Promise.all(
+			typesGenres.map(async (item: IGenresItem) => {
+				const typeItem = item
+				return await GenreServices.getMoviesByGenre(item.id).then((item) => {
+					const genreItem = item[getRandomInt(0, 15)]
+					return {
+						genreId: typeItem.id,
+						genreName: typeItem.name,
+						posterPath: genreItem.poster_path,
+						backdropPath: genreItem.backdrop_path,
+					}
+				})
+			})
+		)
 		return {
-			props: {},
+			props: { genreCategory },
+			revalidate: 30,
 		}
 	} catch (e) {
 		console.log(errorCatch(e))
 		return {
-			props: {},
+			props: { genreCategory: [] },
 			// notFound: true,
 		}
 	}

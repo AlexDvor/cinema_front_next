@@ -1,15 +1,12 @@
-// import { errorCatch } from 'api/api.helpers'
+import { errorCatch } from 'api/api.helpers'
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { useRouter } from 'next/router'
 import { useQuery } from 'react-query'
 
-import { IMenuItem } from '@/components/layout/Navigation/MenuContainer/Menu.types'
 import SingleMovie from '@/components/screens/Single-movie/SingleMovie'
 
 import { IActorItem } from '@/interfaces/actor.types'
 import { IMovieItem } from '@/interfaces/movie.types'
-// import { IGalleryItem } from '@/interfaces/gallery.types'
-// import { IMovieDescriptionItem } from '@/interfaces/movie.types'
 import { ISingleMovie } from '@/interfaces/single-movie.types'
 
 import { ActorServices } from '@/services/actor.service'
@@ -24,7 +21,7 @@ const SingleMoviePage: NextPage<ISingleMovie> = () => {
 	const { movieId } = useRouter().query
 
 	const { data: movies, isLoading: isLoadingMovie } = useQuery(
-		['Single Movie', movieId],
+		[`Movie ${movieId}`, movieId],
 		() => MovieService.getMovieByID(Number(movieId)),
 		{
 			enabled: !!movieId,
