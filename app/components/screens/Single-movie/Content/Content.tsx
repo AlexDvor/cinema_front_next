@@ -17,6 +17,8 @@ import styles from './Content.module.scss'
 import ContentList from './ContentList/ContentList'
 
 const Content: FC<{ movie: IMovieDescriptionItem }> = ({ movie }) => {
+	console.log('movie.runtime', typeof movie.runtime)
+	console.log('convert', typeof timeConvert(movie.runtime))
 	const { user } = useAuth()
 	return (
 		<div className={styles.content}>
@@ -29,7 +31,7 @@ const Content: FC<{ movie: IMovieDescriptionItem }> = ({ movie }) => {
 			<div className={styles.details}>
 				<span>{parseReleaseData(movie.release_date, 0, 4)} · </span>
 				<span>{movie.production_countries[0]?.iso_3166_1} · </span>
-				<span>{String(timeConvert(movie.runtime))} min.</span>
+				<span>{timeConvert(movie.runtime)} min.</span>
 			</div>
 			<ContentList
 				name="Genres"
@@ -39,14 +41,6 @@ const Content: FC<{ movie: IMovieDescriptionItem }> = ({ movie }) => {
 					id: item.id.toString(),
 				}))}
 			/>
-			{/* <ContentList
-				name="Actors"
-				links={movie.actors.map((a) => ({
-					link: getActorUrl(a.slug),
-					title: a.name,
-					_id: a._id,
-				}))}
-			/> */}
 		</div>
 	)
 }

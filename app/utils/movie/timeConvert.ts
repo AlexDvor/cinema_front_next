@@ -1,4 +1,4 @@
-export function timeConvert(minutes: number) {
+export function timeConvert(minutes: number): string {
 	var num = Number(minutes)
 	var hours = num / 60
 	var rhours = Math.floor(hours)
