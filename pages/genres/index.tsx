@@ -44,7 +44,7 @@ export const getStaticProps: GetStaticProps = async () => {
 		console.log(errorCatch(e))
 		return {
 			props: { genreCategory: [] },
-			// notFound: true,
+			notFound: true,
 		}
 	}
 }
