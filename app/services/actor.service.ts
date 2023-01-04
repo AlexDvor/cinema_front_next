@@ -7,6 +7,8 @@ import {
 } from '@/interfaces/actor.types'
 import { ICastData } from '@/interfaces/single-movie.types'
 
+import { filterActorData } from '@/utils/movie/filterActorData'
+
 const API_KEY = process.env.API_MOVIE_KEY
 
 export const ActorServices = {
@@ -15,11 +17,7 @@ export const ActorServices = {
 			.get<IFetchPopularDataActors>(
 				`https://api.themoviedb.org/3/person/popular?api_key=${API_KEY}&language=${lang}&page=${page}`
 			)
-			.then((res) =>
-				res.data.results.filter(
-					(item: IActorItem) => item.profile_path !== null
-				)
-			)
+			.then((res) => filterActorData(res.data.results))
 			.catch((error) => error.massage)
 	},
 	async getActorsByIdMovie(id: string | number, lang = 'en') {
@@ -27,7 +25,7 @@ export const ActorServices = {
 			.get<ICastData>(
 				`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${API_KEY}&language=${lang}`
 			)
-			.then((res) => res.data.cast)
+			.then((res) => filterActorData(res.data.cast))
 			.catch((error) => error.massage)
 	},
 	async getDetailsAboutActor(personId: string | number, lang = 'en') {
