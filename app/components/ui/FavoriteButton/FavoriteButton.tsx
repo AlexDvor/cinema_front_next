@@ -84,6 +84,7 @@ const FavoriteButton: FC<IFavoriteButton> = ({ article, typeArticle }) => {
 				[styles.animate]: isFavoriteItem,
 				[styles.movieButton]: typeArticle === 'movies',
 				[styles.actorButton]: typeArticle === 'actors',
+				[styles.tvButton]: typeArticle === 'tv',
 			})}
 			style={{ backgroundImage: `url(${HeartImage.src})` }}
 		/>

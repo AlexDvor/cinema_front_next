@@ -16,12 +16,12 @@ import FavoriteButton from '../../../ui/FavoriteButton/FavoriteButton'
 import styles from './ContentTv.module.scss'
 import ContentList from './ContentTvList/ContentTvList'
 
-const Content: FC<{ tv: IDescriptionTvItem }> = ({ tv }) => {
+const ContentTv: FC<{ tv: IDescriptionTvItem }> = ({ tv }) => {
 	const { user } = useAuth()
 	return (
 		<div className={styles.content}>
 			<h1>{tv.name}</h1>
-			{user && <FavoriteButton article={tv} typeArticle="movies" />}
+			{user && <FavoriteButton article={tv} typeArticle="tv" />}
 			<div className={styles.rating}>
 				<MaterialIcon name="MdStarRate" />
 				<span>{tv.vote_average.toFixed(1)}</span>
@@ -38,16 +38,8 @@ const Content: FC<{ tv: IDescriptionTvItem }> = ({ tv }) => {
 					id: item.id.toString(),
 				}))}
 			/>
-			{/* <ContentList
-				name="Actors"
-				links={movie.actors.map((a) => ({
-					link: getActorUrl(a.slug),
-					title: a.name,
-					_id: a._id,
-				}))}
-			/> */}
 		</div>
 	)
 }
 
-export default Content
+export default ContentTv

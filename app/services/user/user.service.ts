@@ -16,6 +16,7 @@ const TOGGLE_FAVORITE_MOVIES_URL = `${getUsersUrl(
 const TOGGLE_FAVORITE_ACTOR_URL = `${getUsersUrl(
 	'/profile/favorite/actor/toggle'
 )}`
+const TOGGLE_FAVORITE_TV_URL = `${getUsersUrl('/profile/favorite/tv/toggle')}`
 
 export const UserService = {
 	async getFavorites() {
@@ -39,6 +40,11 @@ export const UserService = {
 		if (typeArticle === 'actors') {
 			return axios.post<IResponseFavoriteItems>(TOGGLE_FAVORITE_ACTOR_URL, {
 				actor: article,
+			})
+		}
+		if (typeArticle === 'tv') {
+			return axios.post<IResponseFavoriteItems>(TOGGLE_FAVORITE_TV_URL, {
+				tv: article,
 			})
 		}
 	},
