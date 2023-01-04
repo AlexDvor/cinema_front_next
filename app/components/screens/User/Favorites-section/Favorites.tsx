@@ -10,9 +10,10 @@ import { Meta } from '@/utils/meta'
 interface IFavoriteList {
 	movie: IUserFavoriteItem | undefined
 	actor: IUserFavoriteItem | undefined
+	tv: IUserFavoriteItem | undefined
 }
 
-const Favorites: FC<IFavoriteList> = ({ movie, actor }) => {
+const Favorites: FC<IFavoriteList> = ({ movie, actor, tv }) => {
 	return (
 		<>
 			<Meta title="Favorite List">
@@ -20,6 +21,7 @@ const Favorites: FC<IFavoriteList> = ({ movie, actor }) => {
 				<div>
 					{movie && <UserFavoriteItem item={movie}></UserFavoriteItem>}
 					{actor && <UserFavoriteItem item={actor}></UserFavoriteItem>}
+					{tv && <UserFavoriteItem item={tv}></UserFavoriteItem>}
 				</div>
 			</Meta>
 		</>

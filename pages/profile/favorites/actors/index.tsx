@@ -16,7 +16,7 @@ const FavoritesActors: NextPageAuth = () => {
 	}))
 	return (
 		<>
-			<FavoriteList title={'Favorites actors'} data={actors || []} />
+			<FavoriteList title={'Favorite Actors'} data={actors || []} />
 		</>
 	)
 }

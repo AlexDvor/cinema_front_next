@@ -18,11 +18,21 @@ const FavoritesPage: NextPageAuth = () => {
 		poster: item.profile_path,
 		link: '/profile/favorites/actors',
 	}))
+	const tv = favoritesList?.tv.map((item) => ({
+		id: item.id,
+		title: 'Tv',
+		poster: item.poster_path,
+		link: '/profile/favorites/tv',
+	}))
 
 	return (
 		<>
 			{favoritesList && (
-				<Favorites movie={movies && movies[0]} actor={actors && actors[0]} />
+				<Favorites
+					movie={movies && movies[0]}
+					actor={actors && actors[0]}
+					tv={tv && tv[0]}
+				/>
 			)}
 		</>
 	)

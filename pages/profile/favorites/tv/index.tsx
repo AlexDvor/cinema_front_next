@@ -3,23 +3,23 @@ import { useFavoritesList } from '@/components/screens/User/Favorite-list/useFav
 
 import { NextPageAuth } from '@/interfaces/auth.types'
 
-import { getMovieUrl, getPosterImage } from '@/configs/url.config'
+import { getMovieUrl, getPosterImage, getTvUrl } from '@/configs/url.config'
 
-const FavoriteMovies: NextPageAuth = () => {
+const FavoriteTv: NextPageAuth = () => {
 	const { favoritesList, refetch, isLoading } = useFavoritesList()
 
-	const movies = favoritesList?.movies.map((item) => ({
+	const tv = favoritesList?.tv.map((item) => ({
 		id: item.id,
-		title: item.title,
-		url: getMovieUrl(item.id),
+		title: item.name,
+		url: getTvUrl(item.id),
 		posterPath: getPosterImage(item.poster_path),
 	}))
 	return (
 		<>
-			<FavoriteList title={'Favorite Movies'} data={movies || []} />
+			<FavoriteList title={'Favorite Tv'} data={tv || []} />
 		</>
 	)
 }
-FavoriteMovies.isOnlyUser = true
+FavoriteTv.isOnlyUser = true
 
-export default FavoriteMovies
+export default FavoriteTv

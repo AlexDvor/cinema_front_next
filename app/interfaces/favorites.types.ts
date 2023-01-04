@@ -1,5 +1,6 @@
 import { IDetailsAboutActor } from './actor.types'
 import { IMovieDescriptionItem } from './movie.types'
+import { IDescriptionTvItem } from './tv.types'
 
 export interface IResponseFavoriteItems {
 	status: string
@@ -7,6 +8,6 @@ export interface IResponseFavoriteItems {
 	data: {
 		movies: IMovieDescriptionItem[]
 		actors: IDetailsAboutActor[]
-		tv: []
+		tv: IDescriptionTvItem[]
 	}
 }
