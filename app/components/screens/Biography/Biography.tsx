@@ -5,6 +5,8 @@ import FavoriteButton from '@/components/ui/FavoriteButton/FavoriteButton'
 import Gallery from '@/components/ui/Gallery/Gallery'
 import SubHeading from '@/components/ui/Heading/SubHeading'
 
+import { useAuth } from '@/hooks/useAuth'
+
 import { IDetailsAboutActor } from '@/interfaces/actor.types'
 import { IGalleryItem } from '@/interfaces/gallery.types'
 
@@ -16,6 +18,7 @@ interface Biography {
 }
 
 const Biography: FC<Biography> = ({ actor, knowForMovies }) => {
+	const { user } = useAuth()
 	return (
 		<>
 			<section className="flex">
@@ -29,7 +32,7 @@ const Biography: FC<Biography> = ({ actor, knowForMovies }) => {
 							priority
 						></Image>
 
-						<FavoriteButton article={actor} typeArticle="actors" />
+						{user && <FavoriteButton article={actor} typeArticle="actors" />}
 					</div>
 					<h3 className="text-white text-2xl mb-10 text-center font-bold">
 						{actor.name}

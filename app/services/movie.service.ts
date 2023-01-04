@@ -67,10 +67,7 @@ export const MovieService = {
 			.get<TFetchCastByMovies>(
 				`/person/${actorId}/movie_credits?api_key=${API_KEY}&language=${lang}`
 			)
-			.then((res) => {
-				console.log(res)
-				filterMovieData(res.data.cast)
-			})
+			.then((res) => filterMovieData(res.data.cast))
 			.catch((error) => error.massage)
 	},
 }
