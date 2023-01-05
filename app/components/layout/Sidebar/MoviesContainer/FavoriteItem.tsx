@@ -9,7 +9,7 @@ import { IFavoriteItem, TUrl } from '@/interfaces/favorites.types'
 import { getGenresListEach } from '@/utils/movie/getGenresList'
 import { getUrlByType } from '@/utils/movie/getUrlByType'
 
-import { getGenreUrl, getMovieUrl, getPosterImage } from '@/configs/url.config'
+import { getGenreUrl, getPosterImage } from '@/configs/url.config'
 
 import styles from './FavoriteList.module.scss'
 

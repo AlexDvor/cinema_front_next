@@ -4,13 +4,13 @@ import SkeletonLoader from '@/components/ui/Skeleton-loader/SkeletonLoader'
 
 import { IFavoriteList } from '@/interfaces/favorites.types'
 
-import { getUserFavoriteActorsUrl } from '@/configs/url.config'
+import { getUserFavoriteTvUrl } from '@/configs/url.config'
 
 import FavoriteList from '../FavoriteList'
 
-const FavoriteActorList: FC<IFavoriteList> = ({
-	favoriteList,
+const FavoriteTvList: FC<IFavoriteList> = ({
 	isLoadingList,
+	favoriteList,
 	sectionName,
 }) => {
 	return isLoadingList ? (
@@ -20,13 +20,13 @@ const FavoriteActorList: FC<IFavoriteList> = ({
 	) : (
 		<FavoriteList
 			list={{
-				link: getUserFavoriteActorsUrl(),
+				link: getUserFavoriteTvUrl(),
 				item: favoriteList.slice(0, 3) || [],
 				title: sectionName,
-				typeUrl: 'actor',
+				typeUrl: 'tv',
 			}}
 		/>
 	)
 }
 
-export default FavoriteActorList
+export default FavoriteTvList
