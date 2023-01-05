@@ -8,9 +8,9 @@ import { getUserFavoriteMoviesUrl } from '@/configs/url.config'
 
 import FavoriteList from '../FavoriteList'
 
-const FavoriteMovieList: FC<IFavoriteList> = ({
-	isLoadingList,
+const FavoriteActorList: FC<IFavoriteList> = ({
 	favoriteList,
+	isLoadingList,
 	sectionName,
 }) => {
 	return isLoadingList ? (
@@ -23,10 +23,10 @@ const FavoriteMovieList: FC<IFavoriteList> = ({
 				link: getUserFavoriteMoviesUrl(),
 				item: favoriteList.slice(0, 3) || [],
 				title: sectionName,
-				typeUrl: 'movie',
+				typeUrl: 'actor',
 			}}
 		/>
 	)
 }
 
-export default FavoriteMovieList
+export default FavoriteActorList

@@ -7,7 +7,7 @@ import { getPopularList } from '@/utils/movie/getPopularMovieIds'
 
 import { queryConfig } from '@/configs/react-query.config'
 
-import MovieList from '../MovieList'
+import FavoriteList from '../FavoriteList'
 
 const PopularMovieList: FC = () => {
 	const { data, isLoading } = useQuery(
@@ -15,6 +15,15 @@ const PopularMovieList: FC = () => {
 		() => getPopularList(),
 		{
 			staleTime: queryConfig.time,
+			select(data) {
+				return data.map((movie) => ({
+					id: movie.id,
+					poster: movie.poster_path,
+					title: movie.title,
+					genres: movie.genres,
+					vote_average: movie.vote_average,
+				}))
+			},
 		}
 	)
 
@@ -23,11 +32,12 @@ const PopularMovieList: FC = () => {
 			<SkeletonLoader count={3} className="h-28 mb-4" />
 		</div>
 	) : (
-		<MovieList
+		<FavoriteList
 			list={{
 				link: '/trending',
-				movies: data || [],
+				item: data || [],
 				title: 'Popular movies',
+				typeUrl: 'movie',
 			}}
 		/>
 	)

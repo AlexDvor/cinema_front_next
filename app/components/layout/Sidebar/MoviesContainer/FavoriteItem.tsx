@@ -4,45 +4,51 @@ import { FC } from 'react'
 
 import MaterialIcon from '@/components/ui/MaterialIcon/MaterialIcon'
 
-import { IMovieDescriptionItem } from '@/interfaces/movie.types'
+import { IFavoriteItem, TUrl } from '@/interfaces/favorites.types'
 
 import { getGenresListEach } from '@/utils/movie/getGenresList'
+import { getUrlByType } from '@/utils/movie/getUrlByType'
 
 import { getGenreUrl, getMovieUrl, getPosterImage } from '@/configs/url.config'
 
-import styles from './MovieList.module.scss'
+import styles from './FavoriteList.module.scss'
 
-const MovieItem: FC<{ movie: IMovieDescriptionItem }> = ({ movie }) => {
+interface IFavoriteItemProps {
+	article: IFavoriteItem
+	typeUrl: TUrl
+}
+
+const FavoriteItem: FC<IFavoriteItemProps> = ({ article, typeUrl }) => {
 	return (
 		<div className={styles.item}>
-			<Link href={getMovieUrl(movie.id)}>
+			<Link href={String(getUrlByType(typeUrl, article.id))}>
 				<Image
-					alt={movie.title}
+					alt={article.title}
 					width={65}
 					height={97}
-					src={getPosterImage(movie.poster_path)}
+					src={getPosterImage(article.poster)}
 					draggable={false}
 					priority
 				/>
 			</Link>
 			<div className={styles.info}>
 				<div>
-					<div className={styles.title}>{movie.title}</div>
+					<div className={styles.title}>{article.title}</div>
 					<div className={styles.genres}>
-						{movie.genres.map((item, idx) => (
+						{article.genres.map((item, idx) => (
 							<Link key={item.id} href={getGenreUrl(item.id)}>
-								{getGenresListEach(idx, movie.genres.length, item.name)}
+								{getGenresListEach(idx, article.genres.length, item.name)}
 							</Link>
 						))}
 					</div>
 				</div>
 				<div className={styles.rating}>
 					<MaterialIcon name="MdStarRate" />
-					<span>{movie.vote_average.toFixed(1)}</span>
+					<span>{article.vote_average.toFixed(1)}</span>
 				</div>
 			</div>
 		</div>
 	)
 }
 
-export default MovieItem
+export default FavoriteItem

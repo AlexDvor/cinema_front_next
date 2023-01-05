@@ -34,9 +34,9 @@ const SingleMovie: FC<ISingleMovie> = ({ movie, cast, similarMovies }) => {
 				/>
 				<h3 className="text-gray-500 mt-4">{movie.overview}</h3>
 
-				<>
+				{/* <>
 					<DynamicPlayer trailers={movie.videos.results} movieKey={movie.id} />
-				</>
+				</> */}
 
 				{cast?.length && (
 					<>
