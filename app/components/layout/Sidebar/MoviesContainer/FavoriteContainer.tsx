@@ -7,18 +7,24 @@ import { useAuth } from '@/hooks/useAuth'
 
 import { IFavoriteItem } from '@/interfaces/favorites.types'
 
-import NotAuthFavorites from './NotAuthFavorites'
+import MessageToUser from './MessageToUser'
 import PopularMovieList from './PopularMoviesList/PopularMovieList'
 
-const FavoriteMovieList = dynamic(
+const DynamicFavoriteMovieList = dynamic(
 	() => import('./FavoriteMovieList/FavoriteMovieList'),
 	{
 		ssr: false,
 	}
 )
 
-const FavoriteActorList = dynamic(
+const DynamicFavoriteActorList = dynamic(
 	() => import('./FavoriteActorList/FavoriteActorList'),
+	{
+		ssr: false,
+	}
+)
+const DynamicFavoriteTvList = dynamic(
+	() => import('./FavoriteTvList/FavoriteTvList'),
 	{
 		ssr: false,
 	}
@@ -45,6 +51,16 @@ const FavoriteContainer: FC = () => {
 		})
 	)
 
+	const favoriteTv = favoritesList?.tv.map(
+		(item): IFavoriteItem => ({
+			id: item.id,
+			poster: item.poster_path,
+			title: item.name,
+			genres: item.genres,
+			vote_average: item.popularity,
+		})
+	)
+
 	const { user } = useAuth()
 
 	return (
@@ -52,19 +68,24 @@ const FavoriteContainer: FC = () => {
 			<PopularMovieList />
 			{user && favoritesList ? (
 				<>
-					<FavoriteMovieList
+					<DynamicFavoriteMovieList
 						isLoadingList={isLoading}
 						favoriteList={favoriteMovies || []}
 						sectionName={'Favorite Movies'}
 					/>
-					<FavoriteActorList
+					<DynamicFavoriteActorList
 						isLoadingList={isLoading}
 						favoriteList={favoriteActors || []}
 						sectionName={'Favorite Actors'}
 					/>
+					<DynamicFavoriteTvList
+						isLoadingList={isLoading}
+						favoriteList={favoriteTv || []}
+						sectionName={'Favorite Tv'}
+					/>
 				</>
 			) : (
-				<NotAuthFavorites />
+				<MessageToUser text={'For viewing favorites please sign in!'} />
 			)}
 		</>
 	)
