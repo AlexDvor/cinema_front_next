@@ -13,20 +13,27 @@ const FavoriteMovieList: FC<IFavoriteList> = ({
 	favoriteList,
 	sectionName,
 }) => {
-	return isLoadingList ? (
-		<div className="mt-11">
-			<SkeletonLoader count={3} className="h-28 mb-4" />
-		</div>
-	) : (
-		<FavoriteList
-			list={{
-				link: getUserFavoriteMoviesUrl(),
-				item: favoriteList.slice(0, 3) || [],
-				title: sectionName,
-				typeUrl: 'movie',
-			}}
-		/>
-	)
+	if (isLoadingList)
+		return (
+			<div className="mt-11">
+				<SkeletonLoader count={3} className="h-28 mb-4" />
+			</div>
+		)
+
+	if (favoriteList.length > 0) {
+		return (
+			<FavoriteList
+				list={{
+					link: getUserFavoriteMoviesUrl(),
+					item: favoriteList.slice(0, 3) || [],
+					title: sectionName,
+					typeUrl: 'movie',
+				}}
+			/>
+		)
+	} else {
+		return null
+	}
 }
 
 export default FavoriteMovieList

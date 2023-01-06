@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic'
-import { FC } from 'react'
+import { FC, useEffect, useState } from 'react'
 
 import { useFavoritesList } from '@/components/screens/User/Favorite-list/useFavorites'
 
@@ -16,7 +16,6 @@ const DynamicFavoriteMovieList = dynamic(
 		ssr: false,
 	}
 )
-
 const DynamicFavoriteActorList = dynamic(
 	() => import('./FavoriteActorList/FavoriteActorList'),
 	{
@@ -31,7 +30,11 @@ const DynamicFavoriteTvList = dynamic(
 )
 
 const FavoriteContainer: FC = () => {
+	const { user } = useAuth()
+	const [authUser, setAuthUser] = useState(false)
+	const [hasAnyArticle, setHasAnyArticle] = useState(false)
 	const { isLoading, favoritesList } = useFavoritesList()
+
 	const favoriteMovies = favoritesList?.movies.map(
 		(movie): IFavoriteItem => ({
 			id: movie.id,
@@ -50,7 +53,6 @@ const FavoriteContainer: FC = () => {
 			vote_average: actor.popularity,
 		})
 	)
-
 	const favoriteTv = favoritesList?.tv.map(
 		(item): IFavoriteItem => ({
 			id: item.id,
@@ -61,12 +63,26 @@ const FavoriteContainer: FC = () => {
 		})
 	)
 
-	const { user } = useAuth()
+	useEffect(() => {
+		favoriteMovies?.length || favoriteActors?.length || favoriteTv?.length
+			? setHasAnyArticle(true)
+			: setHasAnyArticle(false)
+	}, [favoriteActors, favoriteMovies, favoriteTv])
+
+	useEffect(() => {
+		user ? setAuthUser(true) : setAuthUser(false)
+	}, [user])
 
 	return (
 		<>
 			<PopularMovieList />
-			{user && favoritesList ? (
+			{!authUser && (
+				<MessageToUser
+					text={`For viewing favorite movies or actors please sign in!`}
+					url={'/auth'}
+				/>
+			)}
+			{authUser && hasAnyArticle && (
 				<>
 					<DynamicFavoriteMovieList
 						isLoadingList={isLoading}
@@ -84,8 +100,14 @@ const FavoriteContainer: FC = () => {
 						sectionName={'Favorite Tv'}
 					/>
 				</>
-			) : (
-				<MessageToUser text={'For viewing favorites please sign in!'} />
+			)}
+			{authUser && !hasAnyArticle && (
+				<>
+					<MessageToUser
+						text={`You don't have any favorite Movie or Actor. Let's go to add somethings`}
+						url={'/trending'}
+					/>
+				</>
 			)}
 		</>
 	)
