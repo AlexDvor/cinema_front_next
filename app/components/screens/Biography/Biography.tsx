@@ -1,5 +1,8 @@
+import cn from 'classnames'
 import Image from 'next/legacy/image'
-import { FC } from 'react'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { FC, useEffect, useState } from 'react'
 
 import FavoriteButton from '@/components/ui/FavoriteButton/FavoriteButton'
 import Gallery from '@/components/ui/Gallery/Gallery'
@@ -12,13 +15,25 @@ import { IGalleryItem } from '@/interfaces/gallery.types'
 
 import { getPosterImage } from '@/configs/url.config'
 
+import styles from './Biography.module.scss'
+
 interface Biography {
 	actor: IDetailsAboutActor
 	knowForMovies: IGalleryItem[]
 }
 
 const Biography: FC<Biography> = ({ actor, knowForMovies }) => {
+	const [showButton, setShowButton] = useState(false)
+
+	const { asPath } = useRouter()
 	const { user } = useAuth()
+
+	useEffect(() => {
+		if (knowForMovies?.length > 9) {
+			setShowButton(true)
+		} else setShowButton(false)
+	}, [knowForMovies?.length])
+
 	return (
 		<>
 			<section className="flex">
@@ -97,6 +112,20 @@ const Biography: FC<Biography> = ({ actor, knowForMovies }) => {
 
 					<SubHeading title="Known For" />
 					<Gallery items={knowForMovies} />
+
+					<Link
+						className="p-2.5 btn-primary block text-center mt-10 animate-fade"
+						href={`${asPath}/movies`}
+					>
+						{`See All Movies List of ${actor.name}`}
+					</Link>
+
+					{/* <Link
+						className="p-2.5 btn-primary block text-center mt-10 animate-fade"
+						href={`${asPath}/movies`}
+					>
+						{`See All Movies List of ${actor.name}`}
+					</Link> */}
 				</div>
 			</section>
 		</>

@@ -9,16 +9,18 @@ import { IMovieItem } from '@/interfaces/movie.types'
 import { ActorServices } from '@/services/actor.service'
 import { MovieService } from '@/services/movie.service'
 
+import { queryConfig } from '@/configs/react-query.config'
 import { getMovieUrl } from '@/configs/url.config'
 
 const ActorPage: NextPage = () => {
 	const { actorId } = useRouter().query
 
-	const { data, isLoading } = useQuery(
+	const { data } = useQuery(
 		['Details Actor ', actorId],
 		() => ActorServices.getDetailsAboutActor(Number(actorId)),
 		{
 			enabled: !!actorId,
+			staleTime: queryConfig.time,
 		}
 	)
 
@@ -27,6 +29,7 @@ const ActorPage: NextPage = () => {
 		() => MovieService.getMoviesByActorId(Number(actorId)),
 		{
 			enabled: !!actorId,
+			staleTime: queryConfig.time,
 			select: (data) => {
 				return data.map((movie: IMovieItem) => ({
 					id: movie.id,

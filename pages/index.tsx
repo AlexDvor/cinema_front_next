@@ -77,7 +77,7 @@ export const getStaticProps: GetStaticProps = async () => {
 	} catch (error) {
 		console.log(error)
 		return {
-			props: { actors: [], movies: [], slider: [] },
+			props: { actors: [], movies: [], slider: [], tvSerials: [] },
 		}
 	}
 }

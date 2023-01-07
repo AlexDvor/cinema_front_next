@@ -1,3 +1,4 @@
+import cn from 'classnames'
 import { FC, useEffect, useState } from 'react'
 
 import GalleryItem from '@/components/ui/Gallery/GalleryItem'
@@ -17,8 +18,11 @@ const Catalog: FC<ICatalog> = ({
 	title,
 	description,
 	movies,
-	fetchName,
+	fetchName = null,
 	genreId = undefined,
+	hasPagination = true,
+	variant = 'horizontal',
+	typePoster = 'backdrop_path',
 }) => {
 	const [data, setData] = useState(movies)
 	const [pageNumber, setPageNumber] = useState(1)
@@ -30,6 +34,7 @@ const Catalog: FC<ICatalog> = ({
 
 	useEffect(() => {
 		if (pageNumber === 1 || pageNumber >= MAX_PAGE) return
+		if (!fetchName) return
 
 		const fetchData = async () => {
 			const data = await fetchDataByType(
@@ -38,7 +43,6 @@ const Catalog: FC<ICatalog> = ({
 				'en-US',
 				genreId
 			)
-
 			setData((prevState) => [...prevState, ...data])
 		}
 
@@ -60,18 +64,23 @@ const Catalog: FC<ICatalog> = ({
 					{data.map((movie) => (
 						<GalleryItem
 							key={movie.id}
-							variant="horizontal"
+							variant={variant}
 							item={{
 								id: movie.id,
 								title: movie.title,
-								posterPath: movie.backdrop_path,
+								posterPath: `${movie[typePoster]}`,
 								url: getMovieUrl(movie.id),
 							}}
 						/>
 					))}
 				</section>
 				<div className="text-center">
-					<button className={styles.button} onClick={onClickButton}>
+					<button
+						className={cn(styles.button, {
+							[styles.hidden]: !hasPagination,
+						})}
+						onClick={onClickButton}
+					>
 						Load more
 					</button>
 				</div>
