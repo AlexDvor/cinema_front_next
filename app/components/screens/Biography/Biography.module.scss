@@ -1,3 +1,7 @@
+.link {
+	@apply p-2.5 btn-primary block text-center mt-10 animate-fade;
+}
+
 .disabled_link {
 	@apply invisible;
 }

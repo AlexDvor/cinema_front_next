@@ -24,7 +24,6 @@ interface Biography {
 
 const Biography: FC<Biography> = ({ actor, knowForMovies }) => {
 	const [showButton, setShowButton] = useState(false)
-
 	const { asPath } = useRouter()
 	const { user } = useAuth()
 
@@ -111,21 +110,16 @@ const Biography: FC<Biography> = ({ actor, knowForMovies }) => {
 					)}
 
 					<SubHeading title="Known For" />
-					<Gallery items={knowForMovies} />
+					<Gallery items={knowForMovies?.slice(0, 10)} />
 
 					<Link
-						className="p-2.5 btn-primary block text-center mt-10 animate-fade"
+						className={cn(styles.link, {
+							[styles.disabled_link]: !showButton,
+						})}
 						href={`${asPath}/movies`}
 					>
-						{`See All Movies List of ${actor.name}`}
+						{`See All Movies (+${knowForMovies?.length})`}
 					</Link>
-
-					{/* <Link
-						className="p-2.5 btn-primary block text-center mt-10 animate-fade"
-						href={`${asPath}/movies`}
-					>
-						{`See All Movies List of ${actor.name}`}
-					</Link> */}
 				</div>
 			</section>
 		</>
