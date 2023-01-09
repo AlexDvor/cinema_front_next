@@ -87,6 +87,13 @@ module.exports = {
 				2: '2',
 				3: '3',
 			},
+			gridTemplateRows: {
+				// Simple 8 row grid
+				fullHeight: '100%',
+
+				// Complex site-specific row configuration
+				layout: '200px minmax(900px, 1fr) 100px',
+			},
 		},
 	},
 	plugins: [
