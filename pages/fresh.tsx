@@ -22,7 +22,8 @@ const FreshPage: NextPage<{ movies: IMovieItem[] }> = ({ movies }) => {
 
 export const getStaticProps: GetStaticProps = async () => {
 	try {
-		const movies = await MovieService.getFreshMovies()
+		const res = await MovieService.getFreshMovies()
+		const movies = JSON.parse(JSON.stringify(res))
 
 		return {
 			props: { movies },
