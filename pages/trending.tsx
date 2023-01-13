@@ -1,18 +1,17 @@
 import { GetStaticProps, NextPage } from 'next'
-import { QueryClient, dehydrate, useQuery } from 'react-query'
 
 import Catalog from '@/components/screens/Catalog-movies/Catalog'
 
+import { IMovieItem } from '@/interfaces/movie.types'
+
 import { MovieService } from '@/services/movie.service'
 
-const TrendingPage: NextPage = () => {
-	const { data } = useQuery('Popular movies', () =>
-		MovieService.getPopularMovies()
-	)
-
+const TrendingPage: NextPage<{ trendingMovie: IMovieItem[] }> = ({
+	trendingMovie,
+}) => {
 	return (
 		<Catalog
-			movies={data || []}
+			movies={trendingMovie || []}
 			title="Trending movies"
 			description="Trending movies in excellent quality: legal, safe, without ads"
 			fetchName="Trending movies"
@@ -21,16 +20,16 @@ const TrendingPage: NextPage = () => {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-	const queryClient = new QueryClient()
-
-	await queryClient.prefetchQuery('Popular movies', () =>
-		MovieService.getPopularMovies()
-	)
-
-	return {
-		props: {
-			dehydratedState: dehydrate(queryClient),
-		},
+	try {
+		const trendingMovie = await MovieService.getPopularMovies()
+		return {
+			props: { trendingMovie },
+			revalidate: 30,
+		}
+	} catch (error) {
+		return {
+			notFound: true,
+		}
 	}
 }
 

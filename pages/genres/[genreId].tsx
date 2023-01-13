@@ -1,4 +1,4 @@
-// import { errorCatch } from 'api/api.helpers'
+import { errorCatch } from 'api/api.helpers'
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { useRouter } from 'next/router'
 
@@ -35,7 +35,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 			fallback: false,
 		}
 	} catch (e) {
-		// console.log(errorCatch(e))
+		console.log(errorCatch(e))
 
 		return {
 			paths: [],

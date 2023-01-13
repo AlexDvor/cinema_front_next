@@ -1,3 +1,4 @@
+import { errorCatch } from 'api/api.helpers'
 import { GetStaticProps, NextPage } from 'next'
 
 import Catalog from '@/components/screens/Catalog-movies/Catalog'
@@ -25,9 +26,10 @@ export const getStaticProps: GetStaticProps = async () => {
 
 		return {
 			props: { movies },
+			revalidate: 30,
 		}
 	} catch (e) {
-		// console.log(errorCatch(e))
+		console.log(errorCatch(e))
 
 		return {
 			notFound: true,
