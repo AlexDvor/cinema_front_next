@@ -7,7 +7,7 @@ import { validEmail } from '@/utils/string/regex'
 
 interface IProfileFields {
 	register: UseFormRegister<any>
-	formState: FormState<any>
+	formState: FormState<any> | any
 	isPasswordRequired?: boolean
 }
 
