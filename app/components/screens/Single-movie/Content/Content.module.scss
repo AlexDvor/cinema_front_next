@@ -7,7 +7,6 @@
 
 	.rating {
 		@apply absolute bottom-8 right-8 flex items-center justify-center text-xl opacity-90 bg-gray-600 w-24 rounded-full;
-		
 
 		> svg {
 			@apply fill-yellow-700 mb-0.5;
