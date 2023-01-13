@@ -1,4 +1,3 @@
-import { errorCatch } from 'api/api.helpers'
 import { GetStaticProps, NextPage } from 'next'
 
 import Catalog from '@/components/screens/Catalog-movies/Catalog'
@@ -11,7 +10,7 @@ const FreshPage: NextPage<{ movies: IMovieItem[] }> = ({ movies }) => {
 	return (
 		<>
 			<Catalog
-				movies={movies || []}
+				movies={movies}
 				title="Fresh movies"
 				description="New movies and series in excellent quality: legal, safe, without ads"
 				fetchName="Fresh movies"
@@ -29,11 +28,9 @@ export const getStaticProps: GetStaticProps = async () => {
 			props: { movies },
 			revalidate: 30,
 		}
-	} catch (e) {
-		console.log(errorCatch(e))
-
+	} catch (error) {
 		return {
-			notFound: true,
+			props: { movies: [] },
 		}
 	}
 }

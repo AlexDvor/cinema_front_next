@@ -11,7 +11,7 @@ const TrendingPage: NextPage<{ trendingMovie: IMovieItem[] }> = ({
 }) => {
 	return (
 		<Catalog
-			movies={trendingMovie || []}
+			movies={trendingMovie}
 			title="Trending movies"
 			description="Trending movies in excellent quality: legal, safe, without ads"
 			fetchName="Trending movies"
