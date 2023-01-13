@@ -39,7 +39,7 @@ instance.interceptors.response.use(
 			error.config &&
 			!error.config._isRetry
 		) {
-			toastr.error('Update', 'You Get New Token')
+			// toastr.error('Update', 'You Get New Token')
 			originalRequest._isRetry = true
 			try {
 				await AuthService.getNewTokens()
@@ -50,7 +50,7 @@ instance.interceptors.response.use(
 						'Refresh token was expired. Please make a new signin request' ||
 					errorCatch(error) === 'Refresh token is not in database!'
 				) {
-					console.log('Remove Token from Cookies')
+					// console.log('Remove Token from Cookies')
 					removeTokensStorage()
 					Router.push('/')
 				}
