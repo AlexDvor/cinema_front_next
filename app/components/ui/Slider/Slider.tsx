@@ -1,5 +1,4 @@
 import { FC } from 'react'
-import { CSSTransition } from 'react-transition-group'
 
 import { useSlider } from '@/hooks/useSlider'
 
@@ -25,14 +24,7 @@ const Slider: FC<ISlider> = ({ buttonTitle, sliderData }) => {
 				<SlideArrow variant="left" clickHandler={() => handleClick('prev')} />
 			)}
 
-			<CSSTransition
-				in={slideIn}
-				timeout={300}
-				classNames="slide-animation"
-				unmountOnExit
-			>
-				<SlideItem slide={sliderData[index]} buttonTitle={buttonTitle} />
-			</CSSTransition>
+			<SlideItem slide={sliderData[index]} buttonTitle={buttonTitle} />
 
 			{isNext && (
 				<SlideArrow variant="right" clickHandler={() => handleClick('next')} />
