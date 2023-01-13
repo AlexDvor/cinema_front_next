@@ -21,7 +21,8 @@ const TrendingPage: NextPage<{ trendingMovie: IMovieItem[] }> = ({
 
 export const getStaticProps: GetStaticProps = async () => {
 	try {
-		const trendingMovie = await MovieService.getPopularMovies()
+		const res = await MovieService.getPopularMovies()
+		const trendingMovie = JSON.parse(JSON.stringify(res))
 		return {
 			props: { trendingMovie },
 			revalidate: 30,
