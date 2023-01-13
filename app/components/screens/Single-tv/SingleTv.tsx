@@ -34,9 +34,9 @@ const SingleTv: FC<ISingleTvProps> = ({ tv, similarTv, cast }) => {
 				/>
 				<h3 className="text-gray-500 mt-4">{tv.overview}</h3>
 
-				{/* <>
+				<>
 					<DynamicPlayer trailers={tv.videos?.results || []} movieKey={tv.id} />
-				</> */}
+				</>
 
 				{cast?.length && (
 					<>
