@@ -35,7 +35,7 @@ const FavoriteItem: FC<IFavoriteItemProps> = ({ article, typeUrl }) => {
 				<div>
 					<div className={styles.title}>{article.title}</div>
 					<div className={styles.genres}>
-						{article.genres.map((item, idx) => (
+						{article.genres.slice(0, 2).map((item, idx) => (
 							<Link key={item.id} href={getGenreUrl(item.id)}>
 								{getGenresListEach(idx, article.genres.length, item.name)}
 							</Link>

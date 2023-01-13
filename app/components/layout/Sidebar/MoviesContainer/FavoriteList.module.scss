@@ -16,6 +16,7 @@
 			img {
 				@apply rounded-image transition-colors;
 				border: 1px solid transparent !important;
+				min-width: 65px;
 			}
 
 			&:hover {
