@@ -17,6 +17,7 @@ import styles from './Content.module.scss'
 import ContentList from './ContentList/ContentList'
 
 const Content: FC<{ movie: IMovieDescriptionItem }> = ({ movie }) => {
+	console.log(typeof timeConvert(movie.runtime))
 	const { user } = useAuth()
 	return (
 		<div className={styles.content}>
@@ -29,7 +30,7 @@ const Content: FC<{ movie: IMovieDescriptionItem }> = ({ movie }) => {
 			<div className={styles.details}>
 				<span>{parseReleaseData(movie.release_date, 0, 4)} · </span>
 				<span>{movie.production_countries[0]?.iso_3166_1} · </span>
-				<span>{timeConvert(movie.runtime)} min.</span>
+				<span>{String(timeConvert(movie.runtime))} min.</span>
 			</div>
 			<ContentList
 				name="Genres"
