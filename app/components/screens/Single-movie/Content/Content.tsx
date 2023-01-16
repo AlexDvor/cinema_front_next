@@ -17,7 +17,6 @@ import styles from './Content.module.scss'
 import ContentList from './ContentList/ContentList'
 
 const Content: FC<{ movie: IMovieDescriptionItem }> = ({ movie }) => {
-	console.log(typeof timeConvert(movie.runtime))
 	const { user } = useAuth()
 	return (
 		<div className={styles.content}>
