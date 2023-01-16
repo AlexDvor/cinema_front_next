@@ -1,8 +1,8 @@
 import axios from 'axios'
 import Cookies from 'js-cookie'
 import Router from 'next/router'
-import { toastr } from 'react-redux-toastr'
 
+// import { toastr } from 'react-redux-toastr'
 import { removeTokensStorage } from '@/services/auth/auth.helper'
 import { AuthService } from '@/services/auth/auth.service'
 
