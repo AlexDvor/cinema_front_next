@@ -29,7 +29,7 @@ const Content: FC<{ movie: IMovieDescriptionItem }> = ({ movie }) => {
 			<div className={styles.details}>
 				<span>{parseReleaseData(movie.release_date, 0, 4)} · </span>
 				<span>{movie.production_countries[0]?.iso_3166_1} · </span>
-				<span>{String(timeConvert(movie.runtime))} min.</span>
+				<span>{movie.runtime && timeConvert(movie.runtime)} min.</span>
 			</div>
 			<ContentList
 				name="Genres"

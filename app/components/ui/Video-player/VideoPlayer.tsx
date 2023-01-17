@@ -16,11 +16,11 @@ interface IVideoProps {
 }
 
 const VideoPlayer: FC<IVideoProps> = ({ trailers, movieKey }) => {
-	const { user } = useAuth()
+	// const { user } = useAuth()
 
 	return (
 		<>
-			{user ? (
+			{true ? (
 				<ul className={styles.content}>
 					{trailers &&
 						trailers.slice(0, 3).map((item) => (
