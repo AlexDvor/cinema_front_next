@@ -20,7 +20,9 @@ export interface IUploadField {
 	isNoImage?: boolean
 }
 
-export interface IButton extends ButtonHTMLAttributes<HTMLButtonElement> {}
+export interface IButton extends ButtonHTMLAttributes<HTMLButtonElement> {
+	isLoading?: boolean
+}
 
 type TypeEditorPropsField = EditorProps & IFieldProps
 

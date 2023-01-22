@@ -39,7 +39,6 @@ const Auth: FC = () => {
 	const onSubmit: SubmitHandler<IAuthInput> = (data) => {
 		if (type === 'login') login(data)
 		else if (type === 'register') register(data)
-		reset()
 	}
 
 	return (
@@ -54,6 +53,7 @@ const Auth: FC = () => {
 							type="submit"
 							onClick={() => setType('login')}
 							disabled={isLoading}
+							isLoading={isLoading && type === 'login'}
 						>
 							Login
 						</Button>
@@ -61,6 +61,7 @@ const Auth: FC = () => {
 							type="submit"
 							onClick={() => setType('register')}
 							disabled={isLoading}
+							isLoading={isLoading && type === 'register'}
 						>
 							Register
 						</Button>
