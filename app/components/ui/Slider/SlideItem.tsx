@@ -28,11 +28,13 @@ const SlideItem: FC<ISlideItem> = ({
 					src={getFullWidthBackdrop(slide.posterPath)}
 					alt={slide.title}
 					draggable={false}
-					priority={true}
+					priority
 				/>
 			)}
+
 			<div className={styles.content}>
-				<div className={styles.subHeading}>{slide.title}</div>
+				<h2 className={styles.heading}>{slide.title}</h2>
+
 				<button className={styles.button} onClick={() => push(slide.url)}>
 					{buttonTitle}
 				</button>
