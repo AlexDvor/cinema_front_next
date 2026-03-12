@@ -46,7 +46,7 @@ const Home: FC<IHome> = ({ actors, movies, slider, tvSerials }) => {
 
 				<div className="my-10">
 					<SubHeading title="Best actors" />
-					{actors.length && <Gallery items={actors} />}
+					{actors.length && <Gallery items={actors} showPlayBtn={false} />}
 				</div>
 			</Meta>
 		</>

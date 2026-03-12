@@ -42,7 +42,7 @@ const SingleMovie: FC<ISingleMovie> = ({ movie, cast, similarMovies }) => {
 					<>
 						<div className="mt-12">
 							<SubHeading title="Cast" />
-							<Gallery items={cast} />
+							<Gallery items={cast} showPlayBtn={false} />
 						</div>
 					</>
 				)}
