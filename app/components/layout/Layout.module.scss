@@ -1,35 +1,84 @@
 $bar-width: 20%;
 
+.wrapper {
+	position: relative;
+	min-height: 100vh;
+}
+
+.background {
+	position: fixed;
+	inset: 0;
+
+	background: radial-gradient(
+			circle at 20% 30%,
+			rgba(255, 0, 0, 0.18),
+			transparent 40%
+		),
+		radial-gradient(circle at 80% 70%, rgba(255, 0, 0, 0.15), transparent 45%),
+		url('/images/background_image.webp') center / cover no-repeat;
+
+	opacity: 0.4;
+}
+
+.background::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+
+	background: radial-gradient(
+		circle at center,
+		rgba(0, 0, 0, 0) 45%,
+		rgba(0, 0, 0, 0.75) 100%
+	);
+}
+
 .layout {
 	@apply relative;
 
 	> div:first-child,
 	> div:last-child {
-		@apply fixed top-0 bottom-0 overflow-y-scroll;
+		@apply fixed top-0 bottom-0 overflow-y-auto;
+
 		width: $bar-width;
 		max-width: 350px;
 
 		&::-webkit-scrollbar {
 			display: none;
 		}
-		-ms-overflow-style: none; /* IE and Edge */
-		scrollbar-width: none; /* Firefox */
+
+		-ms-overflow-style: none;
+		scrollbar-width: none;
 	}
+
+	/* LEFT NAVIGATION */
 
 	> div:first-child {
-		@apply mobile:hidden
-		laptop:block left-0 border-r border-r-gray-800;
+		@apply mobile:hidden laptop:block left-0 border-r border-r-gray-800;
+
+		background: linear-gradient(90deg, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.4));
 	}
+
+	/* CENTER CONTENT */
 
 	> .center {
-		@apply mobile:mx-0 
-		laptop:w-auto min-h-screen p-layout;
+		@apply mobile:mx-0 laptop:w-auto min-h-screen p-layout;
+
 		margin-left: 18%;
 		margin-right: 18%;
+
+		position: relative;
+		z-index: 1;
 	}
 
+	/* RIGHT SIDEBAR */
+
 	> div:last-child {
-		@apply mobile:hidden
-		laptop:block right-0 border-l border-l-gray-800;
+		@apply mobile:hidden laptop:block right-0 border-l border-l-gray-800;
+
+		background: linear-gradient(
+			270deg,
+			rgba(0, 0, 0, 0.75),
+			rgba(0, 0, 0, 0.4)
+		);
 	}
 }

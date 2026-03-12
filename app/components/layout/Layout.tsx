@@ -7,13 +7,15 @@ import Sidebar from './Sidebar/Sidebar'
 
 const Layout: FC<{ children: React.ReactNode }> = ({ children }) => {
 	return (
-		<>
+		<div className={styles.wrapper}>
+			<div className={styles.background} />
+
 			<div className={styles.layout}>
 				<Navigation />
-				<div className={styles.center}> {children}</div>
+				<div className={styles.center}>{children}</div>
 				<Sidebar />
 			</div>
-		</>
+		</div>
 	)
 }
 
