@@ -102,12 +102,15 @@ module.exports = {
 		plugin(({ addComponents, theme, addUtilities }) => {
 			addComponents({
 				'.btn-primary': {
-					backgroundColor: primary,
+					background: 'linear-gradient(135deg, #e50914, #b20710)',
 					color: '#fff',
 					borderRadius: '0.65rem',
-					transition: 'background-color .3s ease-in-out',
+					boxShadow: '0 6px 20px rgba(229, 9, 20, 0.5)',
+					transition: 'all 0.25s ease',
+
 					'&:hover': {
-						backgroundColor: '#ff0009',
+						transform: 'translateY(-2px) scale(1.04)',
+						boxShadow: '0 12px 30px rgba(229, 9, 20, 0.7)',
 					},
 				},
 

@@ -71,18 +71,7 @@
 			}
 
 			.button {
-				@apply px-8 py-3 rounded-xl text-white font-semibold;
-
-				background: linear-gradient(135deg, #e50914, #b20710);
-
-				box-shadow: 0 6px 20px rgba(229, 9, 20, 0.5);
-
-				transition: all 0.25s ease;
-
-				&:hover {
-					transform: translateY(-2px) scale(1.04);
-					box-shadow: 0 12px 30px rgba(229, 9, 20, 0.7);
-				}
+				@apply btn-primary px-8 py-3 rounded-xl text-white font-semibold;
 			}
 		}
 	}
