@@ -20,7 +20,6 @@ const Slider: FC<ISlider> = ({ buttonTitle, sliderData }) => {
 
 	const autoplayRef = useRef<NodeJS.Timeout | null>(null)
 
-	/* напрямок руху */
 	const directionRef = useRef<'next' | 'prev'>('next')
 
 	const stopAutoplay = () => {
@@ -33,12 +32,10 @@ const Slider: FC<ISlider> = ({ buttonTitle, sliderData }) => {
 		stopAutoplay()
 
 		autoplayRef.current = setInterval(() => {
-			/* якщо дійшли до кінця → змінюємо напрямок */
 			if (!isNext) {
 				directionRef.current = 'prev'
 			}
 
-			/* якщо дійшли до початку → змінюємо напрямок */
 			if (!isPrev) {
 				directionRef.current = 'next'
 			}

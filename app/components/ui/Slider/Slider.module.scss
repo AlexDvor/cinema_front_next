@@ -22,7 +22,6 @@
 			transform: scale(1.1);
 		}
 
-		/* gradient для читабельності тексту */
 		&::before {
 			content: '';
 			position: absolute;
@@ -39,7 +38,6 @@
 			z-index: 1;
 		}
 
-		/* cinematic bottom gradient */
 		&::after {
 			content: '';
 			position: absolute;
