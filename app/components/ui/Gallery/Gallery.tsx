@@ -1,4 +1,4 @@
-import { FC, useRef, useState } from 'react'
+import { FC, useEffect, useRef, useState } from 'react'
 
 import { IGalleryItem } from '@/interfaces/gallery.types'
 
@@ -12,6 +12,7 @@ interface IGallery {
 
 const DRAG_THRESHOLD = 6
 const SCROLL_SPEED = 1.4
+const WHEEL_SPEED = 0.9
 
 const Gallery: FC<IGallery> = ({ items, showPlayBtn = true }) => {
 	const sliderRef = useRef<HTMLDivElement>(null)
@@ -23,6 +24,8 @@ const Gallery: FC<IGallery> = ({ items, showPlayBtn = true }) => {
 	const isDraggingRef = useRef(false)
 
 	const [isDragging, setIsDragging] = useState(false)
+
+	/* ------------------ DRAG ------------------ */
 
 	const onMouseMove = (e: MouseEvent) => {
 		if (!isMouseDown.current || !sliderRef.current) return
@@ -60,6 +63,27 @@ const Gallery: FC<IGallery> = ({ items, showPlayBtn = true }) => {
 		document.addEventListener('mousemove', onMouseMove)
 		document.addEventListener('mouseup', onMouseUp)
 	}
+
+	/* ------------------ WHEEL SCROLL ------------------ */
+
+	useEffect(() => {
+		const slider = sliderRef.current
+		if (!slider) return
+
+		const handleWheel = (e: WheelEvent) => {
+			e.preventDefault()
+
+			const delta = e.deltaY || e.deltaX
+
+			slider.scrollLeft += delta * WHEEL_SPEED
+		}
+
+		slider.addEventListener('wheel', handleWheel, { passive: false })
+
+		return () => {
+			slider.removeEventListener('wheel', handleWheel)
+		}
+	}, [])
 
 	return (
 		<div
