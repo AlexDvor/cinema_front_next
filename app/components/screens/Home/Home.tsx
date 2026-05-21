@@ -15,6 +15,13 @@ import Gallery from '../../ui/Gallery/Gallery'
 import Slider from '../../ui/Slider/Slider'
 
 const Home: FC<IHome> = ({ actors, movies, slider, tvSerials }) => {
+	console.log(
+		'🚀 ~ Home ~ actors, movies, slider, tvSerials:',
+		actors,
+		movies,
+		slider,
+		tvSerials
+	)
 	const { user } = useAuth()
 	useEffect(() => {
 		if (!user) UpdateStats()
@@ -27,7 +34,7 @@ const Home: FC<IHome> = ({ actors, movies, slider, tvSerials }) => {
 				description="Watch MovieApp movies and TV shows online or stream right to your browser."
 				image={logoImage}
 			>
-				{slider.length && <Slider sliderData={slider} />}
+				{slider.length > 0 && <Slider sliderData={slider} />}
 
 				<Heading
 					title="Watch trailer online"
@@ -36,17 +43,17 @@ const Home: FC<IHome> = ({ actors, movies, slider, tvSerials }) => {
 
 				<div className="my-10">
 					<SubHeading title={'Trending now'} />
-					{movies.length && <Gallery items={movies} />}
+					{movies.length > 0 && <Gallery items={movies} />}
 				</div>
 
 				<div className="my-10">
 					<SubHeading title="TV Series" />
-					{tvSerials.length && <Gallery items={tvSerials} />}
+					{tvSerials.length > 0 && <Gallery items={tvSerials} />}
 				</div>
 
 				<div className="my-10">
 					<SubHeading title="Best actors" />
-					{actors.length && <Gallery items={actors} showPlayBtn={false} />}
+					{actors.length > 0 && <Gallery items={actors} showPlayBtn={false} />}
 				</div>
 			</Meta>
 		</>
