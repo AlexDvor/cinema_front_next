@@ -15,13 +15,6 @@ import Gallery from '../../ui/Gallery/Gallery'
 import Slider from '../../ui/Slider/Slider'
 
 const Home: FC<IHome> = ({ actors, movies, slider, tvSerials }) => {
-	console.log(
-		'🚀 ~ Home ~ actors, movies, slider, tvSerials:',
-		actors,
-		movies,
-		slider,
-		tvSerials
-	)
 	const { user } = useAuth()
 	useEffect(() => {
 		if (!user) UpdateStats()
